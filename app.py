@@ -2412,12 +2412,14 @@ def analyze_question(question: str):
     item = CORPUS_8_DOMAINS[-1]
     return item["domain"], item["reading"], item["action"], item["affirmation"], item["domain_name"], item["sub"]
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 class TarotRequestHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         parsed = urlparse(self.path)
         if parsed.path == "/" or parsed.path == "/index.html":
             # 같은 폴더의 index.html이 있으면 읽어서 반환, 없으면 내장 템플릿 반환
-            html_path = os.path.join(os.path.dirname(__file__), "index.html")
+            html_path = os.path.join(BASE_DIR, "index.html")
             if os.path.exists(html_path):
                 with open(html_path, "rb") as f:
                     content = f.read()
@@ -2431,7 +2433,7 @@ class TarotRequestHandler(BaseHTTPRequestHandler):
         elif parsed.path.startswith("/images/"):
             # 정적 이미지 파일 서빙
             rel_path = parsed.path.lstrip("/").replace("/", os.sep)
-            file_path = os.path.join(os.path.dirname(__file__), rel_path)
+            file_path = os.path.join(BASE_DIR, rel_path)
             if os.path.exists(file_path) and os.path.isfile(file_path):
                 content_type = "image/jpeg"
                 if file_path.lower().endswith(".png"):

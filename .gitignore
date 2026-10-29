@@ -2,6 +2,7 @@
 .mingit/
 mingit.zip
 *.zip
+UniversalTarot_Portable_*/
 node_modules/
 .next/
 dist/
