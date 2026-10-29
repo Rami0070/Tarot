@@ -4,6 +4,17 @@
 
 ---
 
+## [1.3.0] - 2026-10-29
+
+### ✦ Added & Updated
+- **마이너 아르카나 완드 & 컵 궁정 카드(Court Cards) 8장 AI 일러스트 전면 생성 및 바인딩**:
+  - **완드(Wands) 궁정 4장 완비**: 시종(`wands-11`), 기사(`wands-12`), 여왕(`wands-13`), 왕(`wands-14`)
+  - **컵(Cups) 궁정 4장 완비**: 시종(`cups-11`), 기사(`cups-12`), 여왕(`cups-13`), 왕(`cups-14`)
+  - 메이저 22장 + 에이스 4장 + 궁정 카드 8장 = **총 34장 고화질 AI 일러스트 구축 완료**
+  - [tarotData.ts](file:///c:/AI개발/타로/src/lib/tarotData.ts), [app.py](file:///c:/AI개발/타로/app.py), [index.html](file:///c:/AI개발/타로/index.html) 이미지 경로 동기화 완료.
+
+---
+
 ## [1.2.0] - 2026-10-29
 
 ### ✦ Added & Enhanced

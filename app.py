@@ -990,6 +990,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "wands-11",
+        "imageUrl": "images/tarot_wands_11.jpg",
         "number":  11,
         "nameEn":  "Page of Wands",
         "nameKo":  "완드 시종 (Page of Wands)",
@@ -1019,6 +1020,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "wands-12",
+        "imageUrl": "images/tarot_wands_12.jpg",
         "number":  12,
         "nameEn":  "Knight of Wands",
         "nameKo":  "완드 기사 (Knight of Wands)",
@@ -1048,6 +1050,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "wands-13",
+        "imageUrl": "images/tarot_wands_13.jpg",
         "number":  13,
         "nameEn":  "Queen of Wands",
         "nameKo":  "완드 여왕 (Queen of Wands)",
@@ -1077,6 +1080,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "wands-14",
+        "imageUrl": "images/tarot_wands_14.jpg",
         "number":  14,
         "nameEn":  "King of Wands",
         "nameKo":  "완드 왕 (King of Wands)",
@@ -1397,6 +1401,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "cups-11",
+        "imageUrl": "images/tarot_cups_11.jpg",
         "number":  11,
         "nameEn":  "Page of Cups",
         "nameKo":  "컵 시종 (Page of Cups)",
@@ -1426,6 +1431,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "cups-12",
+        "imageUrl": "images/tarot_cups_12.jpg",
         "number":  12,
         "nameEn":  "Knight of Cups",
         "nameKo":  "컵 기사 (Knight of Cups)",
@@ -1455,6 +1461,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "cups-13",
+        "imageUrl": "images/tarot_cups_13.jpg",
         "number":  13,
         "nameEn":  "Queen of Cups",
         "nameKo":  "컵 여왕 (Queen of Cups)",
@@ -1484,6 +1491,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "cups-14",
+        "imageUrl": "images/tarot_cups_14.jpg",
         "number":  14,
         "nameEn":  "King of Cups",
         "nameKo":  "컵 왕 (King of Cups)",
