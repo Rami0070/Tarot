@@ -371,6 +371,7 @@ export const TAROT_CARDS: TarotCardData[] = [  {
   },
   {
     id: 'wands-1',
+    imageUrl: '/images/tarot_wands_1.jpg',
     number: 1,
     nameEn: 'Ace of Wands',
     nameKo: '완드 에이스 (Ace of Wands)',
@@ -595,6 +596,7 @@ export const TAROT_CARDS: TarotCardData[] = [  {
   },
   {
     id: 'cups-1',
+    imageUrl: '/images/tarot_cups_1.jpg',
     number: 1,
     nameEn: 'Ace of Cups',
     nameKo: '컵 에이스 (Ace of Cups)',
@@ -819,6 +821,7 @@ export const TAROT_CARDS: TarotCardData[] = [  {
   },
   {
     id: 'swords-1',
+    imageUrl: '/images/tarot_swords_1.jpg',
     number: 1,
     nameEn: 'Ace of Swords',
     nameKo: '소드 에이스 (Ace of Swords)',
@@ -1043,6 +1046,7 @@ export const TAROT_CARDS: TarotCardData[] = [  {
   },
   {
     id: 'pentacles-1',
+    imageUrl: '/images/tarot_pentacles_1.jpg',
     number: 1,
     nameEn: 'Ace of Pentacles',
     nameKo: '펜타클 에이스 (Ace of Pentacles)',

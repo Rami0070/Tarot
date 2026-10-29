@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
@@ -2017,6 +2017,7 @@
     },
     {
         "id":  "wands-1",
+        "imageUrl": "images/tarot_wands_1.jpg",
         "number":  1,
         "nameEn":  "Ace of Wands",
         "nameKo":  "완드 에이스 (Ace of Wands)",
@@ -2423,6 +2424,7 @@
     },
     {
         "id":  "cups-1",
+        "imageUrl": "images/tarot_cups_1.jpg",
         "number":  1,
         "nameEn":  "Ace of Cups",
         "nameKo":  "컵 에이스 (Ace of Cups)",
@@ -2829,6 +2831,7 @@
     },
     {
         "id":  "swords-1",
+        "imageUrl": "images/tarot_swords_1.jpg",
         "number":  1,
         "nameEn":  "Ace of Swords",
         "nameKo":  "소드 에이스 (Ace of Swords)",
@@ -3235,6 +3238,7 @@
     },
     {
         "id":  "pentacles-1",
+        "imageUrl": "images/tarot_pentacles_1.jpg",
         "number":  1,
         "nameEn":  "Ace of Pentacles",
         "nameKo":  "펜타클 에이스 (Ace of Pentacles)",
@@ -4154,70 +4158,251 @@
       }
     }
 
+    // --- 2.1 PDF 기반 8대 핵심 고민 분야 및 23개 세부 상황 타로 상담 대화 코퍼스 ---
+    const TAROT_COUNSELING_CORPUS = [
+      {
+        domain: 'love', domainName: '연애 & 애정운', subCategory: 'love_crush', name: '짝사랑 / 탐색',
+        keywords: ['짝사랑', '썸', '호감', '그 사람', '그녀', '속마음', '좋아하', '관심', '태도', '탐색', '고백', '남친', '여친'],
+        psychologicalReading: '상대방의 태도가 모호한 것은 거절이 아니라, 본인의 감정에 확신이 서지 않아 신중하게 관망하는 흐름입니다.',
+        actionAdvice: '고백을 서두르기보다 사소한 일상 대화의 빈도를 늘려 편안함을 먼저 심어주세요.',
+        affirmation: '당신의 온기는 이미 충분히 전해지고 있으니 조급해하지 마세요.'
+      },
+      {
+        domain: 'love', domainName: '연애 & 애정운', subCategory: 'love_reunion', name: '재회 / 미련',
+        keywords: ['재회', '미련', '다시 만', '헤어', '전남친', '전여친', '연락 올', '연락할', '이별 후', '돌아올', '다시 시작'],
+        psychologicalReading: '상대방 역시 이별 후 공허함과 그리움을 느끼고 있지만, 과거의 해묵은 갈등과 자존심 탓에 멈춰 서 있습니다.',
+        actionAdvice: '감정적인 연락은 방어벽을 높입니다. 갈등의 원인이 실질적으로 해결될 수 있는지 먼저 자문하세요.',
+        affirmation: '닿을 인연이라면 더 단단해져 만날 것이고, 아니라면 더 귀한 사랑이 옵니다.'
+      },
+      {
+        domain: 'love', domainName: '연애 & 애정운', subCategory: 'love_boredom', name: '권태 / 거리감',
+        keywords: ['권태', '거리감', '식었', '변했', '소원', '지루', '무미건조', '싸움', '정체', '예전같지', '서운'],
+        psychologicalReading: '애정이 식었다기보다 편안함이 지나쳐 관계에 필요한 상호 노력이 잠시 방전된 정체기입니다.',
+        actionAdvice: '서운함을 침묵으로 풀지 말고, 익숙한 루틴을 벗어나 둘만의 낯선 경험과 배움을 시도하세요.',
+        affirmation: '잔잔해진 파도는 끝이 아니라 더 깊은 바다로 함께 나아가는 과정입니다.'
+      },
+      {
+        domain: 'love', domainName: '연애 & 애정운', subCategory: 'love_breakup', name: '이별 직후 / 상실',
+        keywords: ['이별', '헤어짐', '끝났', '슬픔', '차였', '상실', '울적', '홀로', '혼자', '이별직후'],
+        psychologicalReading: '마음의 중심이 무너져 내린 듯한 상실감 속에서 혼자만의 긴 터널을 지나고 계시는 형상입니다.',
+        actionAdvice: '억지로 괜찮은 척 덮지 마세요. 슬픔을 충분히 애도해야 그 자리에 새살이 돋아납니다.',
+        affirmation: '당신의 존재 가치는 누군가의 곁에 머물 때만 빛나는 것이 아닙니다.'
+      },
+      {
+        domain: 'love', domainName: '연애 & 애정운', subCategory: 'love_attachment', name: '불안형 집착',
+        keywords: ['집착', '불안', '연락 텀', '의심', '초조', '확인', '안절부절', '질투', '연락'],
+        psychologicalReading: '연락 텀 하나에 일상이 흔들리는 것은 상대에 대한 사랑을 넘어 상처받기 두려운 방어기제입니다.',
+        actionAdvice: '핸드폰을 내려놓고 나만의 성취감을 주는 1시간 루틴을 엄격하게 지켜내 보세요.',
+        affirmation: '혼자서도 온전할 수 있을 때, 관계는 비로소 가장 자유롭고 아름다워집니다.'
+      },
+      {
+        domain: 'trauma', domainName: '상처 극복 & 트라우마', subCategory: 'trauma_betrayal', name: '믿음의 배신 / 기만',
+        keywords: ['배신', '기만', '바람', '거짓말', '속았', '상처', '가스라이팅', '사기', '이용당', '뒤통수'],
+        psychologicalReading: '순수하게 주었던 마음이 기만당했다는 충격으로 인해 세상과 사람 전체에 대한 방어벽이 높아진 상태입니다.',
+        actionAdvice: '상대의 부정직함은 상대의 몫입니다. 나의 선했던 진심까지 어리석었다고 폄하하지 마세요.',
+        affirmation: '흙탕물이 튀었어도 당신이라는 원석의 본질은 조금도 훼손되지 않았습니다.'
+      },
+      {
+        domain: 'trauma', domainName: '상처 극복 & 트라우마', subCategory: 'trauma_regret', name: '자책과 후회',
+        keywords: ['자책', '후회', '내가 왜', '바보같', '죄책감', '실수', '과거', '자괴감', '내 탓', '괴로워'],
+        psychologicalReading: '\'내가 왜 그랬을까\'라는 끊임없는 반추가 과거의 감옥에 스스로를 결박하고 있습니다.',
+        actionAdvice: '그때의 당신은 당신이 가진 자원과 시야 안에서 최선을 다했습니다. 이제 스스로를 석방하세요.',
+        affirmation: '지나간 과거를 바꿀 순 없지만, 그 기억을 대하는 오늘의 시선은 바꿀 수 있습니다.'
+      },
+      {
+        domain: 'career', domainName: '진로 & 직무 탐색', subCategory: 'career_stability_challenge', name: '안정 vs 도전',
+        keywords: ['안정', '도전', '리스크', '새로운 시도', '퇴사 고민', '도전할까', '안주', '모험', '선택'],
+        psychologicalReading: '머리는 현실적인 안정을 계산하고 있지만, 심장은 도전하지 않았을 때 남을 후회를 경고하고 있습니다.',
+        actionAdvice: '전부를 거는 올인 대신, 퇴근 후 작은 사이드 프로젝트나 스터디로 리스크 없이 가설을 검증하세요.',
+        affirmation: '어떤 길을 가든 정답은 길 위에 있지 않고, 당신이 내딛는 발걸음이 정답을 만듭니다.'
+      },
+      {
+        domain: 'career', domainName: '진로 & 직무 탐색', subCategory: 'career_aptitude', name: '적성 혼란 / 방향 상실',
+        keywords: ['적성', '진로', '좋아하는 일', '잘하는 일', '꿈', '방향성', '혼란', '진로 고민', '길을 잃', '무엇을'],
+        psychologicalReading: '내가 잘하는 것과 좋아하는 것, 그리고 돈이 되는 것 사이에서 기준점이 흔들려 에너지가 분산된 상태입니다.',
+        actionAdvice: '거창한 꿈을 찾기보다, 하루 중 시간 가는 줄 모르고 몰입했던 30분의 순간들을 기록해 보세요.',
+        affirmation: '남들의 속도에 맞추지 마세요. 당신만의 고유한 궤도가 만들어지는 중입니다.'
+      },
+      {
+        domain: 'career', domainName: '진로 & 직무 탐색', subCategory: 'career_turnover', name: '이직 타이밍',
+        keywords: ['이직', '회사', '퇴사', '새 직장', '연봉', '커리어', '이직 고민', '직장 옮기', '헤드헌터'],
+        psychologicalReading: '현재의 터전에서는 배울 수 있는 자산과 성취가 한계에 다다라 무기력함이 껍질처럼 굳어지고 있습니다.',
+        actionAdvice: '감정적으로 퇴사하기보다 내 역량을 숫자로 증명할 수 있는 포트폴리오부터 객관화하세요.',
+        affirmation: '익숙한 항구를 벗어나는 용기가 더 광활한 바다의 보물을 마주하게 합니다.'
+      },
+      {
+        domain: 'career', domainName: '진로 & 직무 탐색', subCategory: 'career_burnout', name: '직무 번아웃',
+        keywords: ['번아웃', '소진', '지침', '야근', '과로', '무기력', '의욕', '업무 스트레스', '일하기 싫', '방전'],
+        psychologicalReading: '책임감이 지나쳐 스스로의 소진 상태를 외면한 채 달려오다 엔진의 오일이 완전히 마른 모습입니다.',
+        actionAdvice: '오늘 당장 생산성을 증명하려 하지 마세요. 완벽주의를 내려놓고 거절하는 연습을 시작하세요.',
+        affirmation: '잠시 멈추어 숨을 고르는 것은 도태가 아니라 생존과 도약을 위한 지혜입니다.'
+      },
+      {
+        domain: 'exam', domainName: '취업 & 시험', subCategory: 'exam_rejection', name: '서류 / 면접 탈락',
+        keywords: ['불합격', '탈락', '낙방', '서류 탈락', '면접 탈락', '서탈', '면탈', '취업 실패', '광탈'],
+        psychologicalReading: '역량의 부족이 아니라 회사의 타이밍과 조직 핏의 불일치인데, 존재 자체를 부정당한 듯 위축되어 있습니다.',
+        actionAdvice: '탈락 결과에 감정을 섞지 말고 채용 전형의 문항과 답변을 객관적으로 복기해 핏을 재조정하세요.',
+        affirmation: '이번 불합격은 실패가 아니라, 당신의 가치를 알아볼 더 알맞은 곳으로의 재배치입니다.'
+      },
+      {
+        domain: 'exam', domainName: '취업 & 시험', subCategory: 'exam_slump', name: '수험 슬럼프',
+        keywords: ['수험', '고시', '공시', '시험', '공부', '집중', '슬럼프', '합격', '수능', '자격증', '독서실'],
+        psychologicalReading: '장기화된 고립 속에서 \'이번에도 안 되면 어쩌지\'라는 결과 중심적 공포가 집중력을 갉아먹고 있습니다.',
+        actionAdvice: '최종 합격이라는 먼 산을 보지 말고, 오직 오늘 계획한 3시간 분량의 완결에만 시야를 좁히세요.',
+        affirmation: '흙 속에 묻힌 씨앗이 어둠 속에서 뿌리를 내리듯, 성장은 보이지 않게 완성됩니다.'
+      },
+      {
+        domain: 'exam', domainName: '취업 & 시험', subCategory: 'exam_interview', name: '면접 울렁증',
+        keywords: ['면접', '울렁증', '긴장', '발표', '심사', '떨림', '말문', '면접관', '얼어붙'],
+        psychologicalReading: '평가관의 시선을 \'심판관\'으로 인식하여 자신의 본래 기량 절반도 꺼내지 못하고 얼어붙는 형국입니다.',
+        actionAdvice: '면접은 시험이 아니라 함께 일할 동료를 찾는 대화입니다. 완벽한 모범답안 대신 진정성을 보이세요.',
+        affirmation: '떨림은 당신이 그만큼 이 일을 진심으로 원하고 있다는 열정의 또 다른 이름입니다.'
+      },
+      {
+        domain: 'business', domainName: '사업 & 스타트업', subCategory: 'business_early', name: '창업 초기 리스크',
+        keywords: ['창업', '사업 시작', '스타트업', '초기', '창업 준비', '대표', '고립감', '자금 압박', '사업'],
+        psychologicalReading: '화려한 성공 비전 이면에 모든 책임을 홀로 져야 한다는 고립감과 자금 압박의 중압감이 엿보입니다.',
+        actionAdvice: '초기에는 거창한 외형 확장보다 단 한 명의 진성 고객을 만족시키는 제품 핏에 집중하세요.',
+        affirmation: '모든 거대한 나무도 작은 씨앗에서 시작되었습니다. 당신의 통찰을 믿으세요.'
+      },
+      {
+        domain: 'business', domainName: '사업 & 스타트업', subCategory: 'business_stagnation', name: '매출 부진 / 정체',
+        keywords: ['매출', '부진', '적자', '판매', '수익성', '마케팅', '고객 이탈', '장사', '손님', '매출 정체'],
+        psychologicalReading: '과거에 통했던 성공 방식의 관성에 갇혀 변화된 시장 트렌드와 고객의 목소리를 놓치고 있는 흐름입니다.',
+        actionAdvice: '마케팅 비용만 늘리지 마시고 이탈 고객이 남긴 가장 아픈 피드백부터 수술대에 올리세요.',
+        affirmation: '지표의 정체는 실패의 징조가 아니라, 비즈니스 모델을 견고히 다질 리빌딩의 기회입니다.'
+      },
+      {
+        domain: 'business', domainName: '사업 & 스타트업', subCategory: 'business_partner', name: '동업자 갈등',
+        keywords: ['동업', '파트너', '지분', '계약', '동업자', '의사결정', '섭섭', '갈등', '지분 싸움'],
+        psychologicalReading: '신뢰라는 이름 아래 역할과 보상의 경계가 모호해져 오해와 섭섭함이 임계점에 달한 상태입니다.',
+        actionAdvice: '친분 뒤에 숨지 마시고 지분, 업무 범위, 의사결정 권한을 명문화된 계약서로 재정립하세요.',
+        affirmation: '투명한 원칙이야말로 가장 오래도록 건강한 파트너십을 지켜내는 방패입니다.'
+      },
+      {
+        domain: 'finance', domainName: '금전 & 투자', subCategory: 'finance_fomo', name: '투자 손실 / FOMO',
+        keywords: ['주식', '코인', '투자', '손실', '물렸', '급등', 'fomo', '원금', '베팅', '물타기', '코인 손실'],
+        psychologicalReading: '남들의 수익에 대한 조급함이 냉철한 분석을 압도하여 원금을 회복하려는 무리한 베팅으로 이어지는 양상입니다.',
+        actionAdvice: '손실 확정의 공포를 직시하고 손절 기준을 기계적으로 세우세요. 시장을 떠나지 않는 것이 1원칙입니다.',
+        affirmation: '계좌의 손실이 인생의 실패를 뜻하지 않습니다. 수업료를 치르고 더 지혜로운 투자자가 됩니다.'
+      },
+      {
+        domain: 'finance', domainName: '금전 & 투자', subCategory: 'finance_liquidity', name: '빚 / 유동성 위기',
+        keywords: ['빚', '대출', '채무', '유동성', '돌려막기', '카드값', '생활비', '파산', '회생', '이자', '돈 부족'],
+        psychologicalReading: '돌려막기와 불확실한 수입 사이에서 하루하루 피가 마르는 긴장감을 버텨내고 계시는 모습입니다.',
+        actionAdvice: '불필요한 고정 지출을 극단적으로 줄이고 채무 조정이나 공적 지원 창구를 즉시 확인하세요.',
+        affirmation: '현금 흐름의 소나기는 지나갑니다. 움츠러든 지금의 절약이 단단한 기초 체력이 됩니다.'
+      },
+      {
+        domain: 'finance', domainName: '금전 & 투자', subCategory: 'finance_stress_spending', name: '스트레스 충동 소비',
+        keywords: ['소비', '충동구매', '쇼핑', '지출', '텅장', '잔고', '스트레스 해소', '돈 낭비', '시발비용'],
+        psychologicalReading: '마음의 공허함과 분노를 물질의 구매로 채우려다 통장 잔고를 보며 다시 자책하는 악순환에 빠져 있습니다.',
+        actionAdvice: '결제 버튼을 누르기 전 24시간 장바구니 보류 규칙을 두고, 감정의 허기를 산책이나 운동으로 달래세요.',
+        affirmation: '물질이 채우지 못한 내면의 빈자리는 나 자신을 향한 따뜻한 관심으로 채워집니다.'
+      },
+      {
+        domain: 'health', domainName: '건강 & 심신 회복', subCategory: 'health_lethargy', name: '만성 무기력 / 피로',
+        keywords: ['피로', '무기력', '만성 피로', '방전', '기력', '체력', '몸살', '아침에 못', '지침', '건강'],
+        psychologicalReading: '정신은 어떻게든 일어서려 하지만 몸이 방전 경고등을 켜고 모든 기능을 강제로 멈춰 세운 형상입니다.',
+        actionAdvice: '게으름이 아닙니다. 자책을 즉시 중단하고 햇빛을 쬐며 10분 걷는 것 외엔 아무것도 강요하지 마세요.',
+        affirmation: '쉬는 것 또한 치열한 삶의 연장선입니다. 회복을 허락할 자격이 당신에게 있습니다.'
+      },
+      {
+        domain: 'health', domainName: '건강 & 심신 회복', subCategory: 'health_insomnia', name: '수면 장애 / 불면증',
+        keywords: ['불면', '잠', '수면', '새벽', '악몽', '뒤척', '잠을 못', '잠이 안', '수면제'],
+        psychologicalReading: '잠자리에 누워서도 뇌가 미래의 재앙 시나리오를 끝없이 검토하느라 깊은 잠의 영역으로 들어가지 못합니다.',
+        actionAdvice: '잠들기 전 머릿속 걱정거리를 종이에 모조리 쏟아내 적어두고 물리적으로 덮어두세요.',
+        affirmation: '밤은 고민을 해결하는 시간이 아닙니다. 밤새 내려놓아도 세상은 무너지지 않습니다.'
+      },
+      {
+        domain: 'health', domainName: '건강 & 심신 회복', subCategory: 'health_panic', name: '불안 / 호흡 곤란 / 공황',
+        keywords: ['공황', '가슴 답답', '호흡', '불안발작', '심장', '두근', '공포', '과호흡', '숨이 막'],
+        psychologicalReading: '통제할 수 없는 일들에 대한 두려움이 교감신경을 과활성화시켜 가슴을 짓누르고 있습니다.',
+        actionAdvice: '숨을 4초 들이쉬고 7초 멈춘 뒤 8초간 길게 내쉬는 호흡법으로 심박수를 안정시키세요.',
+        affirmation: '이 불안은 지나가는 구름일 뿐 당신을 파괴할 수 없습니다. 당신은 지금 안전합니다.'
+      },
+      {
+        domain: 'turning_point', domainName: '미래 & 삶의 전환기', subCategory: 'turning_cycle', name: '주기 전환 / 대변혁',
+        keywords: ['변화', '주기', '운', '흐름', '새출발', '터닝포인트', '전환기', '패러다임', '새 시대', '운세'],
+        psychologicalReading: '오랫동안 유지되던 묵은 환경이 정리되고 삶의 패러다임 자체가 바뀌는 커다란 변곡점에 서 있습니다.',
+        actionAdvice: '떠나가는 것들을 억지로 붙잡지 마세요. 빈 공간이 생겨야 새로운 기회가 깃들 수 있습니다.',
+        affirmation: '해체되는 것은 무너짐이 아니라, 더 웅장한 집을 짓기 위한 터 닦기입니다.'
+      },
+      {
+        domain: 'turning_point', domainName: '미래 & 삶의 전환기', subCategory: 'turning_decision', name: '중대한 결단 / 기로',
+        keywords: ['결정', '선택', '결단', '기로', '용기', '인생 방향', '미래', '어떤 선택', '중요한 결정'],
+        psychologicalReading: '주변의 시선, 도덕적 잣대, 타인의 기대 속에서 진정한 내면의 목소리가 가려진 형상입니다.',
+        actionAdvice: '10년 뒤의 내가 지금의 나를 돌아봤을 때 더 자랑스러워할 결단이 무엇인지 심장에 물으세요.',
+        affirmation: '당신에게는 당신 삶의 선장이 되어 키를 잡을 권리와 힘이 충분히 있습니다.'
+      },
+      {
+        domain: 'turning_point', domainName: '미래 & 삶의 전환기', subCategory: 'turning_spiritual', name: '영적 갈증 / 자아 성찰',
+        keywords: ['의미', '공허', '자아', '인생', '영혼', '왜 사나', '가치', '성장', '깨달음', '성찰'],
+        psychologicalReading: '물질적 조건은 갖추어졌으나 영혼의 공허함이 커져 진정한 삶의 의미를 탐색하는 시기입니다.',
+        actionAdvice: '사회적 타이틀을 떼어낸 순수한 나 자신이 언제 진심으로 웃는지 관찰하고 기록하세요.',
+        affirmation: '당신의 여정은 헛되지 않았으며, 이제 진정한 나를 만나는 순례가 시작됩니다.'
+      }
+    ];
+
+    function classifyUserConcern(rawQuestion) {
+      const q = (rawQuestion || '').toLowerCase().trim();
+      if (!q) return TAROT_COUNSELING_CORPUS.find(c => c.subCategory === 'turning_decision');
+      let best = TAROT_COUNSELING_CORPUS[0];
+      let maxScore = -1;
+      for (const entry of TAROT_COUNSELING_CORPUS) {
+        let score = 0;
+        for (const kw of entry.keywords) {
+          if (q.includes(kw.toLowerCase())) {
+            score += kw.length >= 3 ? 3 : 2;
+          }
+        }
+        if (score > maxScore) {
+          maxScore = score;
+          best = entry;
+        }
+      }
+      if (maxScore <= 0) {
+        if (q.includes('선택') || q.includes('어떻게') || q.includes('할까')) {
+          return TAROT_COUNSELING_CORPUS.find(c => c.subCategory === 'turning_decision');
+        }
+        return TAROT_COUNSELING_CORPUS.find(c => c.subCategory === 'turning_cycle');
+      }
+      return best;
+    }
+
     // --- TENSE-SPECIFIC INTERPRETATION GENERATOR ---
     function getTenseInterpretation(drawn, question) {
       const card = drawn.card;
       const isRev = drawn.isReversed;
-      const tense = drawn.tense || 'present';
       const kwUp = card.keywordsUpright;
       const kwRev = card.keywordsReversed;
+      const corpus = classifyUserConcern(question);
 
-      let observationText = '';
-      let interpretationText = '';
-      let adviceText = '';
-      let situationAdvice = '';
-
-      if (tense === 'past' || tense === 'recent_past') {
-        observationText = `도상에 묘사된 ${card.nameKo}의 상징은 이미 거쳐오신 시간 속의 원인과 배경을 증언하고 있었습니다. ${card.observation}`;
-        if (isRev) {
-          interpretationText = `지나온 과거 흐름에서 질문자님은 '${kwRev.slice(0, 2).join(', ')}'의 영향으로 인해 일의 진행이 다소 지연되거나, 마음속의 의구심과 망설임을 겪었던 시기가 있었습니다. 당시에 완전히 매듭짓지 못했던 고민과 미련이 지금까지 잔여 영향으로 이어져왔었습니다.`;
-          situationAdvice = `과거에 느꼈던 결핍이나 지체된 시간에 얽매이지 말고, 그때의 시행착오를 귀중한 반면교사로 삼아야 했습니다.`;
-        } else {
-          interpretationText = `지나온 과거 국면에서 질문자님은 '${kwUp.slice(0, 2).join(', ')}'의 긍정적인 힘을 발휘하며 중요한 기반을 닦아오셨었습니다. 스스로 용기를 내어 시도했던 경험과 축적된 배움이 현재의 상황을 지탱하는 든든한 밑거름으로 작용해왔습니다.`;
-          situationAdvice = `과거에 스스로 입증했던 저력과 성취 경험을 다시금 기억하고, 그 성장의 자산을 온전히 인정해야 했습니다.`;
-        }
-        adviceText = `이미 지나간 과거의 불안을 완전히 털어내고, ${card.adviceBase}`;
-      } else if (tense === 'present_cont') {
-        observationText = `도상 속 인물의 시선과 손짓은 지금 이 순간 질문자님이 현실에서 마주하고 풀어가야 할 핵심 쟁점을 가리키고 있습니다. ${card.observation}`;
-        if (isRev) {
-          interpretationText = `현재 질문자님은 '${kwRev.slice(0, 2).join(', ')}'의 신호처럼 내면의 조급함이나 에너지가 한곳에 고여 있는 정체감을 체감하며 이를 헤쳐나가는 중입니다. 억지로 속도를 내기보다는 장애의 원인을 차분히 짚어가며 풀어내고 계시는 과정에 있습니다.`;
-          situationAdvice = `지금 진행 중인 국면에서는 혼자만의 지레짐작으로 결론내리지 말고, 주변의 객관적 사실을 하나씩 확인해가는 중이어야 합니다.`;
-        } else {
-          interpretationText = `지금 이 순간 질문자님은 '${kwUp.slice(0, 2).join(', ')}'의 역동적인 흐름 속에 직면해 계시며, 상황의 다양한 변수들을 적극적으로 조율하고 있는 과정에 놓여 있습니다. 주도권을 쥐고 당면 과제를 풀어가기 위해 분투하고 계시는 중입니다.`;
-          situationAdvice = `현재 진행되고 있는 흐름에 물러서지 말고, 자신의 직관과 판단력을 신뢰하며 주도적으로 대응해나가는 중이어야 합니다.`;
-        }
-        adviceText = `지금 당면한 과제에서는 ${card.adviceBase}`;
-      } else if (tense === 'near_future' || tense === 'future' || tense === 'inner_future') {
-        observationText = `도상이 암시하는 빛과 길의 방향은 질문자님이 올바른 실천을 취했을 때 도달하게 될 미래의 결실과 종착지를 보여주고 있습니다. ${card.observation}`;
-        if (isRev) {
-          interpretationText = `앞으로 다가올 미래 흐름에서는 '${kwRev.slice(0, 2).join(', ')}'의 함정이나 예기치 않은 돌발 변수가 나타날 수 있으니 사전에 경계해야 할 것입니다. 작은 리스크를 미리 점검하지 않는다면 시행착오를 겪게 될 것이나, 지금의 조언을 마음에 새긴다면 무난히 극복하게 될 것입니다.`;
-          situationAdvice = `미래의 불확실성을 두려워하지 말고, 사전에 원칙과 기준을 세워 흔들림 없이 대비해나가야 할 것입니다.`;
-        } else {
-          interpretationText = `앞으로 질문자님께서 주도적으로 실천해 나가신다면, 마침내 '${kwUp.slice(0, 2).join(', ')}'의 확고한 결실을 맺게 될 것이며, 상황은 한층 더 명쾌하고 만족스러운 완성으로 나아가게 될 것입니다. 의심 없이 전진하신다면 원하던 성취를 이루게 될 것입니다.`;
-          situationAdvice = `원하는 미래의 결실을 확신하며, 오늘 취해야 할 작은 행동을 지체 없이 실행에 옮겨야 할 것입니다.`;
-        }
-        adviceText = `밝은 결실을 완성하기 위해 오늘 당장 ${card.checklists[0]}`;
+      const observation = 도상 상징 (): ;
+      let psychologicalReading = '';
+      if (!isRev) {
+        psychologicalReading = [] (정방향) -  이 카드가 지닌 ''의 에너지가 능동적으로 발현될 때, 망설이던 고민의 실타래가 술술 풀려나갈 것입니다.;
       } else {
-        observationText = `도상의 핵심 상징은 질문자님을 둘러싼 오늘의 현실적 역학과 중심 에너지를 투영합니다. ${card.observation}`;
-        if (isRev) {
-          interpretationText = `현재 질문자님의 상황에서는 '${kwRev.slice(0, 2).join(', ')}'처럼 내면의 의구심이나 에너지의 지연이 감지됩니다. 외부의 속도에 휩쓸리지 말고 질문자님 내면의 균형을 먼저 회복하는 것이 급선무입니다.`;
-          situationAdvice = `외부 상황을 통제하려 하기보다 내면의 마음가짐을 단단히 정돈하는 것이 필요합니다.`;
-        } else {
-          interpretationText = `현재 질문자님은 '${kwUp.slice(0, 2).join(', ')}'의 긍정적인 힘이 가득한 중심에 위치해 있습니다. 질문하신 문제에 대한 주도권을 충분히 쥐고 계시므로 자신감을 가져도 좋습니다.`;
-          situationAdvice = `상황의 키는 질문자님의 손에 있으므로 망설이지 말고 행동을 시작하세요.`;
-        }
-        adviceText = `오늘 이 자리에서 ${card.adviceBase}`;
+        psychologicalReading = [] (역방향) -  ''에 대한 불안이나 조급함이 에너지를 가로막고 있으니, 억지 추진보다 내면의 매듭을 먼저 풀어야 합니다.;
       }
 
+      const actionAdvice = [실전 솔루션]   오늘 당장 실천할 구체적 지침: "";
+      const affirmation = corpus.affirmation;
+
       return {
-        observation: observationText,
-        interpretation: interpretationText,
-        advice: adviceText,
-        situationAdvice: situationAdvice
+        observation,
+        psychologicalReading,
+        actionAdvice,
+        affirmation,
+        domainName: corpus.domainName,
+        subCategoryName: corpus.name,
+        // 하위 호환 필드
+        interpretation: psychologicalReading,
+        situationAdvice: corpus.actionAdvice,
+        advice: actionAdvice
       };
     }
-
-    // START READING
+    // --- END TENSE INTERPRETATION ---
     function executeReading(customQuestion = null, forceSpread = null, isTodayFortune = false) {
       appState.isTodayFortune = !!isTodayFortune;
       if (forceSpread) {
@@ -6124,49 +6309,52 @@ function generateAiTarotArtworkSvg(card) {
             </span>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
-            <div class="p-4 rounded-xl bg-slate-50 border border-zinc-200 flex flex-col justify-between space-y-2">
-              <div>
-                <div class="font-bold text-zinc-800 mb-2 flex items-center gap-1.5 border-b border-zinc-200 pb-1">
-                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-600"></span>
-                  <span>1. 관찰 (Observation)</span>
-                </div>
-                <p class="text-zinc-600 font-normal leading-relaxed">${tenseInfo.observation}</p>
-              </div>
-              <div class="text-[11px] text-zinc-500 font-mono italic">✦ 도상학적 객관 관찰</div>
-            </div>
-
-            <div class="p-4 rounded-xl bg-purple-50/50 border border-purple-200 flex flex-col justify-between space-y-2">
-              <div>
-                <div class="font-bold text-purple-900 mb-2 flex items-center gap-1.5 border-b border-purple-200 pb-1">
-                  <span class="w-1.5 h-1.5 rounded-full bg-purple-600"></span>
-                  <span>2. 해석 (Interpretation)</span>
-                </div>
-                <p class="text-zinc-700 font-normal leading-relaxed mb-2">
-                  ${tenseInfo.interpretation}
-                </p>
-                <div class="p-2.5 rounded-lg bg-white border border-purple-200 text-[11px] text-purple-900 font-medium">
-                  <strong>상황 맞춤 조언:</strong> ${tenseInfo.situationAdvice}
-                </div>
-              </div>
-              <div class="text-[11px] text-purple-700 font-mono">✦ 질문 맥락 연계 심층 독해</div>
-            </div>
-
-            <div class="p-4 rounded-xl bg-zinc-950 text-white flex flex-col justify-between shadow-sm space-y-2">
-              <div>
-                <div class="font-bold text-purple-300 mb-2 flex items-center gap-1.5 border-b border-zinc-800 pb-1">
-                  <span class="text-purple-400">✦</span>
-                  <span>3. 행동 조언 (Action Advice)</span>
-                </div>
-                <p class="text-zinc-200 font-medium leading-relaxed">${tenseInfo.advice}</p>
-                <div class="mt-2.5 text-[11px] text-purple-300 bg-zinc-900 p-2.5 rounded-lg border border-zinc-800">
-                  <strong>오늘 실천 과제:</strong> ${drawn.card.checklists[0]}
-                </div>
-              </div>
-              <div class="text-[11px] text-purple-300/80 font-mono">✦ 즉시 실천 행동 처방</div>
-            </div>
+                    <div class="text-xs text-zinc-500 bg-zinc-50 p-3 rounded-xl border border-zinc-200">
+            <strong class="text-zinc-700">✦ 도상 상징:</strong> 
           </div>
-        `;
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+            <!-- 1. 심리 리딩 (상황 해석) -->
+            <div class="p-4 rounded-2xl bg-indigo-50/70 border border-indigo-200 flex flex-col justify-between space-y-3">
+              <div>
+                <div class="font-bold text-indigo-950 mb-2 flex items-center gap-1.5 border-b border-indigo-200/80 pb-1.5">
+                  <span class="w-2 h-2 rounded-full bg-indigo-600"></span>
+                  <span class="text-xs">1. 심리 리딩 (상황 해석)</span>
+                </div>
+                <p class="text-zinc-800 font-normal leading-relaxed"></p>
+              </div>
+              <div class="text-[11px] text-indigo-700 font-mono italic">✦ 내담자 무의식 상태 진단</div>
+            </div>
+
+            <!-- 2. 구체적 행동 조언 (실전 솔루션) -->
+            <div class="p-4 rounded-2xl bg-white border-2 border-purple-200 flex flex-col justify-between shadow-xs space-y-3">
+              <div>
+                <div class="font-bold text-purple-900 mb-2 flex items-center gap-1.5 border-b border-purple-100 pb-1.5">
+                  <span class="text-purple-600 font-bold">✓</span>
+                  <span class="text-xs">2. 구체적 행동 조언 (실전 솔루션)</span>
+                </div>
+                <p class="text-zinc-800 font-medium leading-relaxed"></p>
+              </div>
+              <div class="text-[11px] text-purple-800 font-mono">✦ 오늘 당장 실천할 행동 지침</div>
+            </div>
+
+            <!-- 3. 온기 있는 확언 (힐링 카드) -->
+            <div class="p-4 rounded-2xl bg-gradient-to-br from-zinc-950 via-[#181024] to-zinc-900 text-white flex flex-col justify-between shadow-md space-y-3 border border-purple-900/40">
+              <div>
+                <div class="font-bold text-purple-300 mb-2 flex items-center gap-1.5 border-b border-zinc-800 pb-1.5">
+                  <span class="text-pink-400">♥</span>
+                  <span class="text-xs">3. 온기 있는 확언 (힐링 카드)</span>
+                </div>
+                <blockquote class="text-purple-100 font-serif italic text-xs leading-relaxed pt-1">
+                  &ldquo;&rdquo;
+                </blockquote>
+              </div>
+              <div class="flex items-center justify-between pt-1">
+                <span class="text-[10px] text-purple-400 font-mono">✦ 자존감 회복 & 축복</span>
+                <button type="button" onclick="navigator.clipboard && navigator.clipboard.writeText('&quot;&quot; - 유니버셜 타로 확언 카드'); alert('확언 문구가 복사되었습니다.');" class="px-2 py-0.5 rounded bg-purple-900/80 hover:bg-purple-800 text-[10px] text-purple-200">복사</button>
+              </div>
+            </div>
+          </div>`;
         stepBreakdownContainer.appendChild(item);
       });
 

@@ -699,6 +699,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "wands-1",
+        "imageUrl": "images/tarot_wands_1.jpg",
         "number":  1,
         "nameEn":  "Ace of Wands",
         "nameKo":  "완드 에이스 (Ace of Wands)",
@@ -1105,6 +1106,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "cups-1",
+        "imageUrl": "images/tarot_cups_1.jpg",
         "number":  1,
         "nameEn":  "Ace of Cups",
         "nameKo":  "컵 에이스 (Ace of Cups)",
@@ -1511,6 +1513,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "swords-1",
+        "imageUrl": "images/tarot_swords_1.jpg",
         "number":  1,
         "nameEn":  "Ace of Swords",
         "nameKo":  "소드 에이스 (Ace of Swords)",
@@ -1917,6 +1920,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "pentacles-1",
+        "imageUrl": "images/tarot_pentacles_1.jpg",
         "number":  1,
         "nameEn":  "Ace of Pentacles",
         "nameKo":  "펜타클 에이스 (Ace of Pentacles)",
@@ -2326,21 +2330,80 @@ TAROT_CARDS = [
 # -------------------------------------------------------------
 # 2. 파이썬 기반 독해 & 인터프리테이션 엔진
 # -------------------------------------------------------------
+CORPUS_8_DOMAINS = [
+    {
+        "domain": "love", "domain_name": "연애 & 애정운", "sub": "짝사랑 / 탐색",
+        "keywords": ["짝사랑", "썸", "호감", "그 사람", "그녀", "속마음", "좋아하", "관심", "태도", "탐색", "고백"],
+        "reading": "상대방의 태도가 모호한 것은 거절이 아니라, 본인의 감정에 확신이 서지 않아 신중하게 관망하는 흐름입니다.",
+        "action": "고백을 서두르기보다 사소한 일상 대화의 빈도를 늘려 편안함을 먼저 심어주세요.",
+        "affirmation": "당신의 온기는 이미 충분히 전해지고 있으니 조급해하지 마세요."
+    },
+    {
+        "domain": "love", "domain_name": "연애 & 애정운", "sub": "재회 / 미련",
+        "keywords": ["재회", "미련", "다시 만", "헤어", "전남친", "전여친", "연락 올", "돌아올"],
+        "reading": "상대방 역시 이별 후 공허함과 그리움을 느끼고 있지만, 과거의 해묵은 갈등과 자존심 탓에 멈춰 서 있습니다.",
+        "action": "감정적인 연락은 방어벽을 높입니다. 갈등의 원인이 실질적으로 해결될 수 있는지 먼저 자문하세요.",
+        "affirmation": "닿을 인연이라면 더 단단해져 만날 것이고, 아니라면 더 귀한 사랑이 옵니다."
+    },
+    {
+        "domain": "trauma", "domain_name": "상처 극복 & 트라우마", "sub": "믿음의 배신 / 자책 치유",
+        "keywords": ["배신", "기만", "바람", "거짓말", "가스라이팅", "자책", "후회", "내가 왜", "실수"],
+        "reading": "순수하게 주었던 마음이 기만당했다는 충격과 자책으로 스스로를 과거의 감옥에 결박하고 있습니다.",
+        "action": "상대의 부정직함은 상대의 몫입니다. 그때의 당신은 최선을 다했으니 스스로를 석방하세요.",
+        "affirmation": "흙탕물이 튀었어도 당신이라는 원석의 본질은 조금도 훼손되지 않았습니다."
+    },
+    {
+        "domain": "career", "domain_name": "진로 & 직무 탐색", "sub": "안정 vs 도전 / 이직·번아웃",
+        "keywords": ["진로", "적성", "이직", "퇴사", "번아웃", "도전", "안정", "직장", "커리어", "회사"],
+        "reading": "현재의 터전에서 성취가 한계에 다다르고 머리와 심장의 신호가 엇갈려 에너지가 소진된 형상입니다.",
+        "action": "감정적으로 퇴사하기보다 리스크 없이 작은 사이드 검증을 시도하고 내 역량을 객관화하세요.",
+        "affirmation": "남들의 속도에 맞추지 마세요. 당신만의 고유한 궤도가 만들어지는 중입니다."
+    },
+    {
+        "domain": "exam", "domain_name": "취업 & 시험", "sub": "불합격 불안 / 장기 수험 슬럼프",
+        "keywords": ["취업", "시험", "공부", "합격", "불합격", "탈락", "면접", "수험", "슬럼프"],
+        "reading": "장기화된 고립 속에서 '이번에도 안 되면 어쩌지'라는 결과 중심적 공포가 집중력을 갉아먹고 있습니다.",
+        "action": "최종 합격이라는 먼 산을 보지 말고, 오직 오늘 계획한 3시간 분량의 완결에만 시야를 좁히세요.",
+        "affirmation": "이번 불합격은 실패가 아니라, 당신의 가치를 알아볼 더 알맞은 곳으로의 재배치입니다."
+    },
+    {
+        "domain": "business", "domain_name": "사업 & 스타트업", "sub": "창업 리스크 / 매출 정체·동업",
+        "keywords": ["창업", "사업", "스타트업", "매출", "적자", "동업", "고객", "마케팅"],
+        "reading": "화려한 비전 이면에 모든 책임을 홀로 져야 하는 고립감과 과거 관성으로 시장의 변화를 놓치고 있는 흐름입니다.",
+        "action": "거창한 외형 확장 대신 단 한 명의 진성 고객을 만족시키는 제품 핏과 명문화된 원칙에 집중하세요.",
+        "affirmation": "모든 거대한 나무도 작은 씨앗에서 시작되었습니다. 당신의 통찰을 믿으세요."
+    },
+    {
+        "domain": "finance", "domain_name": "금전 & 투자", "sub": "투자 손실 / 유동성 위기·소비",
+        "keywords": ["돈", "투자", "주식", "코인", "손실", "빚", "대출", "카드값", "충동구매", "소비"],
+        "reading": "남들의 수익에 대한 조급함이 냉철한 분석을 압도하거나, 불확실한 수입 사이에서 피가 마르는 긴장을 버텨내는 모습입니다.",
+        "action": "손실 확정의 공포를 직시하고 손절 기준을 기계적으로 세우며, 불필요한 고정 지출을 극단적으로 줄이세요.",
+        "affirmation": "계좌의 손실이 인생의 실패를 뜻하지 않습니다. 현금 흐름의 소나기는 지나갑니다."
+    },
+    {
+        "domain": "health", "domain_name": "건강 & 심신 회복", "sub": "만성 피로 / 불면·공황",
+        "keywords": ["피로", "무기력", "수면", "잠", "불면", "공황", "호흡", "불안", "가슴 답답", "건강"],
+        "reading": "몸이 방전 경고등을 켜고 모든 기능을 강제로 멈춰 세웠으며, 뇌가 재앙 시나리오를 검토하느라 깊은 잠에 들지 못합니다.",
+        "action": "자책을 즉시 중단하고 햇빛 쬐며 10분 걷기와 4-7-8 호흡법으로 심박수를 안정시키세요.",
+        "affirmation": "쉬는 것 또한 치열한 삶의 연장선입니다. 회복을 허락할 자격이 당신에게 있습니다."
+    },
+    {
+        "domain": "turning_point", "domain_name": "미래 & 삶의 전환기", "sub": "주기 전환 / 중대한 결단",
+        "keywords": ["선택", "결정", "변화", "운", "미래", "영혼", "방향", "인생", "어떻게"],
+        "reading": "오랫동안 유지되던 묵은 환경이 정리되고 삶의 패러다임 자체가 바뀌는 커다란 변곡점에 서 있습니다.",
+        "action": "10년 뒤의 내가 지금의 나를 돌아봤을 때 더 자랑스러워할 결단이 무엇인지 심장에 물으세요.",
+        "affirmation": "해체되는 것은 무너짐이 아니라, 더 웅장한 집을 짓기 위한 터 닦기입니다."
+    }
+]
+
 def analyze_question(question: str):
     q = question.lower()
-    if any(k in q for k in ['연애', '이성', '사랑', '그 사람', '그녀', '연락', '결혼', '헤어', '마음', '재회', '친구', '관계']):
-        return "love", "마음의 교감과 관계의 회복"
-    if any(k in q for k in ['이직', '취업', '회사', '시험', '공부', '프로젝트', '사업', '커리어', '직장', '승진', '퇴사']):
-        return "career", "역량의 발휘와 새로운 기회의 포착"
-    if any(k in q for k in ['돈', '투자', '재정', '금전', '매매', '주식', '부동산', '지출', '계약']):
-        return "finance", "물질적 안정과 지속 가능한 번영"
-    if any(k in q for k in ['선택', '갈등', '어떻게', 'a', 'b', '고민', '결정']):
-        return "choice", "올바른 우선순위 정립과 명쾌한 결단"
-    return "general", "상황에 대한 올바른 인식과 삶의 주도권 회복"
+    for item in CORPUS_8_DOMAINS:
+        if any(k in q for k in item["keywords"]):
+            return item["domain"], item["reading"], item["action"], item["affirmation"], item["domain_name"], item["sub"]
+    item = CORPUS_8_DOMAINS[-1]
+    return item["domain"], item["reading"], item["action"], item["affirmation"], item["domain_name"], item["sub"]
 
-# -------------------------------------------------------------
-# 3. HTTP 서버 요청 핸들러 (API + UI 통합 서빙)
-# -------------------------------------------------------------
 class TarotRequestHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         parsed = urlparse(self.path)
@@ -2402,8 +2465,16 @@ class TarotRequestHandler(BaseHTTPRequestHandler):
 
         if parsed.path == "/api/analyze":
             question = req_data.get("question", "")
-            domain, intent = analyze_question(question)
-            res = {"domain": domain, "intent": intent}
+            domain, reading, action, affirmation, domain_name, sub = analyze_question(question)
+            res = {
+                "domain": domain,
+                "domainName": domain_name,
+                "subCategory": sub,
+                "intent": reading,
+                "psychologicalReading": reading,
+                "actionAdvice": action,
+                "affirmation": affirmation
+            }
             data = json.dumps(res, ensure_ascii=False).encode("utf-8")
             self.send_response(200)
             self.send_header("Content-Type", "application/json; charset=utf-8")

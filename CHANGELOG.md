@@ -4,6 +4,22 @@
 
 ---
 
+## [1.2.0] - 2026-10-29
+
+### ✦ Added & Enhanced
+- **타로 상담 실전 대화 코퍼스 탑재 및 3-Block UI 전면 개편**:
+  - **8대 고민 분야 23개 세부 상황 분류기**: 연애, 상처/트라우마, 진로/직무, 취업/시험, 사업/스타트업, 금전/투자, 건강/심신, 미래/전환기 질문에 대한 1:1 맞춤형 진단 알고리즘 구축.
+  - **3-Block 실전 리딩 시퀀스 UI 구현**:
+    - **[1. 심리 리딩 (상황 해석)]**: 내담자의 무의식과 심리 상태를 2~3문장으로 명쾌하게 짚어내는 객관적 통찰.
+    - **[2. 구체적 행동 조언 (실전 솔루션)]**: 추상적 점괘를 배제하고 오늘 당장 실천할 수 있는 구체적 행동 지침 제시.
+    - **[3. 온기 있는 확언 (힐링 확언 카드)]**: 화면 캡처 및 마음 치유에 적합한 따뜻한 한 줄 자존감 회복 확언(원클릭 복사 기능 탑재).
+  - **수트/4원소 상징 에너지 결합**: 완드(열정), 컵(감정), 소드(이성), 펜타클(현실) 템플릿과 카드 정/역방향 상태를 유기적으로 결합한 동적 해석 도출.
+  - 적용 파일: [TarotSpreadView.tsx](file:///c:/AI개발/타로/src/components/TarotSpreadView.tsx), [interpretationEngine.ts](file:///c:/AI개발/타로/src/lib/interpretationEngine.ts), [app.py](file:///c:/AI개발/타로/app.py), [index.html](file:///c:/AI개발/타로/index.html)
+- **마이너 아르카나 4대 에이스 카드 AI 일러스트 신규 생성 및 적용**:
+  - `tarot_wands_1.jpg` (Ace of Wands), `tarot_cups_1.jpg` (Ace of Cups), `tarot_swords_1.jpg` (Ace of Swords), `tarot_pentacles_1.jpg` (Ace of Pentacles) 생성 완료 및 정적 애셋 연동.
+
+---
+
 ## [1.1.0] - 2026-10-29
 
 ### ✦ Added & Changed
