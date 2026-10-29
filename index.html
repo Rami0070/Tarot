@@ -4382,29 +4382,29 @@
     function getTenseInterpretation(drawn, question) {
       const card = drawn.card;
       const isRev = drawn.isReversed;
-      const kwUp = card.keywordsUpright;
-      const kwRev = card.keywordsReversed;
+      const kwUp = card.keywordsUpright || [];
+      const kwRev = card.keywordsReversed || [];
       const corpus = classifyUserConcern(question);
 
-      const observation = 도상 상징 (): ;
+      const observation = `도상 상징 (${card.element}): ${card.observation}`;
       let psychologicalReading = '';
       if (!isRev) {
-        psychologicalReading = [] (정방향) -  이 카드가 지닌 ''의 에너지가 능동적으로 발현될 때, 망설이던 고민의 실타래가 술술 풀려나갈 것입니다.;
+        psychologicalReading = `[${drawn.positionName || '현재'}] ${card.nameKo}(정방향) - ${corpus.psychologicalReading} 이 카드가 지닌 '${kwUp.slice(0, 3).join(', ')}'의 에너지가 능동적으로 발현될 때, 망설이던 고민의 실타래가 술술 풀려나갈 것입니다.`;
       } else {
-        psychologicalReading = [] (역방향) -  ''에 대한 불안이나 조급함이 에너지를 가로막고 있으니, 억지 추진보다 내면의 매듭을 먼저 풀어야 합니다.;
+        psychologicalReading = `[${drawn.positionName || '현재'}] ${card.nameKo}(역방향) - ${corpus.psychologicalReading} '${kwRev.slice(0, 2).join(', ')}'에 대한 불안이나 조급함이 에너지를 가로막고 있으니, 억지 추진보다 내면의 매듭을 먼저 풀어야 합니다.`;
       }
 
-      const actionAdvice = [실전 솔루션]   오늘 당장 실천할 구체적 지침: "";
+      const checklist0 = (card.checklists && card.checklists.length > 0) ? card.checklists[0] : (card.adviceBase || '');
+      const actionAdvice = `[실전 솔루션] ${corpus.actionAdvice} ${card.adviceBase} 오늘 당장 실천할 구체적 지침: "${checklist0}"`;
       const affirmation = corpus.affirmation;
 
       return {
-        observation,
-        psychologicalReading,
-        actionAdvice,
-        affirmation,
+        observation: observation,
+        psychologicalReading: psychologicalReading,
+        actionAdvice: actionAdvice,
+        affirmation: affirmation,
         domainName: corpus.domainName,
         subCategoryName: corpus.name,
-        // 하위 호환 필드
         interpretation: psychologicalReading,
         situationAdvice: corpus.actionAdvice,
         advice: actionAdvice
@@ -6318,7 +6318,7 @@ function generateAiTarotArtworkSvg(card) {
           </div>
 
                     <div class="text-xs text-zinc-500 bg-zinc-50 p-3 rounded-xl border border-zinc-200">
-            <strong class="text-zinc-700">✦ 도상 상징:</strong> 
+            <strong class="text-zinc-700">✦ 도상 상징:</strong> ${tenseInfo.observation}
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
@@ -6329,7 +6329,7 @@ function generateAiTarotArtworkSvg(card) {
                   <span class="w-2 h-2 rounded-full bg-indigo-600"></span>
                   <span class="text-xs">1. 심리 리딩 (상황 해석)</span>
                 </div>
-                <p class="text-zinc-800 font-normal leading-relaxed"></p>
+                <p class="text-zinc-800 font-normal leading-relaxed">${tenseInfo.psychologicalReading}</p>
               </div>
               <div class="text-[11px] text-indigo-700 font-mono italic">✦ 내담자 무의식 상태 진단</div>
             </div>
@@ -6341,7 +6341,7 @@ function generateAiTarotArtworkSvg(card) {
                   <span class="text-purple-600 font-bold">✓</span>
                   <span class="text-xs">2. 구체적 행동 조언 (실전 솔루션)</span>
                 </div>
-                <p class="text-zinc-800 font-medium leading-relaxed"></p>
+                <p class="text-zinc-800 font-medium leading-relaxed">${tenseInfo.actionAdvice}</p>
               </div>
               <div class="text-[11px] text-purple-800 font-mono">✦ 오늘 당장 실천할 행동 지침</div>
             </div>
@@ -6354,12 +6354,12 @@ function generateAiTarotArtworkSvg(card) {
                   <span class="text-xs">3. 온기 있는 확언 (힐링 카드)</span>
                 </div>
                 <blockquote class="text-purple-100 font-serif italic text-xs leading-relaxed pt-1">
-                  &ldquo;&rdquo;
+                  &ldquo;${tenseInfo.affirmation}&rdquo;
                 </blockquote>
               </div>
               <div class="flex items-center justify-between pt-1">
                 <span class="text-[10px] text-purple-400 font-mono">✦ 자존감 회복 & 축복</span>
-                <button type="button" onclick="navigator.clipboard && navigator.clipboard.writeText('&quot;&quot; - 유니버셜 타로 확언 카드'); alert('확언 문구가 복사되었습니다.');" class="px-2 py-0.5 rounded bg-purple-900/80 hover:bg-purple-800 text-[10px] text-purple-200">복사</button>
+                <button type="button" onclick="navigator.clipboard && navigator.clipboard.writeText('&quot;${tenseInfo.affirmation}&quot; - 유니버셜 타로 확언 카드'); alert('확언 문구가 복사되었습니다.');" class="px-2 py-0.5 rounded bg-purple-900/80 hover:bg-purple-800 text-[10px] text-purple-200">복사</button>
               </div>
             </div>
           </div>`;
