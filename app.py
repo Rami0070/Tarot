@@ -21,6 +21,7 @@ from urllib.parse import urlparse, parse_qs
 TAROT_CARDS = [
     {
         "id":  "major-0",
+        "imageUrl": "images/tarot_0_fool.jpg",
         "number":  0,
         "nameEn":  "The Fool",
         "nameKo":  "0. 바보 (The Fool)",
@@ -51,6 +52,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "major-1",
+        "imageUrl": "images/tarot_1_magician.jpg",
         "number":  1,
         "nameEn":  "The Magician",
         "nameKo":  "I. 마법사 (The Magician)",
@@ -81,6 +83,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "major-2",
+        "imageUrl": "images/tarot_2_high_priestess.jpg",
         "number":  2,
         "nameEn":  "The High Priestess",
         "nameKo":  "II. 여사제 (The High Priestess)",
@@ -111,6 +114,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "major-3",
+        "imageUrl": "images/tarot_3_empress.jpg",
         "number":  3,
         "nameEn":  "The Empress",
         "nameKo":  "III. 여황제 (The Empress)",
@@ -141,6 +145,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "major-4",
+        "imageUrl": "images/tarot_4_emperor.jpg",
         "number":  4,
         "nameEn":  "The Emperor",
         "nameKo":  "IV. 황제 (The Emperor)",
@@ -171,6 +176,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "major-5",
+        "imageUrl": "images/tarot_5_hierophant.jpg",
         "number":  5,
         "nameEn":  "The Hierophant",
         "nameKo":  "V. 교황 (The Hierophant)",
@@ -201,6 +207,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "major-6",
+        "imageUrl": "images/tarot_6_lovers.jpg",
         "number":  6,
         "nameEn":  "The Lovers",
         "nameKo":  "VI. 연인 (The Lovers)",
@@ -231,6 +238,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "major-7",
+        "imageUrl": "images/tarot_7_chariot.jpg",
         "number":  7,
         "nameEn":  "The Chariot",
         "nameKo":  "VII. 전차 (The Chariot)",
@@ -261,6 +269,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "major-8",
+        "imageUrl": "images/tarot_8_strength.jpg",
         "number":  8,
         "nameEn":  "Strength",
         "nameKo":  "VIII. 힘 (Strength)",
@@ -291,6 +300,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "major-9",
+        "imageUrl": "images/tarot_9_hermit.jpg",
         "number":  9,
         "nameEn":  "The Hermit",
         "nameKo":  "IX. 은둔자 (The Hermit)",
@@ -321,6 +331,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "major-10",
+        "imageUrl": "images/tarot_10_wheel_of_fortune.jpg",
         "number":  10,
         "nameEn":  "Wheel of Fortune",
         "nameKo":  "X. 운명의 수레바퀴 (Wheel of Fortune)",
@@ -351,6 +362,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "major-11",
+        "imageUrl": "images/tarot_11_justice.jpg",
         "number":  11,
         "nameEn":  "Justice",
         "nameKo":  "XI. 정의 (Justice)",
@@ -381,6 +393,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "major-12",
+        "imageUrl": "images/tarot_12_hanged_man.jpg",
         "number":  12,
         "nameEn":  "The Hanged Man",
         "nameKo":  "XII. 매달린 사람 (The Hanged Man)",
@@ -410,6 +423,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "major-13",
+        "imageUrl": "images/tarot_13_death.jpg",
         "number":  13,
         "nameEn":  "Death",
         "nameKo":  "XIII. 죽음 (Death)",
@@ -439,6 +453,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "major-14",
+        "imageUrl": "images/tarot_14_temperance.jpg",
         "number":  14,
         "nameEn":  "Temperance",
         "nameKo":  "XIV. 절제 (Temperance)",
@@ -469,6 +484,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "major-15",
+        "imageUrl": "images/tarot_15_devil.jpg",
         "number":  15,
         "nameEn":  "The Devil",
         "nameKo":  "XV. 악마 (The Devil)",
@@ -499,6 +515,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "major-16",
+        "imageUrl": "images/tarot_16_tower.jpg",
         "number":  16,
         "nameEn":  "The Tower",
         "nameKo":  "XVI. 탑 (The Tower)",
@@ -528,6 +545,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "major-17",
+        "imageUrl": "images/tarot_17_star.jpg",
         "number":  17,
         "nameEn":  "The Star",
         "nameKo":  "XVII. 별 (The Star)",
@@ -558,6 +576,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "major-18",
+        "imageUrl": "images/tarot_18_moon.jpg",
         "number":  18,
         "nameEn":  "The Moon",
         "nameKo":  "XVIII. 달 (The Moon)",
@@ -588,6 +607,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "major-19",
+        "imageUrl": "images/tarot_19_sun.jpg",
         "number":  19,
         "nameEn":  "The Sun",
         "nameKo":  "XIX. 태양 (The Sun)",
@@ -618,6 +638,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "major-20",
+        "imageUrl": "images/tarot_20_judgement.jpg",
         "number":  20,
         "nameEn":  "Judgement",
         "nameKo":  "XX. 심판 (Judgement)",
@@ -648,6 +669,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "major-21",
+        "imageUrl": "images/tarot_21_world.jpg",
         "number":  21,
         "nameEn":  "The World",
         "nameKo":  "XXI. 세계 (The World)",
@@ -2335,6 +2357,29 @@ class TarotRequestHandler(BaseHTTPRequestHandler):
             self.send_header("Content-Length", str(len(content)))
             self.end_headers()
             self.wfile.write(content)
+        elif parsed.path.startswith("/images/"):
+            # 정적 이미지 파일 서빙
+            rel_path = parsed.path.lstrip("/").replace("/", os.sep)
+            file_path = os.path.join(os.path.dirname(__file__), rel_path)
+            if os.path.exists(file_path) and os.path.isfile(file_path):
+                content_type = "image/jpeg"
+                if file_path.lower().endswith(".png"):
+                    content_type = "image/png"
+                elif file_path.lower().endswith(".svg"):
+                    content_type = "image/svg+xml"
+                elif file_path.lower().endswith(".webp"):
+                    content_type = "image/webp"
+                with open(file_path, "rb") as f:
+                    img_data = f.read()
+                self.send_response(200)
+                self.send_header("Content-Type", content_type)
+                self.send_header("Content-Length", str(len(img_data)))
+                self.send_header("Cache-Control", "public, max-age=86400")
+                self.end_headers()
+                self.wfile.write(img_data)
+            else:
+                self.send_response(404)
+                self.end_headers()
         elif parsed.path == "/api/cards":
             data = json.dumps(TAROT_CARDS, ensure_ascii=False).encode("utf-8")
             self.send_response(200)
