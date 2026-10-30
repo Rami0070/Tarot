@@ -1,4 +1,4 @@
-import { TAROT_CARDS, TAROT_CARD_MAP, TarotCardData } from './tarotData';
+﻿import { TAROT_CARDS, TAROT_CARD_MAP, TarotCardData } from './tarotData';
 
 // -------------------------------------------------------------
 // 1. 8대 핵심 고민 분야 및 코퍼스 인터페이스
@@ -414,6 +414,97 @@ export function classifyUserConcern(rawQuestion: string): CorpusEntry {
   return bestEntry;
 }
 
+// 78장 카드별 고유 확언 사전
+export const CARD_AFFIRMATIONS: Record<string, string> = {
+  // Major Arcana (22)
+  'the-fool': '과거의 두려움을 훌훌 털어내고, 나는 가벼운 발걸음으로 눈부신 새 출발을 향해 나아갑니다.',
+  'the-magician': '내 안에는 원하는 현실을 능동적으로 창조해 낼 무한한 재능과 기회가 이미 깃들어 있습니다.',
+  'the-high-priestess': '내면의 고요한 침묵 속에서 떠오르는 맑은 직관이 나에게 가장 바른 길을 환히 비춥니다.',
+  'the-empress': '나는 삶이 건네는 풍요와 사랑을 온전히 누릴 자격이 있는 존귀하고 아름다운 존재입니다.',
+  'the-emperor': '흔들리지 않는 책임감과 내면의 질서가 내 삶을 가장 든든하고 견고한 반석 위에 세웁니다.',
+  'the-hierophant': '서로를 향한 존중과 따뜻한 소통 속에서, 나를 이끌어줄 깊은 지혜와 신뢰의 문이 열립니다.',
+  'the-lovers': '내 영혼이 진정으로 가리키는 순수한 사랑과 선택을 믿으며, 평화로운 조화를 이룹니다.',
+  'the-chariot': '어떤 시련 앞에서도 굴하지 않고, 나의 목표를 향해 흔들림 없이 당당하게 전진합니다.',
+  'strength': '거친 파도보다 부드러운 인내와 자비로운 용기가 내 안의 모든 두려움을 온화하게 다스립니다.',
+  'the-hermit': '외부의 소음을 잠시 끄고 내면의 등불을 밝힐 때, 비로소 진정한 내 삶의 이정표가 보입니다.',
+  'wheel-of-fortune': '삶의 변화를 두려움 없이 기쁘게 맞이하며, 새로운 행운의 흐름을 주도적으로 탑니다.',
+  'justice': '치우침 없는 정직하고 맑은 시선이 나에게 가장 공정하고 명쾌한 해답을 가져다줍니다.',
+  'the-hanged-man': '잠시 멈춰 서서 시선을 전환할 때, 이전에는 보지 못했던 깊은 지혜와 자유를 얻습니다.',
+  'death': '낡은 껍질을 미련 없이 벗어던질 때, 나는 한층 눈부시고 성숙한 새 생명으로 다시 태어납니다.',
+  'temperance': '상반된 감정과 상황들을 유연하게 조화시키며, 내 삶에 고요하고 온전한 평안을 회복합니다.',
+  'the-devil': '나를 옭아매던 불필요한 집착과 불안을 과감히 끊어내고, 온전한 내면의 자유를 누립니다.',
+  'the-tower': '낡은 환상이 무너진 자리에 비로소 흔들리지 않는 진실과 단단한 새 희망이 피어납니다.',
+  'the-star': '어둠이 짙을수록 나의 희망은 더욱 찬란하게 빛나며, 나를 가장 평화로운 길로 인도합니다.',
+  'the-moon': '막연한 불안의 안개를 걷어내고, 내 안의 순수하고 고요한 직관의 빛을 신뢰합니다.',
+  'the-sun': '나의 오늘은 기쁨과 생명력으로 충만하며, 나아가는 걸음마다 눈부신 축복이 함께합니다.',
+  'judgement': '오랜 망설임의 잠에서 깨어나, 나의 진정한 가치와 가능성을 향해 힘차게 비상합니다.',
+  'the-world': '하나의 긴 여정을 완성한 나 자신을 축복하며, 더 넓고 풍요로운 세상으로 도약합니다.',
+
+  // Wands (14)
+  'wands-1': '내 가슴속에 타오르는 열정의 불꽃은 언제나 새로운 길을 환하게 밝히는 시작입니다.',
+  'wands-2': '더 넓은 세상을 바라보며, 나는 균형 잡힌 혜안으로 나의 미래를 주도적으로 설계합니다.',
+  'wands-3': '내가 정성껏 띄워 보낸 희망의 배는 머지않아 값진 소식과 성장을 싣고 돌아옵니다.',
+  'wands-4': '내가 이룬 작은 성취를 온 마음으로 축하하며, 든든하고 평화로운 안식처를 누립니다.',
+  'wands-5': '다양한 의견과 도전 속에서 나는 한층 더 지혜롭고 단단한 내면으로 성장합니다.',
+  'wands-6': '나의 노력과 진심은 마침내 빛을 발하며, 많은 이들의 인정과 승리의 기쁨을 맞이합니다.',
+  'wands-7': '어떤 압박 속에서도 나의 신념과 자존감을 지켜내며, 꿋꿋하게 나의 자리를 수호합니다.',
+  'wands-8': '막혔던 흐름이 시원하게 트이고, 긍정적인 소식과 추진력이 내 삶에 빠르게 깃듭니다.',
+  'wands-9': '마지막 고비 앞에서도 나는 포기하지 않으며, 나에게는 끝까지 완주할 힘이 있습니다.',
+  'wands-10': '불필요한 짐을 기꺼이 내려놓음으로써, 나는 다시 가볍고 자유로운 호흡을 되찾습니다.',
+  'wands-11': '풋풋한 호기심과 순수한 배움의 열정으로, 새로운 도전의 문을 기쁘게 두드립니다.',
+  'wands-12': '가슴 뛰는 열정과 거침없는 추진력으로, 나는 나의 꿈을 향해 용기 있게 질주합니다.',
+  'wands-13': '따뜻한 활력과 당당한 자신감으로, 나는 나 자신을 사랑하고 세상을 밝게 비춥니다.',
+  'wands-14': '확고한 비전과 지혜로운 리더십으로, 나는 상황을 주도하며 바른 길을 이끕니다.',
+
+  // Cups (14)
+  'cups-1': '마르지 않는 순수한 사랑과 치유의 샘이 내 마음 깊은 곳에서 맑게 솟아납니다.',
+  'cups-2': '서로를 향한 따뜻한 이해와 존중이 세상에서 가장 단단하고 아름다운 다리가 됩니다.',
+  'cups-3': '마음 맞는 소중한 이들과 기쁨을 함께 나누며, 내 삶은 풍요로운 유대감으로 물듭니다.',
+  'cups-4': '지루함의 그늘을 걷어내고, 지금 내 곁에 조용히 건네지고 있는 축복에 눈을 엽니다.',
+  'cups-5': '흘러간 슬픔을 담담히 배웅하고, 여전히 내 곁에 온전히 남아 있는 소중함을 안아줍니다.',
+  'cups-6': '순수했던 어린 시절의 동심과 따뜻한 추억이 오늘 나에게 포근한 위로를 건넵니다.',
+  'cups-7': '복잡한 미혹에서 벗어나, 내 가슴이 진정으로 원하는 가장 진실한 길을 선택합니다.',
+  'cups-8': '더 큰 영혼의 성장을 위해, 나는 익숙하지만 낡은 집착을 담담하고 용기 있게 떠납니다.',
+  'cups-9': '내 안의 소망이 아름답게 결실을 맺으며, 나는 온전한 만족과 감사를 누립니다.',
+  'cups-10': '가족과 공동체 안에서 흐르는 사랑과 평화가 내 삶을 가장 따뜻하게 감싸 안아줍니다.',
+  'cups-11': '섬세한 감수성과 직관을 소중히 여기며, 다정한 마음으로 세상의 아름다움을 느낍니다.',
+  'cups-12': '진심 어린 따뜻한 고백과 정성으로, 나는 상대방의 마음에 부드럽게 가닿습니다.',
+  'cups-13': '바다처럼 깊고 온화한 사랑으로 내 상처를 보듬고, 타인을 품어 안는 힐러가 됩니다.',
+  'cups-14': '감정의 파도에 휩쓸리지 않고, 내면의 깊은 평정심과 지혜로 평화를 지켜냅니다.',
+
+  // Swords (14)
+  'swords-1': '맑고 투명한 진실의 검으로, 나는 모든 혼란을 명료하게 가르고 올바른 길을 선택합니다.',
+  'swords-2': '두려움의 눈가리개를 벗고, 내 마음의 중심을 믿으며 단호하게 선택의 문을 엽니다.',
+  'swords-3': '아픈 상처 속에서도 새로운 깨달음이 싹트며, 나의 가슴은 더 깊고 단단해집니다.',
+  'swords-4': '지친 마음과 생각에 고요한 휴식을 선물하며, 나는 온전한 내면의 평온을 회복합니다.',
+  'swords-5': '상처뿐인 승리보다 평화로운 공존을 택하며, 불필요한 자존심의 끈을 놓아줍니다.',
+  'swords-6': '거친 파도를 지나 잔잔한 바다로 나아가듯, 내 삶은 더 평화롭고 안전한 곳으로 향합니다.',
+  'swords-7': '눈앞의 편법 대신 정직하고 당당한 길을 걸을 때, 나의 앞길은 떳떳하고 안전합니다.',
+  'swords-8': '스스로 만든 생각의 감옥을 부수고, 나는 언제든 자유롭게 날아오를 수 있음을 깨닫습니다.',
+  'swords-9': '밤을 어지럽히던 두려움은 환상일 뿐이며, 나는 고요한 호흡으로 마음에 안식을 찾습니다.',
+  'swords-10': '어둠의 밤이 완전히 지나가고, 내 삶의 지평선 위로 희망찬 새벽의 태양이 떠오릅니다.',
+  'swords-11': '예리한 호기심과 날카로운 관찰력으로, 나는 세상을 바르게 분별하고 진실을 배웁니다.',
+  'swords-12': '주저함 없는 용기와 신속한 결단으로, 나는 가로막힌 장벽을 시원하게 돌파합니다.',
+  'swords-13': '감정에 치우치지 않는 명석한 지혜와 독립심으로, 나는 나의 삶을 주체적으로 이끕니다.',
+  'swords-14': '공정하고 명쾌한 원칙과 정의로운 시선으로, 나는 가장 바른 결정을 내립니다.',
+
+  // Pentacles (14)
+  'pentacles-1': '내 손에 쥐어진 기회의 씨앗을 정성껏 심어, 풍요롭고 결실 있는 현실을 빚어냅니다.',
+  'pentacles-2': '삶의 변화와 여러 과제들 속에서도, 나는 유연하고 즐거운 마음으로 균형을 유지합니다.',
+  'pentacles-3': '서로의 역량을 존중하는 아름다운 협력을 통해, 우리는 더 위대한 가치를 완성합니다.',
+  'pentacles-4': '가진 것에 감사하되 움켜쥔 손을 펴고, 풍요로운 삶의 순환을 흔쾌히 받아들입니다.',
+  'pentacles-5': '가장 추운 순간에도 나를 지켜줄 따뜻한 안식처와 도움의 손길이 항상 곁에 있습니다.',
+  'pentacles-6': '내가 받은 은혜에 감사하고 아낌없이 베풀 때, 더 큰 풍요와 축복이 내게로 흘러옵니다.',
+  'pentacles-7': '조급함을 내려놓고 정성의 시간을 신뢰하며, 나는 인내로써 달콤한 열매를 기다립니다.',
+  'pentacles-8': '매일의 성실한 몰입과 장인 정신이 내 실력을 날마다 더 깊고 눈부시게 단련합니다.',
+  'pentacles-9': '나의 노력으로 일궈낸 자립과 풍요를 누리며, 나는 여유롭고 품격 있는 삶을 즐깁니다.',
+  'pentacles-10': '대대로 이어질 든든한 기반과 축복 속에서, 우리 모두의 삶은 평안하고 넉넉합니다.',
+  'pentacles-11': '겸손한 자세로 배움을 흡수하며, 나는 실용적인 지혜를 차근차근 내 것으로 만듭니다.',
+  'pentacles-12': '느리지만 흔들림 없는 성실함과 끈기로, 나는 끝내 원하는 목표를 성취해 냅니다.',
+  'pentacles-13': '대지처럼 넉넉하고 따뜻한 품으로, 나는 나와 내 주변을 아늑하고 풍요롭게 돌봅니다.',
+  'pentacles-14': '풍부한 경험과 견고한 현실 감각으로, 나는 삶의 모든 영역을 안정되게 번영시킵니다.'
+};
+
 // -------------------------------------------------------------
 // 5. 3-Block UI 맞춤형 해석 생성 엔진
 //    [1. 심리 리딩 (상황 해석)] ➔ [2. 구체적 행동 조언] ➔ [3. 온기 있는 확언]
@@ -442,25 +533,93 @@ export function generateInterpretation(
     // 1. 관찰 (Observation): 유니버셜 덱 도상 객관 관찰
     const observation = `${card.observation} ${card.universalSymbol}`;
 
-    // 2. [1. 심리 리딩 (상황 해석)]: 2~3문장 간결하고 명확한 무의식 진단
+    // 2. [1. 심리 리딩 (상황 해석)]: 자리/시점 맥락에 맞춘 입체적 내면 해석 (문장 복제 방지)
+    let slotType = 'present';
+    const p = (positionName || '').toLowerCase();
+    if (p.includes('과거') || p.includes('past') || p.includes('원인') || p.includes('뿌리') || p.includes('4.') || p.includes('3.')) {
+      slotType = 'past';
+    } else if (p.includes('미래') || p.includes('future') || p.includes('결실') || p.includes('6.') || p.includes('10.') || p.includes('결과')) {
+      slotType = 'future';
+    } else if (p.includes('도전') || p.includes('장애') || p.includes('challenge') || p.includes('2.')) {
+      slotType = 'challenge';
+    } else if (p.includes('목표') || p.includes('이상') || p.includes('crown') || p.includes('5.')) {
+      slotType = 'goal';
+    } else if (p.includes('태도') || p.includes('자신') || p.includes('self') || p.includes('7.')) {
+      slotType = 'self';
+    } else if (p.includes('환경') || p.includes('시선') || p.includes('environment') || p.includes('8.')) {
+      slotType = 'environment';
+    } else if (p.includes('희망') || p.includes('두려움') || p.includes('hope') || p.includes('9.')) {
+      slotType = 'hopes_fears';
+    }
+
+    const up0 = card.keywordsUpright[0] || '균형';
+    const up1 = card.keywordsUpright[1] || up0;
+    const rev0 = card.keywordsReversed[0] || '혼란';
+    const rev1 = card.keywordsReversed[1] || rev0;
+
     let psychologicalReading = '';
-    if (!isReversed) {
-      psychologicalReading = `[${positionName}]의 자리에서 ${card.nameKo} 카드는 질문자님의 "${question}" 상황을 깊이 비추며, ${matchedCorpus.psychologicalReading} ${card.nameKo}의 본질인 '${keywords.slice(0, 3).join(', ')}'의 에너지가 능동적으로 발현될 때 가로막힌 흐름이 비로소 활짝 열리게 됩니다.`;
+    if (slotType === 'past') {
+      if (!isReversed) {
+        psychologicalReading = `[${positionName}] ${card.nameKo}(정방향) - 지나온 시간 속에서 축적해 온 '${up0}'와(과) '${up1}'의 소중한 경험이 현재 상황을 떠받치는 단단한 바탕이 되었습니다. 과거에 기울였던 정성과 배움이 헛되지 않았음을 신뢰하세요.`;
+      } else {
+        psychologicalReading = `[${positionName}] ${card.nameKo}(역방향) - 과거의 여정에서 겪었던 '${rev0}'이나 '${rev1}'에 대한 미련과 아쉬움이 여전히 마음 한구석에 무거운 잔상으로 머물러 있을 수 있습니다. 지나간 시간에 얽매이기보다 그 속에서 배운 교훈만 가볍게 취할 때입니다.`;
+      }
+    } else if (slotType === 'future') {
+      if (!isReversed) {
+        psychologicalReading = `[${positionName}] ${card.nameKo}(정방향) - 지금의 올바른 정성과 실천이 이어진다면, 머지않아 '${up0}'의 확고한 성취와 함께 '${up1}'의 풍요로운 결실을 맞이하게 됩니다. 상황은 막힘없이 순조로운 확장으로 나아가게 될 것입니다.`;
+      } else {
+        psychologicalReading = `[${positionName}] ${card.nameKo}(역방향) - 앞으로 펼쳐질 과정에서 '${rev0}'이나 '${rev1}'와 같은 조급한 소모전을 각별히 경계해야 합니다. 눈앞의 성급한 결과에 매달리기보다 사전에 완급을 조절하며 내실을 다지는 지혜가 요구됩니다.`;
+      }
+    } else if (slotType === 'challenge') {
+      if (!isReversed) {
+        psychologicalReading = `[${positionName}] ${card.nameKo}(정방향) - 현재 넘어서야 할 핵심 과제는 '${up0}'의 균형을 온전히 회복하는 일입니다. 불필요한 두려움을 내려놓고 상황을 주도적으로 직시하세요.`;
+      } else {
+        psychologicalReading = `[${positionName}] ${card.nameKo}(역방향) - 외부의 문제보다 내면에서 일어나는 '${rev0}'의 불안감과 망설임이 가장 큰 걸림돌입니다. 스스로에 대한 신뢰를 회복하고 내면의 호흡을 먼저 가다듬어야 합니다.`;
+      }
+    } else if (slotType === 'goal') {
+      if (!isReversed) {
+        psychologicalReading = `[${positionName}] ${card.nameKo}(정방향) - 질문자님의 의식과 가슴이 궁극적으로 바라는 지향점은 '${up0}'의 온전한 실현입니다. 이상을 향해 흔들림 없이 현실의 보폭을 맞춰가세요.`;
+      } else {
+        psychologicalReading = `[${positionName}] ${card.nameKo}(역방향) - 이상과 현실 사이의 괴리나 '${rev0}'의 혼란이 시야를 흐리고 있을 수 있습니다. 목표의 우선순위를 차분히 재정렬하세요.`;
+      }
+    } else if (slotType === 'self') {
+      if (!isReversed) {
+        psychologicalReading = `[${positionName}] ${card.nameKo}(정방향) - 상황을 대하는 질문자님의 내면 스탠스는 '${up0}'의 당당한 진정성을 품고 있습니다. 자신의 잠재력을 믿고 주체적으로 국면을 이끌어갈 때입니다.`;
+      } else {
+        psychologicalReading = `[${positionName}] ${card.nameKo}(역방향) - 스스로를 지나치게 다그치거나 '${rev0}'로 인해 위축되어 있을 수 있습니다. 타인의 기준에 휘둘리지 말고 나만의 고유한 리듬을 회복하세요.`;
+      }
+    } else if (slotType === 'environment') {
+      if (!isReversed) {
+        psychologicalReading = `[${positionName}] ${card.nameKo}(정방향) - 외부 환경과 주변 인연들은 '${up0}'의 긍정적인 파동으로 질문자님을 지지하고 있습니다. 주변의 호의와 기회를 열린 마음으로 받아들이세요.`;
+      } else {
+        psychologicalReading = `[${positionName}] ${card.nameKo}(역방향) - 주변 분위기나 타인과의 관계에서 '${rev0}'의 미묘한 오해나 피로감이 감돌 수 있습니다. 불필요한 마찰에 휘말리지 않도록 건강한 심리적 경계를 유지하세요.`;
+      }
+    } else if (slotType === 'hopes_fears') {
+      if (!isReversed) {
+        psychologicalReading = `[${positionName}] ${card.nameKo}(정방향) - 마음 한편에서는 '${up0}'의 성취를 간절히 바라면서도, 동시에 실패에 대한 염려가 교차하고 있습니다. 희망의 불씨에 더 많은 믿음과 온기를 불어넣어 주세요.`;
+      } else {
+        psychologicalReading = `[${positionName}] ${card.nameKo}(역방향) - 무의식 깊은 곳에서 '${rev0}'에 대한 두려움이 앞서 방어벽을 높이고 있을 수 있습니다. 최악의 가정을 내려놓고 긍정적인 가능성에 시선을 맞추세요.`;
+      }
     } else {
-      psychologicalReading = `[${positionName}]의 자리에서 ${card.nameKo} 카드가 역방향으로 놓인 것은 에너지의 결핍이나 정체를 뜻합니다. ${matchedCorpus.psychologicalReading} '${keywords.slice(0, 2).join(', ')}'에 대한 불안이나 조급함이 무의식의 방어벽을 높이고 있으므로, 억지 추진보다 내면의 매듭을 먼저 풀어야 합니다.`;
+      if (!isReversed) {
+        psychologicalReading = `[${positionName}] ${card.nameKo}(정방향) - 지금 이 순간 질문자님의 상황에서는 '${up0}'의 주도적 결단과 '${up1}'의 에너지를 적극적으로 전면에 세우는 것이 국면을 전환할 핵심 열쇠입니다. 머뭇거리던 망설임을 멈추고 당당히 첫걸음을 내딛으세요.`;
+      } else {
+        psychologicalReading = `[${positionName}] ${card.nameKo}(역방향) - 현재 마주한 지점에서는 '${rev0}'에 대한 조급함이나 '${rev1}'의 부담감이 에너지의 자연스러운 흐름을 가로막고 있습니다. 무리한 속도전보다 내면의 호흡을 가다듬고 생각의 매듭을 먼저 차분히 정리하는 것이 현명합니다.`;
+      }
     }
 
-    // 3. [2. 구체적 행동 조언 (실전 솔루션)]: 오늘 당장 실천할 수 있는 구체적 행동 지침
+    // 3. [2. 구체적 행동 조언 (실전 솔루션)]: 카드별 고유 솔루션 (반복 문구 제거)
+    const chk0 = (card.checklists && card.checklists.length > 0) ? card.checklists[0] : card.adviceBase;
+    const chk1 = (card.checklists && card.checklists.length > 1) ? card.checklists[1] : '마음의 속도를 늦추고 내면의 호흡 회복하기';
     let actionAdvice = '';
-    const firstChecklist = card.checklists && card.checklists.length > 0 ? card.checklists[0] : card.adviceBase;
     if (!isReversed) {
-      actionAdvice = `[실전 솔루션] ${matchedCorpus.actionAdvice} ${suitTemplate.action} 지금 당장 실천할 구체적 행동: "${firstChecklist}"`;
+      actionAdvice = `[실전 솔루션] ${card.adviceBase} 오늘 즉시 실천할 지침: "${chk0}"`;
     } else {
-      actionAdvice = `[내면 처방] ${matchedCorpus.actionAdvice} 무리하게 속도를 올리지 말고, 마음의 속도를 늦추며 점검하세요: "${firstChecklist}"`;
+      actionAdvice = `[내면 처방] 결과를 재촉하지 말고 마음의 여유를 먼저 회복하세요. 오늘 실천할 정돈 지침: "${chk1}"`;
     }
 
-    // 4. [3. 온기 있는 확언 (힐링 확언 카드)]: 화면 캡처/공유에 적합한 한 줄 축복
-    const affirmation = matchedCorpus.affirmation;
+    // 4. [3. 온기 있는 확언 (힐링 확언 카드)]: 78장 카드 고유의 개별 확언
+    const affirmation = CARD_AFFIRMATIONS[card.id] || matchedCorpus.affirmation;
 
     return {
       cardId: card.id,
@@ -536,6 +695,6 @@ export function generateFollowUpReading(
     isReversed,
     relationshipAnalysis,
     followUpAdvice,
-    followUpAffirmation: matchedCorpus.affirmation
+    followUpAffirmation: CARD_AFFIRMATIONS[clarifierCard.id] || matchedCorpus.affirmation
   };
 }
