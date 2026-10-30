@@ -6481,16 +6481,6 @@ function generateAiTarotArtworkSvg(card) {
           const futInfo = getTenseInterpretation(futCard, appState.question);
           synthesisTheme.textContent = `과거(${pastCard?.card.keywordsUpright[0]}) → 현재(${presCard?.card.keywordsUpright[0]}) → 미래 결실(${futCard?.card.keywordsUpright[0]})의 주도적 시간 흐름`;
           synthesisSummary.textContent = `질문자님의 고민 "${appState.question}"에 대한 3단계 시간 흐름의 유기적 종합 분석입니다:\n\n✦ [상황 전체의 심층 맥락 진단]\n${globalCorpus.psychologicalReading}\n\n1. [과거의 뿌리와 배경 (${pastCard?.card.nameKo} ${pastCard?.isReversed ? '역방향' : '정방향'})]\n${pastInfo.psychologicalReading}\n\n2. [현재의 직면 과제와 실마리 (${presCard?.card.nameKo} ${presCard?.isReversed ? '역방향' : '정방향'})]\n${presInfo.psychologicalReading}\n\n3. [미래의 도약과 궁극적 결실 (${futCard?.card.nameKo} ${futCard?.isReversed ? '역방향' : '정방향'})]\n${futInfo.psychologicalReading}\n\n✦ [종합 실천 솔루션 & 행동 지침]\n${globalCorpus.actionAdvice}`;
-        } else if (appState.spreadType === 'celtic') {
-          synthesisTheme.textContent = `켈틱 크로스 10장 다차원 입체 분석: 과거의 뿌리에서 궁극적 미래 완성으로`;
-          synthesisSummary.textContent = `질문자님의 고민 "${appState.question}"에 대한 10차원 켈틱 크로스 종합 분석 결과입니다:\n\n• [과거의 뿌리와 최근의 전개 (3·4번)]: 이전부터 축적되어온 원인적 경험과 최근 지나온 전기가 현재 상황의 밑바탕이 되었었습니다.\n• [현재와 당면 과제 (1·2번)]: 현재 질문자님은 핵심 상황 속에서 당면한 도전과제를 풀어나가고 계시는 진행 과정에 놓여 있습니다.\n• [의식과 내면 및 환경 (5·7·8·9번)]: 지향하는 목표와 질문자의 자기 인식, 그리고 주변 환경의 상호작용 속에서 흔들리지 않는 중심을 확립하는 중이어야 합니다.\n• [미래와 최종 결실 (6·10번)]: 가까운 미래를 거쳐 마침내 '${appState.drawnCards[9]?.card.nameKo || '결과 카드'}'의 궁극적인 성취와 결실을 맺게 될 것입니다.`;
-        } else {
-          // 3-card spread (과거 -> 현재 -> 미래 결실)
-          const pastCard = appState.drawnCards[0];
-          const presCard = appState.drawnCards[1];
-          const futCard = appState.drawnCards[2];
-          synthesisTheme.textContent = `과거(${pastCard?.card.keywordsUpright[0]}) → 현재(${presCard?.card.keywordsUpright[0]}) → 미래 결실(${futCard?.card.keywordsUpright[0]})의 주도적 시간 흐름`;
-          synthesisSummary.textContent = `질문자님의 고민 "${appState.question}"에 대해 카드는 3단계의 시간 흐름을 자연스럽게 제시합니다:\n\n1. [과거의 뿌리와 배경]: 과거에는 '${pastCard?.card.nameKo}'의 영향으로 ${pastCard?.isReversed ? '지연과 내면적 갈등이 지속되었던 원인이 있었습니다.' : '중요한 배움과 긍정적인 기초를 닦아오셨었습니다.'}\n\n2. [현재의 직면 과제]: 지금 이 순간에는 '${presCard?.card.nameKo}'의 흐름 속에서 ${presCard?.isReversed ? '조급함을 가라앉히고 내실을 다져나가고 계시는 진행 중입니다.' : '당면 과제를 주도적으로 풀어나가며 적극적으로 전진하고 계시는 중입니다.'}\n\n3. [미래의 결실과 방향]: 앞으로 제시된 행동 조언을 실천해 나가신다면, 머지않아 '${futCard?.card.nameKo}'의 확고한 결실을 맺게 될 것이며, 상황은 한층 만족스러운 성공으로 나아가게 될 것입니다.`;
         }
       }
 
