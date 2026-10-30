@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
 UNIVERSAL TAROT · INTEGRATED EDITION (로컬 단일 파일 실행 프로그램)
@@ -729,6 +729,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "wands-2",
+        "imageUrl": "images/tarot_wands_2.jpg",
         "number":  2,
         "nameEn":  "Two of Wands",
         "nameKo":  "완드 2 (Two of Wands)",
@@ -758,6 +759,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "wands-3",
+        "imageUrl": "images/tarot_wands_3.jpg",
         "number":  3,
         "nameEn":  "Three of Wands",
         "nameKo":  "완드 3 (Three of Wands)",
@@ -787,6 +789,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "wands-4",
+        "imageUrl": "images/tarot_wands_4.jpg",
         "number":  4,
         "nameEn":  "Four of Wands",
         "nameKo":  "완드 4 (Four of Wands)",
@@ -845,6 +848,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "wands-6",
+        "imageUrl": "images/tarot_wands_6.jpg",
         "number":  6,
         "nameEn":  "Six of Wands",
         "nameKo":  "완드 6 (Six of Wands)",
@@ -874,6 +878,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "wands-7",
+        "imageUrl": "images/tarot_wands_7.jpg",
         "number":  7,
         "nameEn":  "Seven of Wands",
         "nameKo":  "완드 7 (Seven of Wands)",
@@ -1812,6 +1817,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "swords-11",
+        "imageUrl": "images/tarot_swords_11.jpg",
         "number":  11,
         "nameEn":  "Page of Swords",
         "nameKo":  "소드 시종 (Page of Swords)",
@@ -1841,6 +1847,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "swords-12",
+        "imageUrl": "images/tarot_swords_12.jpg",
         "number":  12,
         "nameEn":  "Knight of Swords",
         "nameKo":  "소드 기사 (Knight of Swords)",
@@ -1870,6 +1877,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "swords-13",
+        "imageUrl": "images/tarot_swords_13.jpg",
         "number":  13,
         "nameEn":  "Queen of Swords",
         "nameKo":  "소드 여왕 (Queen of Swords)",
@@ -1899,6 +1907,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "swords-14",
+        "imageUrl": "images/tarot_swords_14.jpg",
         "number":  14,
         "nameEn":  "King of Swords",
         "nameKo":  "소드 왕 (King of Swords)",
@@ -2219,6 +2228,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "pentacles-11",
+        "imageUrl": "images/tarot_pentacles_11.jpg",
         "number":  11,
         "nameEn":  "Page of Pentacles",
         "nameKo":  "펜타클 시종 (Page of Pentacles)",
@@ -2248,6 +2258,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "pentacles-12",
+        "imageUrl": "images/tarot_pentacles_12.jpg",
         "number":  12,
         "nameEn":  "Knight of Pentacles",
         "nameKo":  "펜타클 기사 (Knight of Pentacles)",
@@ -2277,6 +2288,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "pentacles-13",
+        "imageUrl": "images/tarot_pentacles_13.jpg",
         "number":  13,
         "nameEn":  "Queen of Pentacles",
         "nameKo":  "펜타클 여왕 (Queen of Pentacles)",
@@ -2306,6 +2318,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "pentacles-14",
+        "imageUrl": "images/tarot_pentacles_14.jpg",
         "number":  14,
         "nameEn":  "King of Pentacles",
         "nameKo":  "펜타클 왕 (King of Pentacles)",

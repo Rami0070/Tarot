@@ -1,6 +1,19 @@
-﻿# 변경 이력 (Changelog)
+# 변경 이력 (Changelog)
 
 이 프로젝트는 [Semantic Versioning (유의적 버전 2.0.0)](https://semver.org/lang/ko/) 표준을 따릅니다.
+
+---
+
+## [1.4.0] - 2026-10-30
+
+### ✦ Added & Updated
+- **마이너 아르카나 소드 & 펜타클 궁정 8장 + 완드 수비학 5장 등 총 13장 AI 일러스트 신규 생성 및 적용**:
+  - **소드(Swords) 궁정 4장 완비**: 시종(`swords-11`), 기사(`swords-12`), 여왕(`swords-13`), 왕(`swords-14`)
+  - **펜타클(Pentacles) 궁정 4장 완비**: 시종(`pentacles-11`), 기사(`pentacles-12`), 여왕(`pentacles-13`), 왕(`pentacles-14`)
+  - **마이너 16대 궁정 카드(Court Cards) 전체 100% 구축 완료**
+  - **완드(Wands) 수비학 5장 신규 완비**: 완드 2(`wands-2`), 완드 3(`wands-3`), 완드 4(`wands-4`), 완드 6(`wands-6`), 완드 7(`wands-7`)
+  - 메이저 22장 + 에이스 4장 + 궁정 16장 + 완드 5장 = **총 47장 고화질 AI 일러스트 구축 완료**
+  - [index.html](file:///e:/AI개발/타로덱/index.html), [tarotData.ts](file:///e:/AI개발/타로덱/src/lib/tarotData.ts), [app.py](file:///e:/AI개발/타로덱/app.py) 동기화 완료.
 
 ---
 
