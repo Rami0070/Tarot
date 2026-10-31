@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
 UNIVERSAL TAROT · INTEGRATED EDITION (로컬 단일 파일 실행 프로그램)
@@ -819,6 +819,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "wands-5",
+        "imageUrl": "images/tarot_wands_5.jpg",
         "number":  5,
         "nameEn":  "Five of Wands",
         "nameKo":  "완드 5 (Five of Wands)",

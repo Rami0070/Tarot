@@ -1,4 +1,4 @@
-﻿export interface TarotCardData {
+export interface TarotCardData {
   id: string;
   imageUrl?: string;
   number: number;
@@ -451,6 +451,7 @@ export const TAROT_CARDS: TarotCardData[] = [  {
   },
   {
     id: 'wands-5',
+    imageUrl: '/images/tarot_wands_5.jpg',
     number: 5,
     nameEn: 'Five of Wands',
     nameKo: '완드 5 (Five of Wands)',
