@@ -511,6 +511,7 @@ export const TAROT_CARDS: TarotCardData[] = [  {
   },
   {
     id: 'wands-8',
+    imageUrl: '/images/tarot_wands_8.jpg',
     number: 8,
     nameEn: 'Eight of Wands',
     nameKo: '완드 8 (Eight of Wands)',
@@ -530,6 +531,7 @@ export const TAROT_CARDS: TarotCardData[] = [  {
   },
   {
     id: 'wands-9',
+    imageUrl: '/images/tarot_wands_9.jpg',
     number: 9,
     nameEn: 'Nine of Wands',
     nameKo: '완드 9 (Nine of Wands)',
@@ -549,6 +551,7 @@ export const TAROT_CARDS: TarotCardData[] = [  {
   },
   {
     id: 'wands-10',
+    imageUrl: '/images/tarot_wands_10.jpg',
     number: 10,
     nameEn: 'Ten of Wands',
     nameKo: '완드 10 (Ten of Wands)',
