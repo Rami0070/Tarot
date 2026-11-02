@@ -1149,6 +1149,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "cups-2",
+        "imageUrl": "images/tarot_cups_2.jpg",
         "number":  2,
         "nameEn":  "Two of Cups",
         "nameKo":  "컵 2 (Two of Cups)",
@@ -1178,6 +1179,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "cups-3",
+        "imageUrl": "images/tarot_cups_3.jpg",
         "number":  3,
         "nameEn":  "Three of Cups",
         "nameKo":  "컵 3 (Three of Cups)",
@@ -1207,6 +1209,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "cups-4",
+        "imageUrl": "images/tarot_cups_4.jpg",
         "number":  4,
         "nameEn":  "Four of Cups",
         "nameKo":  "컵 4 (Four of Cups)",
@@ -1294,6 +1297,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "cups-7",
+        "imageUrl": "images/tarot_cups_7.jpg",
         "number":  7,
         "nameEn":  "Seven of Cups",
         "nameKo":  "컵 7 (Seven of Cups)",
@@ -1323,6 +1327,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "cups-8",
+        "imageUrl": "images/tarot_cups_8.jpg",
         "number":  8,
         "nameEn":  "Eight of Cups",
         "nameKo":  "컵 8 (Eight of Cups)",
@@ -1560,6 +1565,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "swords-2",
+        "imageUrl": "images/tarot_swords_2.jpg",
         "number":  2,
         "nameEn":  "Two of Swords",
         "nameKo":  "소드 2 (Two of Swords)",
@@ -1705,6 +1711,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "swords-7",
+        "imageUrl": "images/tarot_swords_7.jpg",
         "number":  7,
         "nameEn":  "Seven of Swords",
         "nameKo":  "소드 7 (Seven of Swords)",
