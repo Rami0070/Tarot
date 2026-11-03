@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
 UNIVERSAL TAROT · INTEGRATED EDITION (로컬 단일 파일 실행 프로그램)
@@ -1239,6 +1239,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "cups-5",
+        "imageUrl": "images/tarot_cups_5.jpg",
         "number":  5,
         "nameEn":  "Five of Cups",
         "nameKo":  "컵 5 (Five of Cups)",
@@ -1595,6 +1596,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "swords-3",
+        "imageUrl": "images/tarot_swords_3.jpg",
         "number":  3,
         "nameEn":  "Three of Swords",
         "nameKo":  "소드 3 (Three of Swords)",
@@ -1624,6 +1626,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "swords-4",
+        "imageUrl": "images/tarot_swords_4.jpg",
         "number":  4,
         "nameEn":  "Four of Swords",
         "nameKo":  "소드 4 (Four of Swords)",
@@ -1741,6 +1744,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "swords-8",
+        "imageUrl": "images/tarot_swords_8.jpg",
         "number":  8,
         "nameEn":  "Eight of Swords",
         "nameKo":  "소드 8 (Eight of Swords)",
@@ -1770,6 +1774,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "swords-9",
+        "imageUrl": "images/tarot_swords_9.jpg",
         "number":  9,
         "nameEn":  "Nine of Swords",
         "nameKo":  "소드 9 (Nine of Swords)",
@@ -1799,6 +1804,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "swords-10",
+        "imageUrl": "images/tarot_swords_10.jpg",
         "number":  10,
         "nameEn":  "Ten of Swords",
         "nameKo":  "소드 10 (Ten of Swords)",
@@ -1978,6 +1984,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "pentacles-2",
+        "imageUrl": "images/tarot_pentacles_2.jpg",
         "number":  2,
         "nameEn":  "Two of Pentacles",
         "nameKo":  "펜타클 2 (Two of Pentacles)",
@@ -2007,6 +2014,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "pentacles-3",
+        "imageUrl": "images/tarot_pentacles_3.jpg",
         "number":  3,
         "nameEn":  "Three of Pentacles",
         "nameKo":  "펜타클 3 (Three of Pentacles)",
@@ -2123,6 +2131,7 @@ TAROT_CARDS = [
     },
     {
         "id":  "pentacles-7",
+        "imageUrl": "images/tarot_pentacles_7.jpg",
         "number":  7,
         "nameEn":  "Seven of Pentacles",
         "nameKo":  "펜타클 7 (Seven of Pentacles)",
