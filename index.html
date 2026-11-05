@@ -142,7 +142,7 @@
 </head>
 <body class="min-h-screen bg-white text-zinc-900 flex flex-col selection:bg-purple-100 selection:text-purple-800">
 
-  <!-- TOP SOUND & NAVIGATION BAR -->
+    <!-- TOP SOUND & NAVIGATION BAR (미니멀 클린 헤더) -->
   <header class="fixed top-0 left-0 right-0 z-40 bg-white/90 backdrop-blur-md border-b border-zinc-200 px-4 py-3 flex items-center justify-between transition-all shadow-sm">
     <div class="flex items-center gap-3">
       <div class="w-8 h-8 rounded-full bg-gradient-to-br from-purple-600 to-indigo-700 flex items-center justify-center shadow-md shadow-purple-500/20 text-white font-serif font-bold text-sm">
@@ -157,76 +157,11 @@
     </div>
 
     <div class="flex items-center gap-2 shrink-0">
-      <!-- [3D 입체] 오늘의 운세 (1장 뽑기) 버튼 (보라색 테마) -->
-      <button id="btn-today-fortune" type="button" class="flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold bg-gradient-to-b from-purple-600 via-purple-700 to-purple-800 border border-purple-400 border-b-4 border-b-purple-950 text-white shadow-md shadow-purple-900/30 hover:brightness-110 active:border-b-2 active:translate-y-[2px] transition-all cursor-pointer whitespace-nowrap" title="덱에서 1장을 뽑아 오늘 하루의 운세를 점칩니다">
-        <span class="text-sm">🔮</span>
-        <span>오늘의 운세</span>
-      </button>
-
-      <!-- [3D 입체] 우측 상단 덱 디자인 펼쳐보기(도감) 버튼 -->
-      <button id="btn-open-gallery" class="flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold bg-gradient-to-b from-purple-50 via-purple-100 to-purple-200 border border-purple-300 border-b-4 border-b-purple-400 text-purple-900 shadow-md shadow-purple-200/50 hover:from-purple-100 hover:to-purple-200 active:border-b-2 active:translate-y-[2px] transition-all cursor-pointer" title="유니버셜 덱 전체 카드 도감 펼쳐보기">
+      <!-- 우측 상단 덱 디자인 펼쳐보기(도감) 버튼만 유지 -->
+      <button id="btn-open-gallery" type="button" class="flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold bg-gradient-to-b from-purple-50 via-purple-100 to-purple-200 border border-purple-300 border-b-4 border-b-purple-400 text-purple-900 shadow-md shadow-purple-200/50 hover:from-purple-100 hover:to-purple-200 active:border-b-2 active:translate-y-[2px] transition-all cursor-pointer" title="유니버셜 덱 전체 카드 도감 펼쳐보기">
         <svg class="w-3.5 h-3.5 text-purple-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
         <span>덱 펼쳐보기</span>
       </button>
-
-      <!-- BGM 악기 선택 (저작권 프리 피아노/바이올린/첼로/플룻/오보에) -->
-      <div class="relative flex items-center">
-        <select id="select-bgm-instrument" class="text-xs font-bold rounded-xl px-2.5 py-2 bg-gradient-to-b from-white via-zinc-50 to-zinc-100 border border-zinc-300 border-b-4 border-b-zinc-400 text-zinc-800 shadow-sm hover:border-purple-400 focus:outline-none focus:ring-1 focus:ring-purple-500 cursor-pointer transition-all" title="명상 BGM 연주 악기 선택 (저작권 프리)">
-          <option value="piano">🎹 피아노 연주곡</option>
-          <option value="violin">🎻 바이올린 연주곡</option>
-          <option value="cello" selected>🎻 첼로 연주곡</option>
-          <option value="flute">🪈 플룻 연주곡</option>
-          <option value="oboe">🎶 오보에 연주곡</option>
-        </select>
-      </div>
-
-      <!-- [3D 입체] BGM Toggle Button (기본 첼로 재생 상태) -->
-      <button id="btn-toggle-bgm" class="flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold bg-gradient-to-b from-purple-600 via-purple-700 to-purple-800 border border-purple-500 border-b-4 border-b-purple-950 text-white shadow-md active:border-b-2 active:translate-y-[2px] transition-all cursor-pointer" title="명상 연주곡 BGM 재생/정지">
-        <svg id="icon-bgm" class="w-3.5 h-3.5 text-purple-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"/></svg>
-        <span id="text-bgm">BGM 정지</span>
-      </button>
-
-      <!-- [3D 입체] Mute Toggle Button -->
-      <button id="btn-toggle-mute" class="p-2.5 rounded-xl bg-gradient-to-b from-white via-zinc-50 to-zinc-100 border border-zinc-300 border-b-4 border-b-zinc-400 text-zinc-700 shadow-sm hover:text-purple-700 active:border-b-2 active:translate-y-[2px] transition-all cursor-pointer" title="효과음/사운드 전체 음소거">
-        <svg id="icon-sound" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
-      </button>
-
-      <!-- [3D 입체] Volume Settings Button & Popover -->
-      <div class="relative inline-block text-left">
-        <button type="button" id="btn-toggle-volume" class="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold bg-gradient-to-b from-white via-zinc-50 to-zinc-100 border border-zinc-300 border-b-4 border-b-zinc-400 text-zinc-700 shadow-sm hover:from-purple-50 hover:text-purple-900 hover:border-purple-300 active:border-b-2 active:translate-y-[2px] transition-all cursor-pointer" title="BGM 및 효과음 개별 볼륨 조절">
-          <svg class="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
-          <span class="hidden sm:inline">볼륨 조절</span>
-        </button>
-
-        <!-- Volume Popover Panel -->
-        <div id="panel-volume-control" class="hidden absolute right-0 mt-2 w-64 bg-white/95 backdrop-blur-md border border-zinc-200 rounded-2xl p-4 shadow-2xl z-50">
-          <div class="flex items-center justify-between border-b border-zinc-100 pb-2 mb-3">
-            <span class="text-xs font-bold text-zinc-900 flex items-center gap-1.5">
-              <span>🎚️</span> BGM / 효과음 볼륨
-            </span>
-            <button type="button" id="btn-close-volume" class="text-zinc-400 hover:text-zinc-700 text-xs p-1 rounded-md cursor-pointer">✕</button>
-          </div>
-
-          <!-- BGM Volume Slider -->
-          <div class="space-y-1.5 mb-3.5">
-            <div class="flex justify-between items-center text-xs">
-              <span class="text-zinc-700 font-semibold flex items-center gap-1">🎵 BGM 연주곡</span>
-              <span id="label-bgm-volume" class="text-purple-700 font-bold font-mono bg-purple-50 px-2 py-0.5 rounded text-[11px] border border-purple-200">40%</span>
-            </div>
-            <input id="slider-bgm-volume" type="range" min="0" max="100" value="40" class="w-full accent-purple-600 cursor-pointer h-2 bg-zinc-200 rounded-lg" />
-          </div>
-
-          <!-- SFX Volume Slider -->
-          <div class="space-y-1.5">
-            <div class="flex justify-between items-center text-xs">
-              <span class="text-zinc-700 font-semibold flex items-center gap-1">✨ 효과음 (SFX)</span>
-              <span id="label-sfx-volume" class="text-purple-700 font-bold font-mono bg-purple-50 px-2 py-0.5 rounded text-[11px] border border-purple-200">70%</span>
-            </div>
-            <input id="slider-sfx-volume" type="range" min="0" max="100" value="70" class="w-full accent-purple-600 cursor-pointer h-2 bg-zinc-200 rounded-lg" />
-          </div>
-        </div>
-      </div>
-
     </div>
   </header>
 
@@ -234,131 +169,243 @@
   <main class="flex-1 flex flex-col items-center justify-center relative">
 
     <!-- VIEW 1: HOME SCREEN -->
-    <section id="view-home" class="min-h-screen pt-24 pb-16 flex flex-col items-center justify-center px-4 w-full relative overflow-hidden bg-white text-zinc-900">
+    <section id="view-home" class="min-h-screen pt-20 pb-16 flex flex-col items-center justify-center px-4 w-full relative overflow-hidden bg-white text-zinc-900">
       <!-- Clean Light Grid Texture -->
       <div class="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:24px_24px] opacity-70 pointer-events-none"></div>
       <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-purple-200/40 rounded-full blur-3xl pointer-events-none"></div>
 
       <div class="max-w-2xl w-full mx-auto relative z-10 flex flex-col items-center text-center">
-        <!-- Emblem -->
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-50 border border-purple-200 text-purple-700 text-xs font-mono tracking-wide mb-4 shadow-sm">
-          <span>✦</span>
-          <span>UNIVERSAL TAROT · INTEGRATED EDITION</span>
-          <span>✦</span>
-        </div>
 
-        <!-- 메인 타이틀: 클래식 명조(Serif) 서체 및 색상 복원 + 반짝임 효과 유지 -->
-        <div class="relative inline-block mb-3 px-6 py-2">
-          <!-- Twinkling Sparkles floating around title -->
-          <span class="absolute -top-3 -left-3 text-2xl animate-twinkle-1 pointer-events-none select-none text-purple-600">✨</span>
-          <span class="absolute -top-5 -right-3 text-2xl animate-twinkle-2 pointer-events-none select-none text-purple-400">✦</span>
-          <span class="absolute -bottom-2 -right-5 text-xl animate-twinkle-3 pointer-events-none select-none text-purple-500">✨</span>
-          <span class="absolute -bottom-3 left-2 text-lg animate-twinkle-2 pointer-events-none select-none text-indigo-400">✦</span>
-
-          <h2 class="text-3xl sm:text-5xl font-serif font-bold tracking-tight text-zinc-900 leading-tight">
-            내면을 비추는 사유의 거울,<br />
-            <span class="shimmer-text-purple inline-block">
-              삶의 주도권을 되찾는 리딩
-            </span>
-          </h2>
-        </div>
-
-        <!-- Intro -->
-        <p class="text-sm sm:text-base text-zinc-600 max-w-lg mb-6 font-normal leading-relaxed">
-          운명론적 예언 대신 <strong class="text-zinc-900 font-semibold">객관적 관찰</strong>과 <strong class="text-zinc-900 font-semibold">심리적 해석</strong>, 그리고 지금 당장 실천할 수 있는 <strong class="text-purple-700 font-semibold">현실적 행동 조언</strong>을 제시합니다.
-        </p>
-
-        <!-- [신규 요구사항] 홈화면 제목 바로 밑 중앙에 위치한 입체적 덱 설정 버튼 -->
-        <div class="mb-8 w-full flex justify-center">
+        <!-- 1. [최상단] 오늘의 운세 / 고민 질문하기 모드 전환 버튼 바 -->
+        <div class="mb-5 flex items-center p-1.5 bg-gradient-to-b from-purple-50 via-zinc-50 to-purple-100/60 rounded-2xl border-2 border-purple-200/80 shadow-md max-w-md w-full">
           <button
             type="button"
-            id="btn-3d-deck-config"
-            class="group relative inline-flex items-center gap-3 px-6 py-3.5 rounded-2xl bg-gradient-to-b from-white via-zinc-50 to-zinc-200 border border-zinc-300 border-b-4 border-b-zinc-400 text-zinc-800 font-semibold text-xs sm:text-sm shadow-lg shadow-zinc-300/40 hover:from-purple-50 hover:to-zinc-100 hover:border-purple-300 hover:border-b-purple-400 hover:text-purple-900 active:border-b-2 active:translate-y-[2px] transition-all cursor-pointer"
+            id="tab-mode-question"
+            class="flex-1 py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-1.5 transition-all cursor-pointer bg-gradient-to-b from-purple-600 to-purple-800 text-white shadow-md border-b-2 border-purple-950"
           >
-            <!-- Tactile Icon Hub -->
-            <div class="w-7 h-7 rounded-xl bg-purple-100 border border-purple-300 flex items-center justify-center text-purple-700 shadow-inner group-hover:scale-105 transition-transform">
-              <svg class="w-3.5 h-3.5 text-purple-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
-            </div>
-
-            <div class="flex flex-col text-left">
-              <div class="flex items-center gap-1.5">
-                <span class="font-bold text-zinc-900 group-hover:text-purple-900">덱 및 리딩 조건 설정</span>
-                <span class="w-1.5 h-1.5 rounded-full bg-purple-600 animate-pulse"></span>
-              </div>
-              <div id="btn-config-status-label" class="text-[11px] text-zinc-500 font-normal">
-                3카드 스프레드 · 전체 78장 · 역방향 ON
-              </div>
-            </div>
-
-            <span class="ml-2 text-xs font-mono font-bold text-purple-600 bg-purple-100 px-2 py-0.5 rounded-lg border border-purple-200">
-              변경 ⚙️
-            </span>
+            <span class="text-sm">💬</span>
+            <span>고민 질문하기</span>
+          </button>
+          <button
+            type="button"
+            id="tab-mode-today"
+            class="flex-1 py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-1.5 transition-all cursor-pointer text-zinc-600 hover:text-purple-900 hover:bg-white/60"
+          >
+            <span class="text-sm">🔮</span>
+            <span>오늘의 운세</span>
           </button>
         </div>
 
-        <!-- Question Form -->
-        <form id="form-question" class="w-full space-y-4">
-          <div class="relative group text-left">
-            <label class="text-xs font-semibold text-zinc-700 flex items-center justify-between mb-2">
-              <span class="flex items-center gap-1.5">
-                <svg class="w-3.5 h-3.5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
-                마음을 기울이고 있는 고민이나 질문을 적어주세요
+        <!-- 2. [상단 배치] 질문과 리딩 시작 버튼 영역 -->
+        <!-- 2-A: 고민 질문하기 패널 (기본 표시) -->
+        <div id="panel-mode-question" class="w-full space-y-3.5">
+          <form id="form-question" class="w-full space-y-3.5">
+            <div class="relative group text-left">
+              <label class="text-xs font-semibold text-zinc-700 flex items-center justify-between mb-2">
+                <span class="flex items-center gap-1.5">
+                  <svg class="w-3.5 h-3.5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+                  마음을 기울이고 있는 고민이나 질문을 적어주세요
+                </span>
+              </label>
+
+              <!-- Question Input & Attached Start Button on Right -->
+              <div class="relative flex flex-col sm:flex-row items-stretch gap-2.5">
+                <div class="relative flex-1">
+                  <textarea
+                    id="input-question"
+                    rows="3"
+                    placeholder="대상, 기간, 주제, 내가 조절할 수 있는 행동을 포함해 구체적으로 적어보세요..."
+                    class="w-full h-full min-h-[96px] px-4 py-3 rounded-2xl bg-white border border-zinc-300 text-sm text-zinc-900 placeholder-zinc-400 focus:outline-none focus:border-purple-600 focus:ring-2 focus:ring-purple-600/20 shadow-sm transition-all resize-none"
+                  ></textarea>
+                </div>
+
+                <!-- [3D 입체] Start Button Attached to the Right -->
+                <button
+                  type="submit"
+                  id="btn-start-reading-attached"
+                  class="group shrink-0 sm:w-44 px-5 py-3.5 rounded-2xl bg-gradient-to-b from-purple-600 via-purple-700 to-purple-900 border border-purple-500 border-b-4 border-b-purple-950 text-white font-bold shadow-xl shadow-purple-900/30 hover:brightness-110 active:border-b-2 active:translate-y-[2px] transition-all flex flex-col items-center justify-center gap-1 cursor-pointer text-center"
+                >
+                  <div class="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center text-purple-200 group-hover:scale-110 transition-transform shadow-inner">
+                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                  </div>
+                  <div class="flex items-center gap-1 text-sm font-bold tracking-wide text-white">
+                    <span>✦</span>
+                    <span>타로 리딩 시작</span>
+                  </div>
+                  <span class="text-[10px] text-purple-200 font-mono tracking-wider font-semibold">START READING</span>
+                </button>
+              </div>
+
+              <!-- Guide Note -->
+              <div class="mt-2 p-3 rounded-2xl bg-purple-50/70 border border-purple-200/80 flex items-start gap-2.5 text-left">
+                <svg class="w-4 h-4 text-purple-600 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <div class="text-xs text-zinc-600 leading-relaxed">
+                  <strong class="text-purple-800">좋은 질문 생성 문법:</strong> &quot;~가 될까요?&quot;라는 수동적 점괘 질문보다, <span class="text-zinc-900 font-medium">&quot;~를 이루기 위해 내가 어떤 태도로 무엇을 조절하고 실천해야 할까요?&quot;</span>처럼 능동적 행동 중심 질문을 작성할 때 가장 명쾌한 조언이 도출됩니다.
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick Template Chips -->
+            <div class="text-left space-y-1.5 pt-1">
+              <span class="text-[11px] uppercase tracking-wider text-zinc-500 font-mono font-semibold">추천 질문 템플릿</span>
+              <div class="flex flex-wrap gap-1.5" id="template-chips">
+                <button type="button" class="chip-template text-xs px-3 py-1.5 rounded-xl bg-gradient-to-b from-white via-zinc-50 to-zinc-100 border border-zinc-300 border-b-2 border-b-zinc-400 text-zinc-800 hover:from-purple-50 hover:to-purple-100 hover:border-purple-300 hover:border-b-purple-400 hover:text-purple-900 active:border-b active:translate-y-[1px] transition-all text-left shadow-xs cursor-pointer" data-prompt="앞으로 3개월 내에 이직을 준비할 때 내가 가장 주도적으로 보완해야 할 역량과 태도는 무엇인가요?">이직 역량 보완</button>
+                <button type="button" class="chip-template text-xs px-3 py-1.5 rounded-xl bg-gradient-to-b from-white via-zinc-50 to-zinc-100 border border-zinc-300 border-b-2 border-b-zinc-400 text-zinc-800 hover:from-purple-50 hover:to-purple-100 hover:border-purple-300 hover:border-b-purple-400 hover:text-purple-900 active:border-b active:translate-y-[1px] transition-all text-left shadow-xs cursor-pointer" data-prompt="그 사람과의 관계에서 서로의 오해를 풀고 신뢰를 회복하기 위해 내가 먼저 취해야 할 대화 태도는 무엇일까요?">관계 신뢰 회복</button>
+                <button type="button" class="chip-template text-xs px-3 py-1.5 rounded-xl bg-gradient-to-b from-white via-zinc-50 to-zinc-100 border border-zinc-300 border-b-2 border-b-zinc-400 text-zinc-800 hover:from-purple-50 hover:to-purple-100 hover:border-purple-300 hover:border-b-purple-400 hover:text-purple-900 active:border-b active:translate-y-[1px] transition-all text-left shadow-xs cursor-pointer" data-prompt="현재 진행 중인 프로젝트에서 놓치기 쉬운 맹점과 현실적인 리스크 관리 방안은 무엇인가요?">프로젝트 리스크 점검</button>
+                <button type="button" class="chip-template text-xs px-3 py-1.5 rounded-xl bg-gradient-to-b from-white via-zinc-50 to-zinc-100 border border-zinc-300 border-b-2 border-b-zinc-400 text-zinc-800 hover:from-purple-50 hover:to-purple-100 hover:border-purple-300 hover:border-b-purple-400 hover:text-purple-900 active:border-b active:translate-y-[1px] transition-all text-left shadow-xs cursor-pointer" data-prompt="불안과 무기력에서 벗어나 내면의 에너지를 능동적으로 회복하기 위해 오늘 당장 시작할 작은 루틴은 무엇일까요?">내면 에너지 회복</button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <!-- 2-B: 오늘의 운세 패널 (탭 전환 시 표시) -->
+        <div id="panel-mode-today" class="w-full hidden space-y-4">
+          <div class="p-6 rounded-3xl bg-gradient-to-b from-purple-50 via-white to-purple-50/50 border-2 border-purple-200 shadow-md flex flex-col items-center text-center space-y-4">
+            <div class="w-14 h-14 rounded-2xl bg-purple-100 border border-purple-300 flex items-center justify-center text-3xl shadow-inner">
+              🔮
+            </div>
+            <div>
+              <h3 class="text-xl font-serif font-bold text-zinc-900">오늘의 타로 운세 (1장 뽑기)</h3>
+              <p class="text-xs sm:text-sm text-zinc-600 mt-1 max-w-md leading-relaxed">
+                덱에서 단 1장의 카드를 뽑아 오늘 하루의 <strong>총운 · 연애 · 금전 · 사업 4대 영역</strong>과 <strong>특별히 주의할 점</strong>에 대한 명쾌한 처방을 확인하세요.
+              </p>
+            </div>
+            <button
+              type="button"
+              id="btn-today-fortune-main"
+              class="px-8 py-4 rounded-2xl bg-gradient-to-b from-purple-600 via-purple-700 to-purple-900 border border-purple-500 border-b-4 border-b-purple-950 text-white font-bold text-base shadow-xl shadow-purple-900/30 hover:brightness-110 active:border-b-2 active:translate-y-[2px] transition-all flex items-center gap-2.5 cursor-pointer"
+            >
+              <span>✨</span>
+              <span>오늘의 타로 운세 리딩 시작</span>
+              <span>➔</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 3. [그 아래] 제목 및 소개 영역 (아래로 이동) -->
+        <div class="mt-8 pt-6 border-t border-zinc-200/60 w-full flex flex-col items-center">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-purple-50 border border-purple-200 text-purple-700 text-[11px] font-mono tracking-wide mb-3 shadow-xs">
+            <span>✦</span>
+            <span>UNIVERSAL TAROT · INTEGRATED EDITION</span>
+            <span>✦</span>
+          </div>
+
+          <div class="relative inline-block mb-2 px-6 py-1">
+            <span class="absolute -top-2 -left-2 text-xl animate-twinkle-1 pointer-events-none select-none text-purple-600">✨</span>
+            <span class="absolute -top-3 -right-2 text-xl animate-twinkle-2 pointer-events-none select-none text-purple-400">✦</span>
+            <h2 class="text-2xl sm:text-4xl font-serif font-bold tracking-tight text-zinc-900 leading-tight">
+              내면을 비추는 사유의 거울,<br />
+              <span class="shimmer-text-purple inline-block">
+                삶의 주도권을 되찾는 리딩
               </span>
-            </label>
+            </h2>
+          </div>
 
-            <!-- Question Input & Attached Start Button on Right -->
-            <div class="relative flex flex-col sm:flex-row items-stretch gap-2.5">
-              <div class="relative flex-1">
-                <textarea
-                  id="input-question"
-                  rows="3"
-                  placeholder="대상, 기간, 주제, 내가 조절할 수 있는 행동을 포함해 구체적으로 적어보세요..."
-                  class="w-full h-full min-h-[100px] px-4 py-3.5 rounded-2xl bg-white border border-zinc-300 text-sm text-zinc-900 placeholder-zinc-400 focus:outline-none focus:border-purple-600 focus:ring-2 focus:ring-purple-600/20 shadow-sm transition-all resize-none"
-                ></textarea>
+          <p class="text-xs sm:text-sm text-zinc-600 max-w-lg mb-5 font-normal leading-relaxed">
+            운명론적 예언 대신 <strong class="text-zinc-900 font-semibold">객관적 관찰</strong>과 <strong class="text-zinc-900 font-semibold">심리적 해석</strong>, 그리고 지금 당장 실천할 수 있는 <strong class="text-purple-700 font-semibold">현실적 행동 조언</strong>을 제시합니다.
+          </p>
+
+          <!-- 4. [그 아래] 설정 버튼 & 스피커 버튼 (나란히 배치) -->
+          <div class="flex items-center justify-center gap-3 w-full relative">
+            <!-- 덱 및 리딩 조건 설정 버튼 -->
+            <button
+              type="button"
+              id="btn-3d-deck-config"
+              class="group relative inline-flex items-center gap-3 px-5 py-3 rounded-2xl bg-gradient-to-b from-white via-zinc-50 to-zinc-200 border border-zinc-300 border-b-4 border-b-zinc-400 text-zinc-800 font-semibold text-xs sm:text-sm shadow-md shadow-zinc-300/40 hover:from-purple-50 hover:to-zinc-100 hover:border-purple-300 hover:border-b-purple-400 hover:text-purple-900 active:border-b-2 active:translate-y-[2px] transition-all cursor-pointer"
+            >
+              <div class="w-7 h-7 rounded-xl bg-purple-100 border border-purple-300 flex items-center justify-center text-purple-700 shadow-inner group-hover:scale-105 transition-transform">
+                <svg class="w-3.5 h-3.5 text-purple-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
               </div>
+              <div class="flex flex-col text-left">
+                <div class="flex items-center gap-1.5">
+                  <span class="font-bold text-zinc-900 group-hover:text-purple-900">덱 및 리딩 조건 설정</span>
+                  <span class="w-1.5 h-1.5 rounded-full bg-purple-600 animate-pulse"></span>
+                </div>
+                <div id="btn-config-status-label" class="text-[11px] text-zinc-500 font-normal">
+                  3카드 스프레드 · 전체 78장 · 역방향 ON
+                </div>
+              </div>
+              <span class="ml-1 text-xs font-mono font-bold text-purple-600 bg-purple-100 px-2 py-0.5 rounded-lg border border-purple-200">
+                설정 ⚙️
+              </span>
+            </button>
 
-              <!-- [3D 입체] Start Button Attached to the Right -->
+            <!-- 스피커 버튼 (BGM 및 볼륨 조절) -->
+            <div class="relative inline-block text-left">
               <button
-                type="submit"
-                id="btn-start-reading-attached"
-                class="group shrink-0 sm:w-44 px-5 py-4 rounded-2xl bg-gradient-to-b from-purple-600 via-purple-700 to-purple-900 border border-purple-500 border-b-4 border-b-purple-950 text-white font-bold shadow-xl shadow-purple-900/30 hover:brightness-110 active:border-b-2 active:translate-y-[2px] transition-all flex flex-col items-center justify-center gap-1.5 cursor-pointer text-center"
+                type="button"
+                id="btn-speaker-popover"
+                class="p-3.5 rounded-2xl bg-gradient-to-b from-white via-zinc-50 to-zinc-200 border border-zinc-300 border-b-4 border-b-zinc-400 text-zinc-800 shadow-md shadow-zinc-300/40 hover:from-purple-50 hover:to-purple-100 hover:border-purple-300 hover:border-b-purple-400 hover:text-purple-900 active:border-b-2 active:translate-y-[2px] transition-all cursor-pointer flex items-center gap-2 font-bold text-xs sm:text-sm"
+                title="BGM 연주곡 및 사운드 볼륨 설정"
               >
-                <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-purple-200 group-hover:scale-110 transition-transform shadow-inner">
-                  <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                </div>
-                <div class="flex items-center gap-1 text-sm font-bold tracking-wide text-white">
-                  <span>✦</span>
-                  <span>타로 리딩 시작</span>
-                </div>
-                <span class="text-[10px] text-purple-200 font-mono tracking-wider font-semibold">START READING</span>
+                <svg id="icon-speaker-main" class="w-5 h-5 text-purple-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+                <span class="hidden sm:inline">사운드 설정</span>
               </button>
-            </div>
 
-            <!-- Guide Note -->
-            <div class="mt-2.5 p-3.5 rounded-2xl bg-purple-50/70 border border-purple-200/80 flex items-start gap-2.5">
-              <svg class="w-4 h-4 text-purple-600 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-              <div class="text-xs text-zinc-600 leading-relaxed">
-                <strong class="text-purple-800">좋은 질문 생성 문법:</strong> &quot;~가 될까요?&quot;라는 수동적 점괘 질문보다, <span class="text-zinc-900 font-medium">&quot;~를 이루기 위해 내가 어떤 태도로 무엇을 조절하고 실천해야 할까요?&quot;</span>처럼 능동적 행동 중심 질문을 작성할 때 가장 명쾌한 조언이 도출됩니다.
+              <!-- 스피커 설정 팝업 패널 (위쪽으로 전개) -->
+              <div
+                id="panel-speaker-settings"
+                class="hidden absolute right-0 sm:right-auto sm:left-0 bottom-full mb-3 w-72 sm:w-80 bg-white/95 backdrop-blur-md border border-zinc-200 rounded-3xl p-5 shadow-2xl z-50 animate-in fade-in text-left text-zinc-900"
+              >
+                <div class="flex items-center justify-between border-b border-zinc-100 pb-3 mb-4">
+                  <div class="flex items-center gap-2">
+                    <span class="text-lg">🔊</span>
+                    <div>
+                      <div class="text-sm font-bold text-zinc-900">BGM 및 볼륨 설정</div>
+                      <div class="text-[11px] text-zinc-500 font-normal">명상 연주곡 악기 선택 & 사운드 제어</div>
+                    </div>
+                  </div>
+                  <button type="button" id="btn-close-speaker-popover" class="text-zinc-400 hover:text-zinc-700 text-xs p-1.5 rounded-lg hover:bg-zinc-100 cursor-pointer">✕</button>
+                </div>
+
+                <!-- BGM 연주곡 악기 선택 -->
+                <div class="space-y-1.5 mb-4">
+                  <label class="text-xs font-bold text-zinc-700 flex items-center justify-between">
+                    <span>🎼 BGM 연주곡 악기</span>
+                    <span class="text-[10px] text-purple-600 font-mono font-medium">저작권 프리 WebAudio</span>
+                  </label>
+                  <select id="select-bgm-instrument" class="w-full text-xs font-bold rounded-xl px-3 py-2.5 bg-gradient-to-b from-white via-zinc-50 to-zinc-100 border border-zinc-300 border-b-2 border-b-zinc-400 text-zinc-800 shadow-xs hover:border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-500/20 cursor-pointer transition-all">
+                    <option value="piano">🎹 피아노 연주곡</option>
+                    <option value="violin">🎻 바이올린 연주곡</option>
+                    <option value="cello" selected>🎻 첼로 연주곡 (추천)</option>
+                    <option value="flute">🪈 플룻 연주곡</option>
+                    <option value="oboe">🎶 오보에 연주곡</option>
+                  </select>
+                </div>
+
+                <!-- BGM On/Off Toggle & Mute Buttons -->
+                <div class="grid grid-cols-2 gap-2 mb-4">
+                  <button id="btn-toggle-bgm" type="button" class="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl text-xs font-bold bg-gradient-to-b from-purple-600 to-purple-800 border border-purple-500 border-b-3 border-b-purple-950 text-white shadow-sm active:border-b active:translate-y-[1px] transition-all cursor-pointer">
+                    <span id="text-bgm">BGM 정지</span>
+                  </button>
+                  <button id="btn-toggle-mute" type="button" class="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl text-xs font-bold bg-gradient-to-b from-white to-zinc-100 border border-zinc-300 border-b-3 border-b-zinc-400 text-zinc-700 shadow-xs hover:text-purple-700 active:border-b active:translate-y-[1px] transition-all cursor-pointer">
+                    <svg id="icon-sound" class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+                    <span id="text-mute-label">전체 음소거</span>
+                  </button>
+                </div>
+
+                <!-- BGM Volume Slider -->
+                <div class="space-y-1.5 mb-3.5">
+                  <div class="flex justify-between items-center text-xs">
+                    <span class="text-zinc-700 font-semibold flex items-center gap-1">🎵 BGM 볼륨</span>
+                    <span id="label-bgm-volume" class="text-purple-700 font-bold font-mono bg-purple-50 px-2 py-0.5 rounded text-[11px] border border-purple-200">40%</span>
+                  </div>
+                  <input id="slider-bgm-volume" type="range" min="0" max="100" value="40" class="w-full accent-purple-600 cursor-pointer h-2 bg-zinc-200 rounded-lg" />
+                </div>
+
+                <!-- SFX Volume Slider -->
+                <div class="space-y-1.5">
+                  <div class="flex justify-between items-center text-xs">
+                    <span class="text-zinc-700 font-semibold flex items-center gap-1">✨ 효과음(SFX) 볼륨</span>
+                    <span id="label-sfx-volume" class="text-purple-700 font-bold font-mono bg-purple-50 px-2 py-0.5 rounded text-[11px] border border-purple-200">70%</span>
+                  </div>
+                  <input id="slider-sfx-volume" type="range" min="0" max="100" value="70" class="w-full accent-purple-600 cursor-pointer h-2 bg-zinc-200 rounded-lg" />
+                </div>
               </div>
             </div>
           </div>
+        </div>
 
-          <!-- Quick Template Chips -->
-          <div class="text-left space-y-1.5 pt-2">
-            <span class="text-[11px] uppercase tracking-wider text-zinc-500 font-mono font-semibold">추천 질문 템플릿</span>
-            <div class="flex flex-wrap gap-1.5" id="template-chips">
-              <button type="button" class="chip-template text-xs px-3.5 py-2 rounded-xl bg-gradient-to-b from-white via-zinc-50 to-zinc-100 border border-zinc-300 border-b-2 border-b-zinc-400 text-zinc-800 hover:from-purple-50 hover:to-purple-100 hover:border-purple-300 hover:border-b-purple-400 hover:text-purple-900 active:border-b active:translate-y-[1px] transition-all text-left shadow-xs cursor-pointer" data-prompt="앞으로 3개월 내에 이직을 준비할 때 내가 가장 주도적으로 보완해야 할 역량과 태도는 무엇인가요?">
-                앞으로 3개월 내에 이직 준비 시 주도적으로 보완할 태도...
-              </button>
-              <button type="button" class="chip-template text-xs px-3.5 py-2 rounded-xl bg-gradient-to-b from-white via-zinc-50 to-zinc-100 border border-zinc-300 border-b-2 border-b-zinc-400 text-zinc-800 hover:from-purple-50 hover:to-purple-100 hover:border-purple-300 hover:border-b-purple-400 hover:text-purple-900 active:border-b active:translate-y-[1px] transition-all text-left shadow-xs cursor-pointer" data-prompt="현재 상대방과의 관계에서 생겨난 침묵과 오해를 풀기 위해 내가 당장 실천할 수 있는 행동은 무엇인가요?">
-                상대방과의 관계에서 침묵과 오해를 풀기 위한 나의 행동...
-              </button>
-              <button type="button" class="chip-template text-xs px-3.5 py-2 rounded-xl bg-gradient-to-b from-white via-zinc-50 to-zinc-100 border border-zinc-300 border-b-2 border-b-zinc-400 text-zinc-800 hover:from-purple-50 hover:to-purple-100 hover:border-purple-300 hover:border-b-purple-400 hover:text-purple-900 active:border-b active:translate-y-[1px] transition-all text-left shadow-xs cursor-pointer" data-prompt="새로운 프로젝트 런칭을 앞두고 간과하고 있는 현실적 리스크와 이를 해결할 전략은 무엇인가요?">
-                신규 프로젝트 런칭 시 간과하고 있는 리스크와 대응책...
-              </button>
-            </div>
-          </div>
-        </form>
       </div>
     </section>
 
@@ -3860,19 +3907,71 @@
     const modalCardDetail = document.getElementById('modal-card-detail');
     const btnCloseDetail = document.getElementById('btn-close-detail');
 
-    // Sound Controls
+    // Sound Controls & Speaker Popover
+    const btnSpeakerPopover = document.getElementById('btn-speaker-popover');
+    const panelSpeakerSettings = document.getElementById('panel-speaker-settings');
+    const btnCloseSpeakerPopover = document.getElementById('btn-close-speaker-popover');
     const btnToggleBgm = document.getElementById('btn-toggle-bgm');
     const textBgm = document.getElementById('text-bgm');
     const selectBgmInstrument = document.getElementById('select-bgm-instrument');
     const btnToggleMute = document.getElementById('btn-toggle-mute');
-    const btnToggleVolume = document.getElementById('btn-toggle-volume');
-    const panelVolumeControl = document.getElementById('panel-volume-control');
-    const btnCloseVolume = document.getElementById('btn-close-volume');
     const sliderBgmVolume = document.getElementById('slider-bgm-volume');
     const sliderSfxVolume = document.getElementById('slider-sfx-volume');
     const labelBgmVolume = document.getElementById('label-bgm-volume');
     const labelSfxVolume = document.getElementById('label-sfx-volume');
-    const btnTodayFortune = document.getElementById('btn-today-fortune');
+    const btnTodayFortuneMain = document.getElementById('btn-today-fortune-main');
+
+    // Home Mode Segment Tabs (고민 질문하기 / 오늘의 운세)
+    const tabModeQuestion = document.getElementById('tab-mode-question');
+    const tabModeToday = document.getElementById('tab-mode-today');
+    const panelModeQuestion = document.getElementById('panel-mode-question');
+    const panelModeToday = document.getElementById('panel-mode-today');
+
+    if (tabModeQuestion && tabModeToday && panelModeQuestion && panelModeToday) {
+      tabModeQuestion.addEventListener('click', () => {
+        tabModeQuestion.className = 'flex-1 py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-1.5 transition-all cursor-pointer bg-gradient-to-b from-purple-600 to-purple-800 text-white shadow-md border-b-2 border-purple-950';
+        tabModeToday.className = 'flex-1 py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-1.5 transition-all cursor-pointer text-zinc-600 hover:text-purple-900 hover:bg-white/60';
+        panelModeQuestion.classList.remove('hidden');
+        panelModeToday.classList.add('hidden');
+        if (inputQuestion) inputQuestion.focus();
+      });
+
+      tabModeToday.addEventListener('click', () => {
+        tabModeToday.className = 'flex-1 py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-1.5 transition-all cursor-pointer bg-gradient-to-b from-purple-600 to-purple-800 text-white shadow-md border-b-2 border-purple-950';
+        tabModeQuestion.className = 'flex-1 py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-1.5 transition-all cursor-pointer text-zinc-600 hover:text-purple-900 hover:bg-white/60';
+        panelModeToday.classList.remove('hidden');
+        panelModeQuestion.classList.add('hidden');
+      });
+    }
+
+    if (btnTodayFortuneMain) {
+      btnTodayFortuneMain.addEventListener('click', () => {
+        sound.playFocus();
+        const userQ = inputQuestion ? inputQuestion.value.trim() : '';
+        const fortuneQuestion = userQ ? `[오늘의 운세] ${userQ}` : '오늘 하루 나에게 필요한 지혜와 조언';
+        executeReading(fortuneQuestion, 'single', true);
+      });
+    }
+
+    // Speaker Popover Toggle
+    if (btnSpeakerPopover && panelSpeakerSettings) {
+      btnSpeakerPopover.addEventListener('click', (e) => {
+        e.stopPropagation();
+        panelSpeakerSettings.classList.toggle('hidden');
+      });
+      if (btnCloseSpeakerPopover) {
+        btnCloseSpeakerPopover.addEventListener('click', () => {
+          panelSpeakerSettings.classList.add('hidden');
+        });
+      }
+      document.addEventListener('click', (e) => {
+        if (!panelSpeakerSettings.classList.contains('hidden') &&
+            !panelSpeakerSettings.contains(e.target) &&
+            !btnSpeakerPopover.contains(e.target)) {
+          panelSpeakerSettings.classList.add('hidden');
+        }
+      });
+    }
 
     // Template chips event
     document.querySelectorAll('.chip-template').forEach(chip => {
@@ -3907,26 +4006,6 @@
       btnToggleMute.classList.toggle('text-red-500', muted);
       btnToggleMute.classList.toggle('text-zinc-600', !muted);
     });
-
-    // Volume Controls & Popover
-    if (btnToggleVolume && panelVolumeControl) {
-      btnToggleVolume.addEventListener('click', (e) => {
-        e.stopPropagation();
-        panelVolumeControl.classList.toggle('hidden');
-      });
-      if (btnCloseVolume) {
-        btnCloseVolume.addEventListener('click', () => {
-          panelVolumeControl.classList.add('hidden');
-        });
-      }
-      document.addEventListener('click', (e) => {
-        if (!panelVolumeControl.classList.contains('hidden') &&
-            !panelVolumeControl.contains(e.target) &&
-            !btnToggleVolume.contains(e.target)) {
-          panelVolumeControl.classList.add('hidden');
-        }
-      });
-    }
 
     if (sliderBgmVolume && labelBgmVolume) {
       sliderBgmVolume.addEventListener('input', (e) => {
@@ -4673,7 +4752,7 @@
       // Setup dynamic shuffle animation
       setupShuffleAnimation(appState.shuffleMethod);
 
-      // Reset right interpretation buttons state
+      // Keep right interpretation buttons ready and clickable!
       const btnOpenSynthesisReset = document.getElementById('btn-open-synthesis');
       const btnOpenBreakdownReset = document.getElementById('btn-open-breakdown');
       const btnOpenFollowupReset = document.getElementById('btn-open-followup');
@@ -4681,13 +4760,13 @@
 
       [btnOpenSynthesisReset, btnOpenBreakdownReset, btnOpenFollowupReset].forEach(btn => {
         if (btn) {
-          btn.disabled = true;
-          btn.classList.add('opacity-60', 'cursor-not-allowed');
-          btn.classList.remove('cursor-pointer', 'hover:border-purple-400', 'hover:shadow-md');
+          btn.disabled = false;
+          btn.classList.remove('opacity-60', 'cursor-not-allowed');
+          btn.classList.add('cursor-pointer', 'hover:border-purple-400', 'hover:shadow-md', 'active:scale-98');
         }
       });
       if (readingStatusBadgeReset) {
-        readingStatusBadgeReset.textContent = '카드를 뒤집어주세요';
+        readingStatusBadgeReset.textContent = '카드를 뒤집거나 메뉴를 누르세요';
         readingStatusBadgeReset.className = 'text-[10px] px-2.5 py-0.5 rounded-full bg-purple-100 text-purple-700 font-mono font-medium border border-purple-200';
       }
 
@@ -4701,6 +4780,7 @@
           if (btnRevealAll) btnRevealAll.classList.remove('hidden');
         }
         renderCards();
+        generateSynthesisResult();
       }, 2100);
     }
 
@@ -6630,13 +6710,25 @@ function generateAiTarotArtworkSvg(card) {
       }
     }
 
+    function handleOpenReadingMenu(modalId) {
+      sound.playFocus();
+      // 카드가 아직 모두 안 뒤집혔다면 즉시 모두 앞면으로 뒤집고 종합 해석 생성!
+      if (appState.drawnCards && appState.revealedIndices.length < appState.drawnCards.length) {
+        sound.playFlip();
+        appState.revealedIndices = appState.drawnCards.map((_, i) => i);
+        renderCards();
+        generateSynthesisResult();
+      }
+      openReadingPopup(modalId);
+    }
+
     const btnOpenSynthesis = document.getElementById('btn-open-synthesis');
     const btnOpenBreakdown = document.getElementById('btn-open-breakdown');
     const btnOpenFollowup = document.getElementById('btn-open-followup');
 
-    if (btnOpenSynthesis) btnOpenSynthesis.addEventListener('click', () => openReadingPopup('modal-reading-synthesis'));
-    if (btnOpenBreakdown) btnOpenBreakdown.addEventListener('click', () => openReadingPopup('modal-reading-breakdown'));
-    if (btnOpenFollowup) btnOpenFollowup.addEventListener('click', () => openReadingPopup('modal-reading-followup'));
+    if (btnOpenSynthesis) btnOpenSynthesis.addEventListener('click', () => handleOpenReadingMenu('modal-reading-synthesis'));
+    if (btnOpenBreakdown) btnOpenBreakdown.addEventListener('click', () => handleOpenReadingMenu('modal-reading-breakdown'));
+    if (btnOpenFollowup) btnOpenFollowup.addEventListener('click', () => handleOpenReadingMenu('modal-reading-followup'));
 
     document.querySelectorAll('.btn-close-reading-modal').forEach(btn => {
       btn.addEventListener('click', () => {
