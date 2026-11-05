@@ -1,6 +1,18 @@
-# 변경 이력 (Changelog)
+﻿# 변경 이력 (Changelog)
 
 이 프로젝트는 [Semantic Versioning (유의적 버전 2.0.0)](https://semver.org/lang/ko/) 표준을 따릅니다.
+
+---
+
+## [1.6.0] - 2026-11-05
+
+### ✦ Added & Updated (78장 중 77장 고화질 AI 일러스트 구축 완료)
+- **마이너 아르카나 10장 AI 일러스트 신규 생성 및 전체 플랫폼 바인딩**:
+  - **컵(Cups) 수트 완료**: 컵 6(cups-6), 컵 9(cups-9), 컵 10(cups-10)
+  - **소드(Swords) 수트 완료**: 소드 5(swords-5), 소드 6(swords-6)
+  - **펜타클(Pentacles) 수트 추가**: 펜타클 4(pentacles-4), 펜타클 5(pentacles-5), 펜타클 6(pentacles-6), 펜타클 8(pentacles-8), 펜타클 9(pentacles-9)
+  - 메이저 22장(100%) + 완드 14장(100%) + 컵 14장(100%) + 소드 14장(100%) + 펜타클 13장 = **총 77/78장(98.7%) 고화질 AI 일러스트 완성**
+  - [index.html](file:///c:/AI개발/타로/index.html), [tarotData.ts](file:///c:/AI개발/타로/src/lib/tarotData.ts), [app.py](file:///c:/AI개발/타로/app.py) 동기화 완료.
 
 ---
 
