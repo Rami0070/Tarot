@@ -778,7 +778,13 @@
       <!-- Cards Grid Area -->
       <div class="flex-1 p-6 overflow-y-auto bg-slate-100">
         <div id="gallery-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 sm:gap-8 justify-items-center">
-          <!-- MODAL 1: CARD DETAIL & LIVE CINEMAGRAPH MODAL -->
+          <!-- Injected via JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 1: CARD DETAIL & LIVE CINEMAGRAPH MODAL -->
   <div id="modal-card-detail" class="fixed inset-0 z-50 hidden items-center justify-center p-2 sm:p-6 bg-black/80 backdrop-blur-md animate-in fade-in">
     <div class="bg-white border border-zinc-200 rounded-3xl w-full max-w-5xl h-[90vh] min-h-[640px] max-h-[880px] overflow-hidden flex flex-col md:flex-row shadow-2xl relative text-zinc-900">
       
@@ -842,7 +848,7 @@
           <div>
             <div id="detail-sub-header" class="text-xs sm:text-sm font-mono text-purple-700 font-bold mb-1">UNIVERSAL TAROT DEEP INQUIRY</div>
             <h2 id="detail-card-name" class="text-2xl sm:text-3xl font-serif font-bold text-zinc-900 flex items-center gap-2">
-              광대 (The Fool)
+              바보 (The Fool)
             </h2>
             <p id="detail-card-en" class="text-xs sm:text-sm text-zinc-500 mt-0.5">The Fool · Major Arcana</p>
           </div>
@@ -857,11 +863,11 @@
           </div>
         </div>
 
-        <!-- [정위치 / 역위치 전환 토글 컨트롤 바] -->
-        <div class="flex flex-wrap items-center justify-between gap-2 p-2 mb-3 bg-purple-50/80 rounded-2xl border border-purple-200 shrink-0">
-          <div class="flex items-center gap-2 px-1 text-xs font-bold text-purple-950">
-            <span>카드 방향:</span>
-            <span id="detail-current-orientation-label" class="px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-white border border-purple-300 text-purple-900 shadow-xs">
+        <!-- [정위치 / 역위치 방향 전환 토글 바] -->
+        <div class="flex items-center justify-between p-2 sm:p-2.5 rounded-2xl bg-zinc-50 border border-zinc-200 mb-2.5 shrink-0 shadow-xs">
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-bold text-zinc-600 pl-1">방향 전환:</span>
+            <span id="detail-current-orientation-label" class="px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-purple-50 border border-purple-300 text-purple-900 shadow-xs">
               정위치 (Upright)
             </span>
           </div>
@@ -870,93 +876,91 @@
               type="button"
               id="btn-toggle-upright"
               class="orientation-toggle-btn active px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-bold bg-gradient-to-b from-purple-600 to-purple-800 text-white border border-purple-700 shadow-sm cursor-pointer transition-all active:translate-y-[1px]"
-              title="정위치(정방향)로 전환하여 본래의 조화로운 상징과 해석 보기"
             >
-              <span>⬆️ 정위치 (정방향)</span>
+              ⬆️ 정위치 (정방향)
             </button>
             <button
               type="button"
               id="btn-toggle-reversed"
               class="orientation-toggle-btn px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold bg-white text-zinc-700 border border-zinc-300 hover:bg-zinc-100 hover:text-zinc-900 cursor-pointer transition-all active:translate-y-[1px]"
-              title="역위치(역방향)로 전환하여 내면화·주의점 및 극복 조언 보기"
             >
-              <span>🔄 역위치 (역방향)</span>
+              🔄 역위치 (역방향)
             </button>
           </div>
         </div>
 
-        <!-- Mode 1: Reading Result Tabs -->
+        <!-- Mode 1: Reading Result Tabs (상황 질문 & 확인된 심층 독해) -->
         <div id="detail-tabs-reading" class="flex items-center border-b border-zinc-200 gap-1.5 mb-3 overflow-x-auto whitespace-nowrap pb-0.5 shrink-0 text-xs sm:text-sm" style="scrollbar-width: none;">
-          <button class="tab-btn active flex-1 text-center px-2.5 sm:px-3.5 py-2.5 border-b-2 border-purple-600 text-purple-700 bg-purple-50 rounded-t-xl font-bold whitespace-nowrap transition-colors cursor-pointer" data-tab="tab-pos">1. 도상 관찰·의미</button>
-          <button class="tab-btn flex-1 text-center px-2.5 sm:px-3.5 py-2.5 border-b-2 border-transparent text-zinc-500 hover:text-zinc-800 rounded-t-xl font-medium whitespace-nowrap transition-colors cursor-pointer" data-tab="tab-context">2. 질문 밀착 독해</button>
-          <button class="tab-btn flex-1 text-center px-2.5 sm:px-3.5 py-2.5 border-b-2 border-transparent text-zinc-500 hover:text-zinc-800 rounded-t-xl font-medium whitespace-nowrap transition-colors cursor-pointer" data-tab="tab-wr">3. 도상 상징 풀이</button>
-          <button class="tab-btn flex-1 text-center px-2.5 sm:px-3.5 py-2.5 border-b-2 border-transparent text-zinc-500 hover:text-zinc-800 rounded-t-xl font-medium whitespace-nowrap transition-colors cursor-pointer" data-tab="tab-check">4. 실천 체크리스트</button>
+          <button class="tab-btn active flex-1 text-center px-2 sm:px-3 py-2 border-b-2 border-purple-600 text-purple-700 bg-purple-50 rounded-t-xl font-bold whitespace-nowrap transition-colors cursor-pointer" data-tab="tab-pos">1. 포지션 의미</button>
+          <button class="tab-btn flex-1 text-center px-2 sm:px-3 py-2 border-b-2 border-transparent text-zinc-500 hover:text-zinc-800 rounded-t-xl font-medium whitespace-nowrap transition-colors cursor-pointer" data-tab="tab-context">2. 밀착 상황 독해</button>
+          <button class="tab-btn flex-1 text-center px-2 sm:px-3 py-2 border-b-2 border-transparent text-zinc-500 hover:text-zinc-800 rounded-t-xl font-medium whitespace-nowrap transition-colors cursor-pointer" data-tab="tab-wr">3. 원형 상징 풀이</button>
+          <button class="tab-btn flex-1 text-center px-2 sm:px-3 py-2 border-b-2 border-transparent text-zinc-500 hover:text-zinc-800 rounded-t-xl font-medium whitespace-nowrap transition-colors cursor-pointer" data-tab="tab-check">4. 실천 체크리스트</button>
         </div>
 
         <!-- Mode 2: Deck Gallery Detail Tabs -->
-        <div id="detail-tabs-gallery" class="hidden items-center border-b border-zinc-200 gap-2 mb-3 overflow-x-auto whitespace-nowrap pb-0.5 shrink-0 text-sm sm:text-base" style="scrollbar-width: none;">
-          <button class="gtab-btn active flex-1 text-center px-3 sm:px-4 py-2.5 border-b-2 border-purple-600 text-purple-700 bg-purple-50 rounded-t-xl font-bold whitespace-nowrap transition-colors cursor-pointer" data-gtab="gtab-observe">1. 도상 관찰</button>
-          <button class="gtab-btn flex-1 text-center px-3 sm:px-4 py-2.5 border-b-2 border-transparent text-zinc-500 hover:text-zinc-800 rounded-t-xl font-medium whitespace-nowrap transition-colors cursor-pointer" data-gtab="gtab-upright">2. 정위치 (정방향)</button>
-          <button class="gtab-btn flex-1 text-center px-3 sm:px-4 py-2.5 border-b-2 border-transparent text-zinc-500 hover:text-zinc-800 rounded-t-xl font-medium whitespace-nowrap transition-colors cursor-pointer" data-gtab="gtab-reversed">3. 역위치 (역방향)</button>
+        <div id="detail-tabs-gallery" class="hidden items-center border-b border-zinc-200 gap-2 mb-3 overflow-x-auto whitespace-nowrap pb-0.5 shrink-0 text-xs sm:text-sm" style="scrollbar-width: none;">
+          <button class="gtab-btn active flex-1 text-center px-2.5 sm:px-4 py-2.5 border-b-2 border-purple-600 text-purple-700 bg-purple-50 rounded-t-xl font-bold whitespace-nowrap transition-colors cursor-pointer" data-gtab="gtab-observe">1. 도상 관찰</button>
+          <button class="gtab-btn flex-1 text-center px-2.5 sm:px-4 py-2.5 border-b-2 border-transparent text-zinc-500 hover:text-zinc-800 rounded-t-xl font-medium whitespace-nowrap transition-colors cursor-pointer" data-gtab="gtab-upright">2. 정위치 (정방향)</button>
+          <button class="gtab-btn flex-1 text-center px-2.5 sm:px-4 py-2.5 border-b-2 border-transparent text-zinc-500 hover:text-zinc-800 rounded-t-xl font-medium whitespace-nowrap transition-colors cursor-pointer" data-gtab="gtab-reversed">3. 역위치 (역방향)</button>
         </div>
 
         <!-- Scrollable Tab Content Container -->
         <div class="flex-1 overflow-y-auto pr-2 custom-scrollbar min-h-0 space-y-4">
-          <!-- Mode 1 Tab Contents (리딩 결과용) -->
+          <!-- Mode 1 Tab Contents (리딩 결과) -->
           <div id="tab-pos" class="tab-content space-y-4 text-base sm:text-[17px] text-zinc-800 break-keep-all">
             <div class="p-5 rounded-2xl bg-purple-50/80 border border-purple-200">
-              <div class="text-sm sm:text-base font-bold text-purple-900 mb-1.5">스프레드 내 자리의 의미</div>
-              <p id="detail-pos-meaning" class="text-base sm:text-lg text-zinc-800 leading-relaxed font-normal break-keep-all">자리 의미</p>
+              <div class="text-sm sm:text-base font-bold text-purple-900 mb-1.5">이 포지션 자리가 뜻하는 바</div>
+              <p id="detail-pos-meaning" class="text-base sm:text-lg text-zinc-800 leading-relaxed font-normal break-keep-all">자리의 의미</p>
             </div>
             <div>
-              <div class="text-sm sm:text-base font-bold text-zinc-900 mb-1.5">도상 객관적 관찰 (Observation)</div>
-              <p id="detail-observation" class="bg-slate-50 p-5 rounded-2xl border border-zinc-200 text-base sm:text-lg text-zinc-800 leading-relaxed font-normal break-keep-all">관찰 내용</p>
+              <div class="text-sm sm:text-base font-bold text-zinc-900 mb-1.5">카드 도상 관찰 (Observation)</div>
+              <p id="detail-observation" class="bg-slate-50 p-5 rounded-2xl border border-zinc-200 text-base sm:text-lg text-zinc-800 leading-relaxed font-normal break-keep-all">도상 설명</p>
             </div>
             <div>
-              <div class="text-sm sm:text-base font-bold text-zinc-900 mb-1.5">핵심 키워드</div>
+              <div class="text-sm sm:text-base font-bold text-zinc-900 mb-1.5">상황별 핵심 키워드</div>
               <div id="detail-keywords" class="flex flex-wrap gap-2"></div>
             </div>
           </div>
 
           <div id="tab-context" class="tab-content hidden space-y-4 text-base sm:text-[17px] text-zinc-800 break-keep-all">
             <div class="p-5 rounded-2xl bg-purple-50 border border-purple-200">
-              <div class="text-xs sm:text-sm font-mono text-purple-700 font-bold mb-1">고민 맥락</div>
+              <div class="text-xs sm:text-sm font-mono text-purple-700 font-bold mb-1">고민 밀착 질문</div>
               <div id="detail-context-q" class="text-lg sm:text-xl font-bold font-serif text-zinc-900 italic break-keep-all">"..."</div>
             </div>
             <div class="p-5 rounded-2xl bg-slate-50 border border-zinc-200 space-y-3">
               <div class="text-base sm:text-lg font-bold text-zinc-900">1:1 맞춤 상황 독해</div>
-              <p id="detail-context-text" class="text-base sm:text-lg text-zinc-800 leading-relaxed font-normal break-keep-all">상세 해석</p>
+              <p id="detail-context-text" class="text-base sm:text-lg text-zinc-800 leading-relaxed font-normal break-keep-all">상황별 해석</p>
             </div>
           </div>
 
           <div id="tab-wr" class="tab-content hidden space-y-4 text-base sm:text-[17px] text-zinc-800 break-keep-all">
             <div class="p-5 rounded-2xl bg-slate-50 border border-zinc-200">
               <div class="flex items-center gap-2 mb-2">
-                <span class="w-6 h-6 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center font-bold text-sm">✦</span>
-                <span class="text-base sm:text-lg font-bold text-zinc-900">유니버셜 상징 원형 풀이</span>
+                <span class="w-6 h-6 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center font-bold text-sm">💡</span>
+                <span class="text-base sm:text-lg font-bold text-zinc-900">웨이트-스미스 유니버셜 상징 원형 풀이</span>
               </div>
-              <p id="detail-w" class="text-base sm:text-lg text-zinc-800 leading-relaxed font-normal pt-1 break-keep-all">상징 해설</p>
+              <p id="detail-w" class="text-base sm:text-lg text-zinc-800 leading-relaxed font-normal pt-1 break-keep-all">상징 해석</p>
             </div>
           </div>
 
           <div id="tab-check" class="tab-content hidden space-y-4 text-base sm:text-[17px] text-zinc-800 break-keep-all">
-            <div class="text-sm sm:text-base font-bold text-purple-900 mb-1">상황 돌파를 위한 실천 체크리스트</div>
+            <div class="text-sm sm:text-base font-bold text-purple-900 mb-1">상황을 돌파하기 위한 실천 체크리스트</div>
             <div id="detail-checklists" class="space-y-3"></div>
           </div>
 
-          <!-- Mode 2 Tab Contents (덱 도감용) -->
+          <!-- Mode 2 Tab Contents (도감 모드) -->
           <div id="gtab-observe" class="gtab-content hidden space-y-4 text-base sm:text-[17px] text-zinc-800 break-keep-all">
             <div class="p-5 rounded-2xl bg-slate-50 border border-zinc-200 space-y-2">
               <div class="text-base sm:text-lg font-bold text-zinc-900 flex items-center gap-2 border-b border-zinc-200 pb-2">
-                <span class="text-purple-600">✦</span>
-                <span>도상 객관적 관찰 (Observation)</span>
+                <span class="text-purple-600">👁️</span>
+                <span>도상 관찰 (Observation)</span>
               </div>
               <p id="gdetail-observation" class="text-base sm:text-lg text-zinc-800 leading-relaxed font-normal pt-1 break-keep-all"></p>
             </div>
             <div class="p-5 rounded-2xl bg-purple-50/70 border border-purple-200 space-y-2">
               <div class="text-base sm:text-lg font-bold text-purple-950 flex items-center gap-2 border-b border-purple-200/80 pb-2">
-                <span class="text-purple-600">✦</span>
-                <span>유니버셜 상징 및 원형 의미</span>
+                <span class="text-purple-600">🔮</span>
+                <span>유니버셜 상징 및 원형적 의미</span>
               </div>
               <p id="gdetail-symbol" class="text-base sm:text-lg text-purple-950 leading-relaxed font-normal pt-1 break-keep-all"></p>
             </div>
@@ -969,15 +973,15 @@
             </div>
             <div class="p-5 rounded-2xl bg-slate-50 border border-zinc-200 space-y-2">
               <div class="text-base sm:text-lg font-bold text-zinc-900 flex items-center gap-2 border-b border-zinc-200 pb-2">
-                <span class="text-emerald-600">✦</span>
+                <span class="text-emerald-600">✨</span>
                 <span>정위치 (정방향) 본질 해석</span>
               </div>
               <p id="gdetail-meaning-upright" class="text-base sm:text-lg text-zinc-800 leading-relaxed font-normal pt-1 break-keep-all"></p>
             </div>
             <div class="p-5 rounded-2xl bg-emerald-50/70 border border-emerald-200 space-y-2">
               <div class="text-base sm:text-lg font-bold text-emerald-950 flex items-center gap-2 border-b border-emerald-200/80 pb-2">
-                <span class="text-emerald-600 font-bold">✓</span>
-                <span>정위치 조언 및 실천 가이드</span>
+                <span class="text-emerald-600 font-bold">🎯</span>
+                <span>정위치 상황 추천 가이드</span>
               </div>
               <p id="gdetail-advice-upright" class="text-base sm:text-lg text-emerald-950 leading-relaxed font-medium pt-1 break-keep-all"></p>
             </div>
@@ -990,15 +994,15 @@
             </div>
             <div class="p-5 rounded-2xl bg-slate-50 border border-zinc-200 space-y-2">
               <div class="text-base sm:text-lg font-bold text-zinc-900 flex items-center gap-2 border-b border-zinc-200 pb-2">
-                <span class="text-amber-600">✦</span>
-                <span>역위치 (역방향) 에너지 불균형 및 주의점</span>
+                <span class="text-amber-600">🔄</span>
+                <span>역위치 (역방향) 심리적 불균형 및 그늘</span>
               </div>
               <p id="gdetail-meaning-reversed" class="text-base sm:text-lg text-zinc-800 leading-relaxed font-normal pt-1 break-keep-all"></p>
             </div>
             <div class="p-5 rounded-2xl bg-amber-50/70 border border-amber-200 space-y-2">
               <div class="text-base sm:text-lg font-bold text-amber-950 flex items-center gap-2 border-b border-amber-200/80 pb-2">
-                <span class="text-amber-600 font-bold">⚠</span>
-                <span>역위치 균형 회복 및 극복 조언</span>
+                <span class="text-amber-600 font-bold">💡</span>
+                <span>역위치 회복 및 극복 가이드</span>
               </div>
               <p id="gdetail-advice-reversed" class="text-base sm:text-lg text-amber-950 leading-relaxed font-medium pt-1 break-keep-all"></p>
             </div>
@@ -6203,6 +6207,7 @@ function generateAiTarotArtworkSvg(card) {
       });
     }
 
+    const btnTodayFortune = document.getElementById('btn-today-fortune');
     if (btnTodayFortune) {
       btnTodayFortune.addEventListener('click', () => {
         sound.playFocus();
@@ -6933,23 +6938,144 @@ function generateAiTarotArtworkSvg(card) {
     function renderVisualCard(card, isRev) {
       const visualContainer = document.getElementById('detail-card-visual');
       if (!visualContainer) return;
-      visualContainer.innerHTML = 
+      visualContainer.innerHTML = `
         <div class="w-full h-full rounded-2xl border-2 border-zinc-700 bg-[#09090b] p-2 sm:p-2.5 shadow-2xl flex flex-col relative overflow-hidden transition-all duration-300">
           <!-- Top Status Bar -->
           <div class="w-full flex flex-col items-center justify-center gap-0.5 py-1 px-1 bg-zinc-900/90 rounded-lg border border-zinc-800/80 mb-1.5 z-20 shrink-0 text-center">
-            <span class="px-2.5 py-0.5 rounded-full text-[9.5px] font-mono font-bold leading-none \ whitespace-nowrap">
-              \
+            <span class="px-2.5 py-0.5 rounded-full text-[9.5px] font-mono font-bold leading-none ${isRev ? 'text-amber-300 bg-amber-950/90 border border-amber-500/60 shadow-xs' : 'text-purple-300 bg-purple-950/90 border border-purple-500/60 shadow-xs'} whitespace-nowrap">
+              ${isRev ? 'REVERSED (역방향)' : 'UPRIGHT (정방향)'}
             </span>
             <span class="text-[11.5px] sm:text-[12px] font-serif text-zinc-100 font-bold truncate max-w-[210px] leading-tight mt-0.5">
-              \
+              ${card.nameKo}
             </span>
           </div>
-          <!-- Illustration Container -->
+          <!-- Illustration Container (fills card, inverted when reversed) -->
           <div class="flex-1 w-full rounded-xl overflow-hidden relative flex items-center justify-center bg-[#09090b]">
-            \
+            ${getTarotCardIllustration(card, isRev)}
           </div>
         </div>
-      ;
+      `;
+    }
+
+    function setDetailOrientation(isRev) {
+      appState.currentDetailIsReversed = isRev;
+
+      // 1. Update visual card
+      if (appState.currentDetailCard) {
+        renderVisualCard(appState.currentDetailCard, isRev);
+        const elementLabel = document.getElementById('detail-pos-element');
+        if (elementLabel) {
+          elementLabel.textContent = `원소: ${appState.currentDetailCard.element} · ${isRev ? '역위치 (Reversed)' : '정위치 (Upright)'}`;
+        }
+      }
+
+      // 2. Update toggle buttons UI
+      const btnUp = document.getElementById('btn-toggle-upright');
+      const btnRev = document.getElementById('btn-toggle-reversed');
+      const orientLabel = document.getElementById('detail-current-orientation-label');
+
+      if (btnUp && btnRev) {
+        if (isRev) {
+          btnRev.className = 'orientation-toggle-btn active px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-bold bg-gradient-to-b from-amber-600 to-amber-700 text-white border border-amber-800 shadow-sm cursor-pointer transition-all active:translate-y-[1px]';
+          btnUp.className = 'orientation-toggle-btn px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold bg-white text-zinc-700 border border-zinc-300 hover:bg-zinc-100 hover:text-zinc-900 cursor-pointer transition-all active:translate-y-[1px]';
+          if (orientLabel) {
+            orientLabel.className = 'px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-amber-50 border border-amber-300 text-amber-900 shadow-xs';
+            orientLabel.textContent = '역위치 (Reversed)';
+          }
+        } else {
+          btnUp.className = 'orientation-toggle-btn active px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-bold bg-gradient-to-b from-purple-600 to-purple-800 text-white border border-purple-700 shadow-sm cursor-pointer transition-all active:translate-y-[1px]';
+          btnRev.className = 'orientation-toggle-btn px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold bg-white text-zinc-700 border border-zinc-300 hover:bg-zinc-100 hover:text-zinc-900 cursor-pointer transition-all active:translate-y-[1px]';
+          if (orientLabel) {
+            orientLabel.className = 'px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-purple-50 border border-purple-300 text-purple-900 shadow-xs';
+            orientLabel.textContent = '정위치 (Upright)';
+          }
+        }
+      }
+
+      // 3. Update keywords in Reading mode
+      const kwBox = document.getElementById('detail-keywords');
+      if (kwBox && appState.currentDetailCard) {
+        kwBox.innerHTML = '';
+        const kws = isRev ? appState.currentDetailCard.keywordsReversed : appState.currentDetailCard.keywordsUpright;
+        kws.forEach(kw => {
+          const span = document.createElement('span');
+          span.className = isRev
+            ? 'px-3 py-1.5 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 font-bold text-xs sm:text-sm'
+            : 'px-3 py-1.5 rounded-xl bg-purple-50 border border-purple-200 text-purple-900 font-bold text-xs sm:text-sm';
+          span.textContent = `#${kw}`;
+          kwBox.appendChild(span);
+        });
+      }
+
+      // 4. Update Tab 2 text in Reading mode
+      const contextText = document.getElementById('detail-context-text');
+      if (contextText && appState.currentDetailCard) {
+        const card = appState.currentDetailCard;
+        const drawnObj = (appState.drawnCards && appState.selectedCardIndex >= 0) ? appState.drawnCards[appState.selectedCardIndex] : null;
+        const tenseInfo = drawnObj ? getTenseInterpretation(drawnObj, appState.question) : null;
+        
+        if (tenseInfo && !isRev) {
+          contextText.innerHTML = `
+            <div class="space-y-4">
+              <p class="text-base sm:text-lg leading-relaxed font-normal text-zinc-800 break-keep-all">${tenseInfo.interpretation}</p>
+              <div class="p-4 sm:p-5 rounded-2xl bg-purple-50/90 border border-purple-200 text-purple-950 font-medium text-sm sm:text-base break-keep-all space-y-1">
+                <div class="font-bold flex items-center gap-1.5 text-purple-900">
+                  <span>💡</span><span>상황 맞춤 처방 및 행동 가이드</span>
+                </div>
+                <div class="pt-1 text-purple-900/90 leading-relaxed">${tenseInfo.situationAdvice}</div>
+              </div>
+              <div class="p-4 rounded-xl bg-slate-50 border border-zinc-200 text-zinc-700 font-normal text-sm sm:text-base break-keep-all">
+                <span class="font-bold text-zinc-900">본질 행동 지침:</span> ${card.adviceBase}
+              </div>
+            </div>`;
+        } else if (isRev) {
+          contextText.innerHTML = `
+            <div class="space-y-4">
+              <p class="text-base sm:text-lg leading-relaxed font-normal text-zinc-800 break-keep-all">
+                질문자님의 상황에서 <strong>${card.nameKo} 역위치 (역방향)</strong>는 에너지가 내면화되거나 일시적인 지연, 관점의 전환이 필요한 상태를 표시합니다. 조급하게 외적인 성과를 재촉하기보다는 마음의 중심을 차분히 정비하고 본질적인 균형을 회복해야 할 시점입니다.
+              </p>
+              <div class="p-4 sm:p-5 rounded-2xl bg-amber-50/90 border border-amber-200 text-amber-950 font-medium text-sm sm:text-base break-keep-all space-y-1">
+                <div class="font-bold flex items-center gap-1.5 text-amber-900">
+                  <span>🔄</span><span>역위치 극복 및 균형 회복 조언</span>
+                </div>
+                <div class="pt-1 text-amber-900/90 leading-relaxed">
+                  지나친 ${card.keywordsReversed[0] || '불안'}에 휘둘리지 마시고, 내면의 중심을 다시 세우며 한 걸음 물러서서 상황을 객관적으로 조망하세요.
+                </div>
+              </div>
+              <div class="p-4 rounded-xl bg-slate-50 border border-zinc-200 text-zinc-700 font-normal text-sm sm:text-base break-keep-all">
+                <span class="font-bold text-zinc-900">본질 행동 지침:</span> ${card.adviceBase}
+              </div>
+            </div>`;
+        } else {
+          contextText.innerHTML = `
+            <div class="space-y-4">
+              <p class="text-base sm:text-lg leading-relaxed font-normal text-zinc-800 break-keep-all">
+                질문자님의 상황에서 <strong>${card.nameKo} 정위치 (정방향)</strong>는 <strong>${card.keywordsUpright[0]}</strong>의 적극적인 결단과 능동적인 추진이 핵심임을 가리킵니다. 망설이지 마시고 본인의 판단을 신뢰하며 주도적인 행동을 시작하세요.
+              </p>
+              <div class="p-4 sm:p-5 rounded-2xl bg-purple-50/90 border border-purple-200 text-purple-950 font-medium text-sm sm:text-base break-keep-all space-y-1">
+                <div class="font-bold flex items-center gap-1.5 text-purple-900">
+                  <span>💡</span><span>권장 실천 조언</span>
+                </div>
+                <div class="pt-1 text-purple-900/90 leading-relaxed">${card.adviceBase}</div>
+              </div>
+            </div>`;
+        }
+      }
+
+      // 5. If in gallery mode, switch active tab to match
+      const tabsGallery = document.getElementById('detail-tabs-gallery');
+      if (tabsGallery && !tabsGallery.classList.contains('hidden')) {
+        const targetTabId = isRev ? 'gtab-reversed' : 'gtab-upright';
+        document.querySelectorAll('.gtab-btn').forEach(b => {
+          if (b.getAttribute('data-gtab') === targetTabId) {
+            b.className = 'gtab-btn active flex-1 text-center px-2.5 sm:px-4 py-2.5 border-b-2 border-purple-600 text-purple-700 bg-purple-50 rounded-t-xl font-bold whitespace-nowrap transition-colors cursor-pointer text-xs sm:text-[13px]';
+          } else {
+            b.className = 'gtab-btn flex-1 text-center px-2.5 sm:px-4 py-2.5 border-b-2 border-transparent text-zinc-500 hover:text-zinc-800 rounded-t-xl font-medium whitespace-nowrap transition-colors cursor-pointer text-xs sm:text-[13px]';
+          }
+        });
+        document.querySelectorAll('.gtab-content').forEach(gc => gc.classList.add('hidden'));
+        document.getElementById(targetTabId)?.classList.remove('hidden');
+      }
     }
 
     function populateDetailContent(card, isRev, posName, posMeaning, drawnObj, isGallery = false) {
@@ -7003,22 +7129,22 @@ function generateAiTarotArtworkSvg(card) {
           kwRevBox.appendChild(span);
         });
         document.getElementById('gdetail-meaning-reversed').textContent = 
-          `${card.nameKo}의 역방향 에너지는 [${card.keywordsReversed.slice(0, 3).join(', ')}]과 관련된 내면적 갈등이나 일시적인 지연을 암시합니다. 에너지가 한곳에 정체되거나 과도하게 표출될 때 나타나며, 조급하게 결론을 내리기보다는 본질적인 원인을 통찰하고 내면의 중심을 다시 세워야 할 시점입니다.`;
+          `${card.nameKo}의 역방향 에너지는 [${card.keywordsReversed.slice(0, 3).join(', ')}]의 과도한 표출이나 일시적 지연을 암시합니다. 성급하게 결론을 내리려 하기보다 한 걸음 물러서서 내면의 균형을 되찾을 때입니다.`;
         document.getElementById('gdetail-advice-reversed').textContent = 
-          `지나친 ${card.keywordsReversed[0]}이나 불안감에 휘둘리지 않도록 주의하고, 한 걸음 물러서서 내면의 균형을 먼저 회복하세요.`;
+          `과도한 ${card.keywordsReversed[0]}이나 불안감에 휘둘리지 않도록 유의하고, 내면의 중심을 다시 회복하세요.`;
 
         // 갤러리 탭 초기화 (1번 도상 관찰 활성화)
         resetGalleryTabs();
         setDetailOrientation(false);
 
       } else {
-        // [결과 해석 모드]: 4개 심층 독해 탭 표시
+        // [결과 해석 모드]: 4개 심층 포지션 탭 표시
         if (subHeader) subHeader.textContent = 'UNIVERSAL TAROT DEEP INQUIRY';
         const pSplit = splitPositionName(posName);
         document.getElementById('detail-pos-name').innerHTML = pSplit.en
           ? `<div>${pSplit.ko}</div><div class="text-[10px] font-mono text-purple-300 mt-0.5">${pSplit.en}</div>`
           : pSplit.ko;
-        document.getElementById('detail-pos-element').textContent = `원소: ${card.element} · ${isRev ? '역방향 (Reversed)' : '정방향 (Upright)'}`;
+        document.getElementById('detail-pos-element').textContent = `원소: ${card.element} · ${isRev ? '역위치 (Reversed)' : '정위치 (Upright)'}`;
 
         tabsGallery.classList.add('hidden');
         tabsGallery.classList.remove('flex');
@@ -7108,128 +7234,6 @@ function generateAiTarotArtworkSvg(card) {
       });
     }
 
-    // Orientation toggle (?뺤쐞移?/ ??쐞移??꾪솚)
-    function setDetailOrientation(isRev) {
-      appState.currentDetailIsReversed = isRev;
-
-      // 1. Update visual card
-      if (appState.currentDetailCard) {
-        renderVisualCard(appState.currentDetailCard, isRev);
-        const elementLabel = document.getElementById('detail-pos-element');
-        if (elementLabel) {
-          elementLabel.textContent = ?먯냼: \ 쨌 \;
-        }
-      }
-
-      // 2. Update toggle buttons UI
-      const btnUp = document.getElementById('btn-toggle-upright');
-      const btnRev = document.getElementById('btn-toggle-reversed');
-      const orientLabel = document.getElementById('detail-current-orientation-label');
-
-      if (btnUp && btnRev) {
-        if (isRev) {
-          btnRev.className = 'orientation-toggle-btn active px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-bold bg-gradient-to-b from-amber-600 to-amber-700 text-white border border-amber-800 shadow-sm cursor-pointer transition-all active:translate-y-[1px]';
-          btnUp.className = 'orientation-toggle-btn px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold bg-white text-zinc-700 border border-zinc-300 hover:bg-zinc-100 hover:text-zinc-900 cursor-pointer transition-all active:translate-y-[1px]';
-          if (orientLabel) {
-            orientLabel.className = 'px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-amber-50 border border-amber-300 text-amber-900 shadow-xs';
-            orientLabel.textContent = '??쐞移?(Reversed)';
-          }
-        } else {
-          btnUp.className = 'orientation-toggle-btn active px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-bold bg-gradient-to-b from-purple-600 to-purple-800 text-white border border-purple-700 shadow-sm cursor-pointer transition-all active:translate-y-[1px]';
-          btnRev.className = 'orientation-toggle-btn px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold bg-white text-zinc-700 border border-zinc-300 hover:bg-zinc-100 hover:text-zinc-900 cursor-pointer transition-all active:translate-y-[1px]';
-          if (orientLabel) {
-            orientLabel.className = 'px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-purple-50 border border-purple-300 text-purple-900 shadow-xs';
-            orientLabel.textContent = '?뺤쐞移?(Upright)';
-          }
-        }
-      }
-
-      // 3. Update keywords in Reading mode
-      const kwBox = document.getElementById('detail-keywords');
-      if (kwBox && appState.currentDetailCard) {
-        kwBox.innerHTML = '';
-        const kws = isRev ? appState.currentDetailCard.keywordsReversed : appState.currentDetailCard.keywordsUpright;
-        kws.forEach(kw => {
-          const span = document.createElement('span');
-          span.className = isRev
-            ? 'px-3 py-1.5 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 font-bold text-xs sm:text-sm'
-            : 'px-3 py-1.5 rounded-xl bg-purple-50 border border-purple-200 text-purple-900 font-bold text-xs sm:text-sm';
-          span.textContent = #\;
-          kwBox.appendChild(span);
-        });
-      }
-
-      // 4. Update Tab 2 text in Reading mode
-      const contextText = document.getElementById('detail-context-text');
-      if (contextText && appState.currentDetailCard) {
-        const card = appState.currentDetailCard;
-        const drawnObj = (appState.drawnCards && appState.selectedCardIndex >= 0) ? appState.drawnCards[appState.selectedCardIndex] : null;
-        const tenseInfo = drawnObj ? getTenseInterpretation(drawnObj, appState.question) : null;
-        
-        if (tenseInfo && !isRev) {
-          contextText.innerHTML = 
-            <div class="space-y-4">
-              <p class="text-base sm:text-lg leading-relaxed font-normal text-zinc-800 break-keep-all">\</p>
-              <div class="p-4 sm:p-5 rounded-2xl bg-purple-50/90 border border-purple-200 text-purple-950 font-medium text-sm sm:text-base break-keep-all space-y-1">
-                <div class="font-bold flex items-center gap-1.5 text-purple-900">
-                  <span>?뮕</span><span>?곹솴 留욎땄 泥섎갑 諛??됰룞 媛?대뱶</span>
-                </div>
-                <div class="pt-1 text-purple-900/90 leading-relaxed">\</div>
-              </div>
-              <div class="p-4 rounded-xl bg-slate-50 border border-zinc-200 text-zinc-700 font-normal text-sm sm:text-base break-keep-all">
-                <span class="font-bold text-zinc-900">蹂몄쭏 ?됰룞 吏移?</span> \
-              </div>
-            </div>;
-        } else if (isRev) {
-          contextText.innerHTML = 
-            <div class="space-y-4">
-              <p class="text-base sm:text-lg leading-relaxed font-normal text-zinc-800 break-keep-all">
-                吏덈Ц?먮떂???곹솴?먯꽌 <strong>\ ??쐞移???갑??</strong>???먮꼫吏媛 ?대㈃?붾릺嫄곕굹 ?쇱떆?곸씤 吏?? 愿?먯쓽 ?꾪솚???꾩슂???곹깭瑜??붿떆?⑸땲?? 議곌툒?섍쾶 ?몄쟻???깃낵瑜??ъ큺?섍린蹂대떎??留덉쓬??以묒떖??李⑤텇???뺣퉬?섍퀬 蹂몄쭏?곸씤 洹좏삎???뚮났?댁빞 ???쒖젏?낅땲??
-              </p>
-              <div class="p-4 sm:p-5 rounded-2xl bg-amber-50/90 border border-amber-200 text-amber-950 font-medium text-sm sm:text-base break-keep-all space-y-1">
-                <div class="font-bold flex items-center gap-1.5 text-amber-900">
-                  <span>??/span><span>??쐞移?洹밸났 諛?洹좏삎 ?뚮났 議곗뼵</span>
-                </div>
-                <div class="pt-1 text-amber-900/90 leading-relaxed">
-                  吏?섏튇 \???섎몮由ъ? 留덉떆怨? ?대㈃??以묒떖???ㅼ떆 ?몄슦硫???嫄몄쓬 臾쇰윭?쒖꽌 ?곹솴??媛앷??곸쑝濡?議곕쭩?섏꽭??
-                </div>
-              </div>
-              <div class="p-4 rounded-xl bg-slate-50 border border-zinc-200 text-zinc-700 font-normal text-sm sm:text-base break-keep-all">
-                <span class="font-bold text-zinc-900">蹂몄쭏 ?됰룞 吏移?</span> \
-              </div>
-            </div>;
-        } else {
-          contextText.innerHTML = 
-            <div class="space-y-4">
-              <p class="text-base sm:text-lg leading-relaxed font-normal text-zinc-800 break-keep-all">
-                吏덈Ц?먮떂???곹솴?먯꽌 <strong>\ ?뺤쐞移??뺣갑??</strong>??<strong>\</strong>???곴레?곸씤 寃곕떒怨??λ룞?곸씤 異붿쭊???듭떖?꾩쓣 媛由ы궢?덈떎. 留앹꽕?댁? 留덉떆怨?蹂몄씤???먮떒???좊ː?섎ŉ 二쇰룄?곸씤 ?됰룞???쒖옉?섏꽭??
-              </p>
-              <div class="p-4 sm:p-5 rounded-2xl bg-purple-50/90 border border-purple-200 text-purple-950 font-medium text-sm sm:text-base break-keep-all space-y-1">
-                <div class="font-bold flex items-center gap-1.5 text-purple-900">
-                  <span>?뮕</span><span>沅뚯옣 ?ㅼ쿇 議곗뼵</span>
-                </div>
-                <div class="pt-1 text-purple-900/90 leading-relaxed">\</div>
-              </div>
-            </div>;
-        }
-      }
-
-      // 5. If in gallery mode, switch active tab to match
-      const tabsGallery = document.getElementById('detail-tabs-gallery');
-      if (tabsGallery && !tabsGallery.classList.contains('hidden')) {
-        const targetTabId = isRev ? 'gtab-reversed' : 'gtab-upright';
-        document.querySelectorAll('.gtab-btn').forEach(b => {
-          if (b.getAttribute('data-gtab') === targetTabId) {
-            b.className = 'gtab-btn active flex-1 text-center px-2.5 sm:px-4 py-2.5 border-b-2 border-purple-600 text-purple-700 bg-purple-50 rounded-t-xl font-bold whitespace-nowrap transition-colors cursor-pointer text-xs sm:text-[13px]';
-          } else {
-            b.className = 'gtab-btn flex-1 text-center px-2.5 sm:px-4 py-2.5 border-b-2 border-transparent text-zinc-500 hover:text-zinc-800 rounded-t-xl font-medium whitespace-nowrap transition-colors cursor-pointer text-xs sm:text-[13px]';
-          }
-        });
-        document.querySelectorAll('.gtab-content').forEach(gc => gc.classList.add('hidden'));
-        document.getElementById(targetTabId)?.classList.remove('hidden');
-      }
-    }
-
     // Bind Upright / Reversed toggle buttons
     const btnToggleUpright = document.getElementById('btn-toggle-upright');
     const btnToggleReversed = document.getElementById('btn-toggle-reversed');
@@ -7250,11 +7254,13 @@ function generateAiTarotArtworkSvg(card) {
       });
     }
 
-    // [?щ씪?대뜑 ?쒖뼱] 紐⑤떖 ???댁쟾/?ㅼ쓬 移대뱶 ?щ씪?대뱶 ?ㅻ퉬寃뚯씠??    function updateDetailSliderNav() {
+    // [슬라이더 제어] 모달 내 이전/다음 카드 슬라이드 내비게이션
+    function updateDetailSliderNav() {
       const sliderNav = document.getElementById('detail-slider-nav');
       const quickNav = document.getElementById('detail-quick-nav');
       const total = (appState.drawnCards && Array.isArray(appState.drawnCards)) ? appState.drawnCards.length : 0;
       
+      // 덱 펼쳐보기(도감) 모드이거나 카드가 1장뿐이면 슬라이더 숨김
       if (!sliderNav) return;
       if (!appState.drawnCards || total <= 1 || appState.isTodayFortune || appState.selectedCardIndex < 0) {
         sliderNav.classList.add('hidden');
@@ -7277,7 +7283,7 @@ function generateAiTarotArtworkSvg(card) {
       const counterEl = document.getElementById('detail-slider-counter');
       const posNameEl = document.getElementById('detail-slider-posname');
 
-      if (counterEl) counterEl.textContent = 移대뱶 \ / \;
+      if (counterEl) counterEl.textContent = `카드 ${curr + 1} / ${total}`;
       if (posNameEl && appState.drawnCards[curr]) {
         posNameEl.textContent = appState.drawnCards[curr].positionName;
       }
@@ -7288,6 +7294,7 @@ function generateAiTarotArtworkSvg(card) {
       const total = appState.drawnCards.length;
       let newIdx = ((appState.selectedCardIndex ?? 0) + direction + total) % total;
       
+      // 넘긴 카드가 아직 안 열린 상태면 자동으로 열림 처리 및 렌더링 갱신
       if (!appState.revealedIndices.includes(newIdx)) {
         appState.revealedIndices.push(newIdx);
         renderCards();
@@ -7297,7 +7304,8 @@ function generateAiTarotArtworkSvg(card) {
       openDetailModal(newIdx);
     }
 
-    // 紐⑤떖 ???щ씪?대뜑 踰꾪듉 ?대깽??諛붿씤??    const btnPrevDetailCard = document.getElementById('btn-prev-detail-card');
+    // 모달 내 슬라이더 버튼 이벤트 바인딩
+    const btnPrevDetailCard = document.getElementById('btn-prev-detail-card');
     const btnNextDetailCard = document.getElementById('btn-next-detail-card');
     const btnQuickPrevCard = document.getElementById('btn-quick-prev-card');
     const btnQuickNextCard = document.getElementById('btn-quick-next-card');
@@ -7331,7 +7339,7 @@ function generateAiTarotArtworkSvg(card) {
       });
     }
 
-    // ?ㅻ낫??醫뚯슦 ?붿궡????諛?ESC濡?移대뱶 ?쒖뼱
+    // 키보드 좌우 화살표 키 및 ESC로 카드 제어
     window.addEventListener('keydown', (e) => {
       const modalDetail = document.getElementById('modal-card-detail');
       if (modalDetail && !modalDetail.classList.contains('hidden')) {
@@ -7347,6 +7355,50 @@ function generateAiTarotArtworkSvg(card) {
       }
     });
 
+    function resetDetailTabs() {
+      const tabs = document.querySelectorAll('.tab-btn');
+      tabs.forEach((b, i) => {
+        if (i === 0) {
+          b.className = 'tab-btn active flex-1 text-center px-1.5 sm:px-2.5 py-2 border-b-2 border-purple-600 text-purple-700 bg-purple-50 rounded-t-xl font-bold whitespace-nowrap transition-colors cursor-pointer text-xs sm:text-sm';
+        } else {
+          b.className = 'tab-btn flex-1 text-center px-1.5 sm:px-2.5 py-2 border-b-2 border-transparent text-zinc-500 hover:text-zinc-800 rounded-t-xl font-medium whitespace-nowrap transition-colors cursor-pointer text-xs sm:text-sm';
+        }
+      });
+      document.querySelectorAll('.tab-content').forEach((tc, i) => {
+        if (i === 0) tc.classList.remove('hidden');
+        else tc.classList.add('hidden');
+      });
+    }
+
+    function resetGalleryTabs() {
+      const gtabs = document.querySelectorAll('.gtab-btn');
+      gtabs.forEach((b, i) => {
+        if (i === 0) {
+          b.className = 'gtab-btn active flex-1 text-center px-2.5 sm:px-4 py-2.5 border-b-2 border-purple-600 text-purple-700 bg-purple-50 rounded-t-xl font-bold whitespace-nowrap transition-colors cursor-pointer text-xs sm:text-[13px]';
+        } else {
+          b.className = 'gtab-btn flex-1 text-center px-2.5 sm:px-4 py-2.5 border-b-2 border-transparent text-zinc-500 hover:text-zinc-800 rounded-t-xl font-medium whitespace-nowrap transition-colors cursor-pointer text-xs sm:text-[13px]';
+        }
+      });
+      document.querySelectorAll('.gtab-content').forEach((gc, i) => {
+        if (i === 0) gc.classList.remove('hidden');
+        else gc.classList.add('hidden');
+      });
+    }
+
+    // Reading Result Tabs Click Listener
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => {
+          b.className = 'tab-btn flex-1 text-center px-1.5 sm:px-2.5 py-2 border-b-2 border-transparent text-zinc-500 hover:text-zinc-800 rounded-t-xl font-medium whitespace-nowrap transition-colors cursor-pointer text-xs sm:text-sm';
+        });
+        btn.className = 'tab-btn active flex-1 text-center px-1.5 sm:px-2.5 py-2 border-b-2 border-purple-600 text-purple-700 bg-purple-50 rounded-t-xl font-bold whitespace-nowrap transition-colors cursor-pointer text-xs sm:text-sm';
+
+        const targetId = btn.getAttribute('data-tab');
+        document.querySelectorAll('.tab-content').forEach(tc => tc.classList.add('hidden'));
+        document.getElementById(targetId)?.classList.remove('hidden');
+      });
+    });
+
     // Gallery Tabs Click Listener (도상 관찰, 정방향 의미, 역방향 의미)
     document.querySelectorAll('.gtab-btn').forEach(btn => {
       btn.addEventListener('click', () => {
@@ -7360,11 +7412,13 @@ function generateAiTarotArtworkSvg(card) {
             b.className = 'gtab-btn flex-1 text-center px-2.5 sm:px-4 py-2.5 border-b-2 border-transparent text-zinc-500 hover:text-zinc-800 rounded-t-xl font-medium whitespace-nowrap transition-colors cursor-pointer text-xs sm:text-[13px]';
           });
           btn.className = 'gtab-btn active flex-1 text-center px-2.5 sm:px-4 py-2.5 border-b-2 border-purple-600 text-purple-700 bg-purple-50 rounded-t-xl font-bold whitespace-nowrap transition-colors cursor-pointer text-xs sm:text-[13px]';
+
           document.querySelectorAll('.gtab-content').forEach(gc => gc.classList.add('hidden'));
-          document.getElementById('gtab-observe')?.classList.remove('hidden');
+          document.getElementById(targetId)?.classList.remove('hidden');
         }
       });
     });
+
 
     // FOLLOW-UP CLARIFIER
     formFollowup.addEventListener('submit', (e) => {
