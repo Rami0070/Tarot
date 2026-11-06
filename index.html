@@ -599,8 +599,8 @@
     </section>
 
     <!-- [신규 창 1] 종합 리딩 모달 창 (오늘의 운세 5대 영역 및 4원소 분석) -->
-    <div id="modal-reading-synthesis" class="reading-popup-modal fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-md animate-in fade-in">
-      <div class="bg-white border border-zinc-200 rounded-3xl w-full max-w-4xl h-[90vh] min-h-[640px] max-h-[880px] flex flex-col shadow-2xl relative overflow-hidden text-zinc-900">
+    <div id="modal-reading-synthesis" class="reading-popup-modal fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-md animate-in fade-in overflow-y-auto">
+      <div class="bg-white border border-zinc-200 rounded-3xl w-full max-w-4xl max-h-[88vh] my-auto flex flex-col shadow-2xl relative overflow-hidden text-zinc-900">
         <div class="px-6 py-4.5 bg-white border-b border-zinc-200 flex items-center justify-between shrink-0">
           <div class="flex items-center gap-3.5">
             <div id="modal-synthesis-icon" class="w-10 h-10 rounded-2xl bg-purple-100 border border-purple-300 flex items-center justify-center text-purple-700 font-bold text-lg shadow-inner">✦</div>
@@ -627,10 +627,12 @@
 
           <!-- Standard Synthesis View (for 3-card & celtic cross) -->
           <div id="standard-synthesis-view" class="space-y-6">
-            <div class="p-6 sm:p-7 rounded-2xl bg-white border border-zinc-200 shadow-sm space-y-3.5">
+            <div class="p-6 sm:p-7 rounded-2xl bg-white border border-zinc-200 shadow-sm space-y-4">
               <div class="text-xs sm:text-sm font-mono font-bold text-purple-700 uppercase tracking-wider">핵심 테마</div>
               <h3 id="synthesis-theme" class="text-xl sm:text-2xl font-serif font-bold text-zinc-900 break-keep-all">성찰과 도약을 통한 새로운 활력의 흐름</h3>
-              <p id="synthesis-summary" class="text-base sm:text-lg text-zinc-800 leading-relaxed font-normal whitespace-pre-line break-keep-all">질문하신 내용에 대해 카드는 단정적 운명이 아닌 능동적 행동을 강조합니다.</p>
+              <div id="synthesis-summary" class="space-y-4 text-base sm:text-lg text-zinc-800 leading-relaxed font-normal break-keep-all">
+                <!-- Dynamically populated via JS -->
+              </div>
             </div>
             <div class="p-5 sm:p-6 rounded-2xl bg-purple-50/80 border border-purple-200 space-y-2.5">
               <div class="flex items-center gap-2 text-sm sm:text-base font-bold text-purple-900 uppercase tracking-wider">
@@ -668,12 +670,19 @@
             </div>
           </div>
         </div>
+        <!-- Modal Footer -->
+        <div class="px-6 py-4 bg-white border-t border-zinc-200 flex items-center justify-between shrink-0">
+          <span class="text-xs text-zinc-500 font-mono">✦ 리딩 결과는 새로운 질문 전까지 보존됩니다.</span>
+          <button type="button" class="btn-close-reading-modal px-5 py-2.5 rounded-xl bg-gradient-to-b from-purple-600 via-purple-700 to-purple-800 border border-purple-500 border-b-2 border-b-purple-950 text-white font-bold text-sm shadow-sm hover:brightness-110 active:scale-95 transition-all cursor-pointer" data-target="modal-reading-synthesis">
+            해설 창 닫기
+          </button>
+        </div>
       </div>
     </div>
 
     <!-- [신규 창 2] 관찰, 행동, 해석 조언 모달 창 -->
-    <div id="modal-reading-breakdown" class="reading-popup-modal fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-md animate-in fade-in">
-      <div class="bg-white border border-zinc-200 rounded-3xl w-full max-w-5xl h-[90vh] min-h-[640px] max-h-[880px] flex flex-col shadow-2xl relative overflow-hidden text-zinc-900">
+    <div id="modal-reading-breakdown" class="reading-popup-modal fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-md animate-in fade-in overflow-y-auto">
+      <div class="bg-white border border-zinc-200 rounded-3xl w-full max-w-5xl max-h-[88vh] my-auto flex flex-col shadow-2xl relative overflow-hidden text-zinc-900">
         <div class="px-6 py-4.5 bg-white border-b border-zinc-200 flex items-center justify-between shrink-0">
           <div class="flex items-center gap-3.5">
             <div class="w-10 h-10 rounded-2xl bg-purple-100 border border-purple-300 flex items-center justify-center text-purple-700 font-bold text-lg shadow-inner">✦</div>
@@ -691,18 +700,25 @@
             <!-- Injected via JS -->
           </div>
         </div>
+        <!-- Modal Footer -->
+        <div class="px-6 py-4 bg-white border-t border-zinc-200 flex items-center justify-between shrink-0">
+          <span class="text-xs text-zinc-500 font-mono">✦ 카드별 관찰과 처방을 실천에 적용해보세요.</span>
+          <button type="button" class="btn-close-reading-modal px-5 py-2.5 rounded-xl bg-gradient-to-b from-purple-600 via-purple-700 to-purple-800 border border-purple-500 border-b-2 border-b-purple-950 text-white font-bold text-sm shadow-sm hover:brightness-110 active:scale-95 transition-all cursor-pointer" data-target="modal-reading-breakdown">
+            해설 창 닫기
+          </button>
+        </div>
       </div>
     </div>
 
     <!-- [신규 창 3] 심층 리딩 및 연계 질문 모달 창 -->
-    <div id="modal-reading-followup" class="reading-popup-modal fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-md animate-in fade-in">
-      <div class="bg-white border border-zinc-200 rounded-3xl w-full max-w-4xl h-[90vh] min-h-[640px] max-h-[880px] flex flex-col shadow-2xl relative overflow-hidden text-zinc-900">
+    <div id="modal-reading-followup" class="reading-popup-modal fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-md animate-in fade-in overflow-y-auto">
+      <div class="bg-white border border-zinc-200 rounded-3xl w-full max-w-4xl max-h-[88vh] my-auto flex flex-col shadow-2xl relative overflow-hidden text-zinc-900">
         <div class="px-6 py-4.5 bg-white border-b border-zinc-200 flex items-center justify-between shrink-0">
           <div class="flex items-center gap-3.5">
             <div id="modal-followup-icon" class="w-10 h-10 rounded-2xl bg-purple-100 border border-purple-300 flex items-center justify-center text-purple-700 font-bold text-lg shadow-inner">✦</div>
             <div>
               <h2 id="modal-followup-title" class="text-xl sm:text-2xl font-serif font-bold text-zinc-900">심층 리딩 및 연계 질문</h2>
-              <p id="modal-followup-subtitle" class="text-xs sm:text-sm text-zinc-500">앞선 리딩을 바탕으로 보조 카드(Clarifier)를 뽑아 심층 탐색</p>
+              <p id="modal-followup-subtitle" class="text-xs sm:text-sm text-zinc-500">앞선 리딩을 바탕으로 보조 카드(Clarifier)를 뽑아 심층 탐색 (1회 한정)</p>
             </div>
           </div>
           <button type="button" class="btn-close-reading-modal p-2 rounded-xl bg-gradient-to-b from-white to-zinc-100 border border-zinc-300 border-b-2 border-b-zinc-400 text-zinc-600 hover:text-zinc-900 hover:bg-zinc-200 active:border-b active:translate-y-[1px] transition-all cursor-pointer shadow-xs" data-target="modal-reading-followup">
@@ -716,17 +732,22 @@
           </div>
 
           <form id="form-followup" class="space-y-4 bg-white p-6 rounded-2xl border border-zinc-200 shadow-sm">
-            <label class="block text-sm font-bold text-zinc-900">
-              앞선 리딩 결과를 바탕으로 추가로 고민되는 점을 적어주세요:
-            </label>
+            <div class="flex items-center justify-between">
+              <label class="block text-sm font-bold text-zinc-900">
+                앞선 리딩 결과를 바탕으로 추가로 고민되는 점을 적어주세요:
+              </label>
+              <span class="text-xs font-mono font-bold px-2.5 py-0.5 rounded-full bg-purple-100 text-purple-800 border border-purple-200">
+                1회 한정 제공
+              </span>
+            </div>
             <input
               type="text"
               id="input-followup"
               placeholder="예: 지금 시점에서 어떤 심리적 저항이나 함정을 가장 경계해야 할까요?"
-              class="w-full px-4 py-3.5 rounded-xl bg-slate-50 border border-zinc-300 text-base text-zinc-900 placeholder-zinc-400 focus:outline-none focus:border-purple-600 shadow-inner"
+              class="w-full px-4 py-3.5 rounded-xl bg-slate-50 border border-zinc-300 text-base text-zinc-900 placeholder-zinc-400 focus:outline-none focus:border-purple-600 shadow-inner disabled:bg-zinc-100 disabled:text-zinc-400 disabled:cursor-not-allowed"
             />
             <div class="flex justify-end">
-              <button type="submit" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-b from-purple-600 via-purple-700 to-purple-900 border border-purple-500 border-b-4 border-b-purple-950 text-white font-bold text-sm shadow-md hover:brightness-110 active:border-b-2 active:translate-y-[2px] transition-all cursor-pointer">
+              <button type="submit" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-b from-purple-600 via-purple-700 to-purple-900 border border-purple-500 border-b-4 border-b-purple-950 text-white font-bold text-sm shadow-md hover:brightness-110 active:border-b-2 active:translate-y-[2px] transition-all cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed">
                 <span>✦ 보조 카드 뽑고 심층 분석</span>
                 <svg class="w-4 h-4 text-purple-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
               </button>
@@ -737,6 +758,13 @@
           <div id="clarifier-result-box" class="hidden p-6 rounded-2xl bg-white border border-purple-200 shadow-md">
             <!-- Injected via JS -->
           </div>
+        </div>
+        <!-- Modal Footer -->
+        <div class="px-6 py-4 bg-white border-t border-zinc-200 flex items-center justify-between shrink-0">
+          <span class="text-xs text-zinc-500 font-mono">✦ 심층 연계 질문은 본 리딩 세션당 1회 제공됩니다.</span>
+          <button type="button" class="btn-close-reading-modal px-5 py-2.5 rounded-xl bg-gradient-to-b from-purple-600 via-purple-700 to-purple-800 border border-purple-500 border-b-2 border-b-purple-950 text-white font-bold text-sm shadow-sm hover:brightness-110 active:scale-95 transition-all cursor-pointer" data-target="modal-reading-followup">
+            해설 창 닫기
+          </button>
         </div>
       </div>
     </div>
@@ -3869,6 +3897,7 @@
       revealedIndices: [],
       selectedCardIndex: null,
       clarifierCard: null,
+      followupDrawn: false,
       galleryCategory: 'all',
       bgmInstrument: 'cello'
     };
@@ -4874,6 +4903,25 @@
 
       // Setup dynamic shuffle animation
       setupShuffleAnimation(appState.shuffleMethod);
+
+      // Reset Followup state & input for new reading
+      appState.followupDrawn = false;
+      if (inputFollowup) {
+        inputFollowup.disabled = false;
+        inputFollowup.value = '';
+      }
+      if (formFollowup) {
+        const btnSubmitFollowup = formFollowup.querySelector('button[type="submit"]');
+        if (btnSubmitFollowup) {
+          btnSubmitFollowup.disabled = false;
+          btnSubmitFollowup.className = 'inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-b from-purple-600 via-purple-700 to-purple-900 border border-purple-500 border-b-4 border-b-purple-950 text-white font-bold text-sm shadow-md hover:brightness-110 active:border-b-2 active:translate-y-[2px] transition-all cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed';
+          btnSubmitFollowup.innerHTML = `<span>✦ 보조 카드 뽑고 심층 분석</span><svg class="w-4 h-4 text-purple-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>`;
+        }
+      }
+      if (clarifierResultBox) {
+        clarifierResultBox.classList.add('hidden');
+        clarifierResultBox.innerHTML = '';
+      }
 
       // Keep right interpretation buttons ready and clickable!
       const btnOpenSynthesisReset = document.getElementById('btn-open-synthesis');
@@ -6651,22 +6699,35 @@ function generateAiTarotArtworkSvg(card) {
         if (modalFollowupSubtitle) modalFollowupSubtitle.textContent = '오늘 하루 경계해야 할 핵심 리스크 확인 및 추가 궁금한 점 보조 카드 탐색';
 
         // Update Right Actions Panel Labels (Unified Purple 3 Buttons for Today's Fortune)
-        const btnOpenSynthesis = document.getElementById('btn-open-synthesis');
-        const btnOpenBreakdown = document.getElementById('btn-open-breakdown');
-        const btnOpenFollowup = document.getElementById('btn-open-followup');
+        const updateBtnLabels = (synTitle, synSub, brkTitle, brkSub, folTitle, folSub) => {
+          const bSyn = document.getElementById('btn-open-synthesis');
+          const bBrk = document.getElementById('btn-open-breakdown');
+          const bFol = document.getElementById('btn-open-followup');
+          if (bSyn) {
+            const t = bSyn.querySelector('.text-zinc-900');
+            const s = bSyn.querySelector('.text-zinc-600') || bSyn.querySelector('.text-zinc-500');
+            if (t) t.textContent = synTitle;
+            if (s) s.textContent = synSub;
+          }
+          if (bBrk) {
+            const t = bBrk.querySelector('.text-zinc-900');
+            const s = bBrk.querySelector('.text-zinc-600') || bBrk.querySelector('.text-zinc-500');
+            if (t) t.textContent = brkTitle;
+            if (s) s.textContent = brkSub;
+          }
+          if (bFol) {
+            const t = bFol.querySelector('.text-zinc-900');
+            const s = bFol.querySelector('.text-zinc-600') || bFol.querySelector('.text-zinc-500');
+            if (t) t.textContent = folTitle;
+            if (s) s.textContent = folSub;
+          }
+        };
 
-        if (btnOpenSynthesis) {
-          btnOpenSynthesis.querySelector('.text-zinc-900').textContent = '오늘의 운세 종합';
-          btnOpenSynthesis.querySelector('.text-zinc-500').textContent = '총운 · 연애 · 금전 · 사업';
-        }
-        if (btnOpenBreakdown) {
-          btnOpenBreakdown.querySelector('.text-zinc-900').textContent = '관찰 · 행동 · 해석 조언';
-          btnOpenBreakdown.querySelector('.text-zinc-500').textContent = '오늘의 카드 3단계 심층 처방';
-        }
-        if (btnOpenFollowup) {
-          btnOpenFollowup.querySelector('.text-zinc-900').textContent = '주의할 점 및 연계 질문';
-          btnOpenFollowup.querySelector('.text-zinc-500').textContent = '오늘 주의할 점 & 보조 카드 탐색';
-        }
+        updateBtnLabels(
+          '오늘의 운세 종합', '총운 · 연애 · 금전 · 사업',
+          '관찰 · 행동 · 해석 조언', '오늘의 카드 3단계 심층 처방',
+          '주의할 점 및 연계 질문', '오늘 주의할 점 & 보조 카드 탐색'
+        );
       } else {
         if (standardView) standardView.classList.remove('hidden');
         if (todayView) todayView.classList.add('hidden');
@@ -6681,25 +6742,38 @@ function generateAiTarotArtworkSvg(card) {
         const modalFollowupTitle = document.getElementById('modal-followup-title');
         const modalFollowupSubtitle = document.getElementById('modal-followup-subtitle');
         if (modalFollowupTitle) modalFollowupTitle.textContent = '심층 리딩 및 연계 질문';
-        if (modalFollowupSubtitle) modalFollowupSubtitle.textContent = '앞선 리딩을 바탕으로 보조 카드(Clarifier)를 뽑아 심층 탐색';
+        if (modalFollowupSubtitle) modalFollowupSubtitle.textContent = '앞선 리딩을 바탕으로 보조 카드(Clarifier)를 뽑아 심층 탐색 (1회 한정)';
 
         // Reset Right Actions Panel Labels (Unified Purple 3 Buttons for Standard Reading)
-        const btnOpenSynthesis = document.getElementById('btn-open-synthesis');
-        const btnOpenBreakdown = document.getElementById('btn-open-breakdown');
-        const btnOpenFollowup = document.getElementById('btn-open-followup');
+        const updateBtnLabels = (synTitle, synSub, brkTitle, brkSub, folTitle, folSub) => {
+          const bSyn = document.getElementById('btn-open-synthesis');
+          const bBrk = document.getElementById('btn-open-breakdown');
+          const bFol = document.getElementById('btn-open-followup');
+          if (bSyn) {
+            const t = bSyn.querySelector('.text-zinc-900');
+            const s = bSyn.querySelector('.text-zinc-600') || bSyn.querySelector('.text-zinc-500');
+            if (t) t.textContent = synTitle;
+            if (s) s.textContent = synSub;
+          }
+          if (bBrk) {
+            const t = bBrk.querySelector('.text-zinc-900');
+            const s = bBrk.querySelector('.text-zinc-600') || bBrk.querySelector('.text-zinc-500');
+            if (t) t.textContent = brkTitle;
+            if (s) s.textContent = brkSub;
+          }
+          if (bFol) {
+            const t = bFol.querySelector('.text-zinc-900');
+            const s = bFol.querySelector('.text-zinc-600') || bFol.querySelector('.text-zinc-500');
+            if (t) t.textContent = folTitle;
+            if (s) s.textContent = folSub;
+          }
+        };
 
-        if (btnOpenSynthesis) {
-          btnOpenSynthesis.querySelector('.text-zinc-900').textContent = '종합 리딩';
-          btnOpenSynthesis.querySelector('.text-zinc-500').textContent = '4원소 분석 & 흐름 총평';
-        }
-        if (btnOpenBreakdown) {
-          btnOpenBreakdown.querySelector('.text-zinc-900').textContent = '관찰 · 행동 · 해석 조언';
-          btnOpenBreakdown.querySelector('.text-zinc-500').textContent = '카드별 3단계 심층 처방';
-        }
-        if (btnOpenFollowup) {
-          btnOpenFollowup.querySelector('.text-zinc-900').textContent = '심층리딩 및 연계 질문';
-          btnOpenFollowup.querySelector('.text-zinc-500').textContent = '보조 카드 추가 심화 탐색';
-        }
+        updateBtnLabels(
+          '종합 리딩', '4원소 분석 & 흐름 총평',
+          '관찰 · 행동 · 해석 조언', '카드별 3단계 심층 처방',
+          '심층리딩 및 연계 질문', '보조 카드 추가 심화 탐색 (1회 한정)'
+        );
 
         const globalCorpus = classifyUserConcern(appState.question);
 
@@ -6707,11 +6781,73 @@ function generateAiTarotArtworkSvg(card) {
           const singleCard = appState.drawnCards[0];
           const tInfo = getTenseInterpretation(singleCard, appState.question);
           synthesisTheme.textContent = `[${singleCard.card.nameKo}] ${singleCard.card.keywordsUpright[0]}의 원포인트 통찰과 즉각적 행동`;
-          synthesisSummary.textContent = `질문자님의 질문 "${appState.question}"에 대한 원포인트 핵심 종합 진단입니다:\n\n✦ [상황의 심층 맥락 진단]\n${globalCorpus.psychologicalReading}\n\n• [카드의 핵심 메시지 (${singleCard.card.nameKo} ${singleCard.isReversed ? '역방향' : '정방향'})]\n${tInfo.psychologicalReading}\n\n• [지금 이 순간 가장 중요한 행동 솔루션]\n${singleCard.card.adviceBase}\n\n✦ [온기 있는 축복의 확언]: "${tInfo.affirmation}"`;
+          synthesisSummary.innerHTML = `
+            <div class="p-4 sm:p-5 rounded-2xl bg-purple-50/70 border border-purple-200 space-y-1.5 shadow-xs">
+              <div class="text-xs font-bold text-purple-800 font-mono flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-purple-600"></span>
+                <span>상황의 심층 맥락 진단</span>
+              </div>
+              <p class="text-sm sm:text-base text-zinc-800 leading-relaxed">${globalCorpus.psychologicalReading}</p>
+            </div>
+            <div class="p-4 sm:p-5 rounded-2xl bg-white border border-zinc-200 space-y-1.5 shadow-xs">
+              <div class="text-xs font-bold text-indigo-800 font-mono flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-indigo-600"></span>
+                <span>카드의 핵심 메시지 (${singleCard.card.nameKo} ${singleCard.isReversed ? '역방향' : '정방향'})</span>
+              </div>
+              <p class="text-sm sm:text-base text-zinc-800 leading-relaxed">${tInfo.psychologicalReading}</p>
+            </div>
+            <div class="p-4 sm:p-5 rounded-2xl bg-emerald-50/70 border border-emerald-200 space-y-1.5 shadow-xs">
+              <div class="text-xs font-bold text-emerald-800 font-mono flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+                <span>지금 이 순간 가장 중요한 실천 솔루션</span>
+              </div>
+              <p class="text-sm sm:text-base text-zinc-900 font-medium leading-relaxed">${singleCard.card.adviceBase}</p>
+            </div>
+            <div class="p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-zinc-950 via-[#1a102a] to-zinc-900 text-white space-y-1.5 shadow-md border border-purple-900/40">
+              <div class="text-xs font-bold text-purple-300 font-mono flex items-center gap-1.5">
+                <span class="text-pink-400">♥</span>
+                <span>온기 있는 축복의 확언</span>
+              </div>
+              <p class="text-base sm:text-lg text-purple-100 font-serif italic leading-relaxed">&ldquo;${tInfo.affirmation}&rdquo;</p>
+            </div>
+          `;
         } else if (appState.spreadType === 'celtic') {
           const cCards = appState.drawnCards;
           synthesisTheme.textContent = `켈틱 크로스 10장 다차원 입체 분석: 과거의 뿌리에서 궁극적 미래 완성으로`;
-          synthesisSummary.textContent = `질문자님의 고민 "${appState.question}"에 대한 10차원 켈틱 크로스 종합 분석 결과입니다:\n\n✦ [상황 전체의 심층 맥락 진단]\n${globalCorpus.psychologicalReading}\n\n• [1막: 현재 핵심과 직면 과제 (1·2번)]\n핵심 상황 '${cCards[0]?.card.nameKo || '1번'}'과 당면 과제 '${cCards[1]?.card.nameKo || '2번'}'이 맞물려, 지금은 내면의 흔들림을 바로잡고 주도권을 쥐어야 하는 결정적 분기점입니다.\n\n• [2막: 무의식의 뿌리와 지나간 과거 (3·4번)]\n과거 축적된 '${cCards[2]?.card.nameKo || '3번'}'의 기초와 최근 지나온 '${cCards[3]?.card.nameKo || '4번'}'의 경험이 현재 상황을 든든하게 떠받치고 있어, 지나온 배움에 대한 신뢰가 필요합니다.\n\n• [3막: 의식적 지향과 가까운 미래 (5·6번)]\n머리로 바라는 이상 '${cCards[4]?.card.nameKo || '5번'}'을 향해, 머지않아 펼쳐질 '${cCards[5]?.card.nameKo || '6번'}'의 새로운 전환점이 기회의 문을 활짝 열어줄 것입니다.\n\n• [4막: 내적 태도·환경·희망 그리고 궁극적 결실 (7~10번)]\n자신의 확고한 스탠스('${cCards[6]?.card.nameKo || '7번'}')와 주변 환경('${cCards[7]?.card.nameKo || '8번'}') 속에서 마음속 희망('${cCards[8]?.card.nameKo || '9번'}')을 잃지 않는다면, 마침내 '${cCards[9]?.card.nameKo || '10번'}'의 온전한 성취와 만족스러운 결실에 도달하게 됩니다.\n\n✦ [종합 실천 솔루션 & 행동 지침]\n${globalCorpus.actionAdvice}`;
+          synthesisSummary.innerHTML = `
+            <div class="p-4 sm:p-5 rounded-2xl bg-purple-50/70 border border-purple-200 space-y-1.5 shadow-xs">
+              <div class="text-xs font-bold text-purple-800 font-mono flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-purple-600"></span>
+                <span>상황 전체의 심층 맥락 진단</span>
+              </div>
+              <p class="text-sm sm:text-base text-zinc-800 leading-relaxed">${globalCorpus.psychologicalReading}</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+              <div class="p-4 rounded-xl bg-white border border-zinc-200 space-y-1.5 shadow-xs">
+                <div class="text-xs font-bold text-purple-900 font-mono">✦ 1막: 현재 핵심과 직면 과제 (1·2번)</div>
+                <p class="text-sm text-zinc-700 leading-relaxed">핵심 상황 '${cCards[0]?.card.nameKo || '1번'}'과 당면 과제 '${cCards[1]?.card.nameKo || '2번'}'이 맞물려, 지금은 내면의 흔들림을 바로잡고 주도권을 쥐어야 하는 결정적 분기점입니다.</p>
+              </div>
+              <div class="p-4 rounded-xl bg-white border border-zinc-200 space-y-1.5 shadow-xs">
+                <div class="text-xs font-bold text-purple-900 font-mono">✦ 2막: 무의식의 뿌리와 지나간 과거 (3·4번)</div>
+                <p class="text-sm text-zinc-700 leading-relaxed">과거 축적된 '${cCards[2]?.card.nameKo || '3번'}'의 기초와 최근 지나온 '${cCards[3]?.card.nameKo || '4번'}'의 경험이 현재 상황을 든든하게 떠받치고 있어, 지나온 배움에 대한 신뢰가 필요합니다.</p>
+              </div>
+              <div class="p-4 rounded-xl bg-white border border-zinc-200 space-y-1.5 shadow-xs">
+                <div class="text-xs font-bold text-purple-900 font-mono">✦ 3막: 의식적 지향과 가까운 미래 (5·6번)</div>
+                <p class="text-sm text-zinc-700 leading-relaxed">머리로 바라는 이상 '${cCards[4]?.card.nameKo || '5번'}'을 향해, 머지않아 펼쳐질 '${cCards[5]?.card.nameKo || '6번'}'의 새로운 전환점이 기회의 문을 활짝 열어줄 것입니다.</p>
+              </div>
+              <div class="p-4 rounded-xl bg-white border border-zinc-200 space-y-1.5 shadow-xs">
+                <div class="text-xs font-bold text-purple-900 font-mono">✦ 4막: 내적 태도·환경·희망 그리고 궁극적 결실 (7~10번)</div>
+                <p class="text-sm text-zinc-700 leading-relaxed">자신의 확고한 스탠스('${cCards[6]?.card.nameKo || '7번'}')와 주변 환경('${cCards[7]?.card.nameKo || '8번'}') 속에서 희망('${cCards[8]?.card.nameKo || '9번'}')을 잃지 않는다면, 마침내 '${cCards[9]?.card.nameKo || '10번'}'의 온전한 성취에 도달하게 됩니다.</p>
+              </div>
+            </div>
+            <div class="p-4 sm:p-5 rounded-2xl bg-emerald-50/70 border border-emerald-200 space-y-1.5 shadow-xs">
+              <div class="text-xs font-bold text-emerald-800 font-mono flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+                <span>종합 실천 솔루션 & 행동 지침</span>
+              </div>
+              <p class="text-sm sm:text-base text-zinc-900 font-medium leading-relaxed">${globalCorpus.actionAdvice}</p>
+            </div>
+          `;
         } else {
           // 3-card spread (과거 -> 현재 -> 미래 결실)
           const pastCard = appState.drawnCards[0];
@@ -6721,7 +6857,36 @@ function generateAiTarotArtworkSvg(card) {
           const presInfo = getTenseInterpretation(presCard, appState.question);
           const futInfo = getTenseInterpretation(futCard, appState.question);
           synthesisTheme.textContent = `과거(${pastCard?.card.keywordsUpright[0]}) → 현재(${presCard?.card.keywordsUpright[0]}) → 미래 결실(${futCard?.card.keywordsUpright[0]})의 주도적 시간 흐름`;
-          synthesisSummary.textContent = `질문자님의 고민 "${appState.question}"에 대한 3단계 시간 흐름의 유기적 종합 분석입니다:\n\n✦ [상황 전체의 심층 맥락 진단]\n${globalCorpus.psychologicalReading}\n\n1. [과거의 뿌리와 배경 (${pastCard?.card.nameKo} ${pastCard?.isReversed ? '역방향' : '정방향'})]\n${pastInfo.psychologicalReading}\n\n2. [현재의 직면 과제와 실마리 (${presCard?.card.nameKo} ${presCard?.isReversed ? '역방향' : '정방향'})]\n${presInfo.psychologicalReading}\n\n3. [미래의 도약과 궁극적 결실 (${futCard?.card.nameKo} ${futCard?.isReversed ? '역방향' : '정방향'})]\n${futInfo.psychologicalReading}\n\n✦ [종합 실천 솔루션 & 행동 지침]\n${globalCorpus.actionAdvice}`;
+          synthesisSummary.innerHTML = `
+            <div class="p-4 sm:p-5 rounded-2xl bg-purple-50/70 border border-purple-200 space-y-1.5 shadow-xs">
+              <div class="text-xs font-bold text-purple-800 font-mono flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-purple-600"></span>
+                <span>상황 전체의 심층 맥락 진단</span>
+              </div>
+              <p class="text-sm sm:text-base text-zinc-800 leading-relaxed">${globalCorpus.psychologicalReading}</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3.5">
+              <div class="p-4 rounded-xl bg-white border border-zinc-200 space-y-1.5 shadow-xs">
+                <div class="text-xs font-bold text-zinc-600 font-mono">1. 과거의 뿌리와 배경 (${pastCard?.card.nameKo} ${pastCard?.isReversed ? '역방향' : '정방향'})</div>
+                <p class="text-sm text-zinc-700 leading-relaxed">${pastInfo.psychologicalReading}</p>
+              </div>
+              <div class="p-4 rounded-xl bg-indigo-50/50 border border-indigo-200 space-y-1.5 shadow-xs">
+                <div class="text-xs font-bold text-indigo-700 font-mono">2. 현재의 직면 과제 (${presCard?.card.nameKo} ${presCard?.isReversed ? '역방향' : '정방향'})</div>
+                <p class="text-sm text-zinc-700 leading-relaxed">${presInfo.psychologicalReading}</p>
+              </div>
+              <div class="p-4 rounded-xl bg-purple-50/50 border border-purple-200 space-y-1.5 shadow-xs">
+                <div class="text-xs font-bold text-purple-700 font-mono">3. 미래의 도약과 결실 (${futCard?.card.nameKo} ${futCard?.isReversed ? '역방향' : '정방향'})</div>
+                <p class="text-sm text-zinc-700 leading-relaxed">${futInfo.psychologicalReading}</p>
+              </div>
+            </div>
+            <div class="p-4 sm:p-5 rounded-2xl bg-emerald-50/70 border border-emerald-200 space-y-1.5 shadow-xs">
+              <div class="text-xs font-bold text-emerald-800 font-mono flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+                <span>종합 실천 솔루션 & 행동 지침</span>
+              </div>
+              <p class="text-sm sm:text-base text-zinc-900 font-medium leading-relaxed">${globalCorpus.actionAdvice}</p>
+            </div>
+          `;
         }
       }
 
@@ -6895,7 +7060,18 @@ function generateAiTarotArtworkSvg(card) {
         viewHome.classList.remove('hidden');
         inputQuestion.value = '';
         inputFollowup.value = '';
+        inputFollowup.disabled = false;
+        appState.followupDrawn = false;
+        if (formFollowup) {
+          const btnSubmitFollowup = formFollowup.querySelector('button[type="submit"]');
+          if (btnSubmitFollowup) {
+            btnSubmitFollowup.disabled = false;
+            btnSubmitFollowup.className = 'inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-b from-purple-600 via-purple-700 to-purple-900 border border-purple-500 border-b-4 border-b-purple-950 text-white font-bold text-sm shadow-md hover:brightness-110 active:border-b-2 active:translate-y-[2px] transition-all cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed';
+            btnSubmitFollowup.innerHTML = `<span>✦ 보조 카드 뽑고 심층 분석</span><svg class="w-4 h-4 text-purple-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>`;
+          }
+        }
         clarifierResultBox.classList.add('hidden');
+        clarifierResultBox.innerHTML = '';
         appState.isTodayFortune = false;
         if (appState.configuredSpreadType) {
           appState.spreadType = appState.configuredSpreadType;
@@ -7423,8 +7599,23 @@ function generateAiTarotArtworkSvg(card) {
     // FOLLOW-UP CLARIFIER
     formFollowup.addEventListener('submit', (e) => {
       e.preventDefault();
+      if (appState.followupDrawn) {
+        alert('심층 리딩 연계 질문은 본 리딩 세션당 1회만 이용 가능합니다.');
+        return;
+      }
       const followQ = inputFollowup.value.trim();
       if (!followQ) return;
+
+      // Lock single-draw
+      appState.followupDrawn = true;
+      inputFollowup.disabled = true;
+
+      const btnSubmit = formFollowup.querySelector('button[type="submit"]');
+      if (btnSubmit) {
+        btnSubmit.disabled = true;
+        btnSubmit.className = 'inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-zinc-200 border border-zinc-300 text-zinc-500 font-bold text-sm shadow-none cursor-not-allowed';
+        btnSubmit.innerHTML = `<span>✓ 1회 한정 심층 연계 질문 분석 완료 (추가 뽑기 불가)</span>`;
+      }
 
       sound.playShuffle();
 
