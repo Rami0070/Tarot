@@ -144,24 +144,99 @@
 </head>
 <body class="min-h-screen bg-white text-zinc-900 flex flex-col selection:bg-purple-100 selection:text-purple-800">
 
-    <!-- TOP SOUND & NAVIGATION BAR (미니멀 다크 호환 헤더) -->
-  <header class="fixed top-0 left-0 right-0 z-40 bg-[#09090b]/90 backdrop-blur-md border-b border-zinc-800 px-4 py-3 flex items-center justify-between transition-all shadow-sm">
+    <!-- TOP SOUND & NAVIGATION BAR (미니멀 라이트 헤더) -->
+  <header class="fixed top-0 left-0 right-0 z-40 bg-white/90 backdrop-blur-md border-b border-zinc-200 px-4 py-3 flex items-center justify-between transition-all shadow-sm">
     <div class="flex items-center gap-3">
       <div class="w-8 h-8 rounded-full bg-gradient-to-br from-purple-600 to-indigo-700 flex items-center justify-center shadow-md shadow-purple-500/20 text-white font-serif font-bold text-sm">
         ✦
       </div>
       <div>
-        <h1 class="text-sm font-serif font-bold tracking-wide text-white flex items-center gap-2">
-          UNIVERSAL TAROT <span class="text-[10px] px-2 py-0.5 rounded-full bg-purple-950 text-purple-300 border border-purple-800 font-sans font-medium">INTEGRATED</span>
+        <h1 class="text-sm font-serif font-bold tracking-wide text-zinc-900 flex items-center gap-2">
+          UNIVERSAL TAROT <span class="text-[10px] px-2 py-0.5 rounded-full bg-purple-100 text-purple-700 border border-purple-200 font-sans font-medium">INTEGRATED</span>
         </h1>
-        <p class="text-[11px] text-zinc-400 hidden sm:block">관찰 · 행동 · 해석 조언의 대화형 타로 솔루션</p>
+        <p class="text-[11px] text-zinc-500 hidden sm:block">관찰 · 행동 · 해석 조언의 대화형 타로 솔루션</p>
       </div>
     </div>
 
+    <!-- 우측 네비게이션: 사운드 설정 버튼(상단 배치) & 덱 펼쳐보기 버튼 -->
     <div class="flex items-center gap-2 shrink-0">
-      <!-- 우측 상단 덱 디자인 펼쳐보기(도감) 버튼 -->
-      <button id="btn-open-gallery" type="button" class="flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold bg-gradient-to-b from-purple-950 via-zinc-900 to-black border border-purple-700 border-b-4 border-b-purple-950 text-purple-200 shadow-md shadow-purple-950/50 hover:brightness-125 active:border-b-2 active:translate-y-[2px] transition-all cursor-pointer" title="유니버셜 덱 전체 카드 도감 펼쳐보기">
-        <svg class="w-3.5 h-3.5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+      <!-- 1. 사운드 설정 버튼 & 팝오버 (상단 헤더로 이동) -->
+      <div class="relative">
+        <button
+          type="button"
+          id="btn-speaker-popover"
+          class="flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold bg-gradient-to-b from-white via-zinc-50 to-zinc-100 border border-zinc-300 border-b-3 border-b-zinc-400 text-zinc-800 shadow-xs hover:border-purple-300 hover:text-purple-900 active:border-b active:translate-y-[1px] transition-all cursor-pointer"
+          title="BGM 연주곡 및 사운드 볼륨 설정"
+        >
+          <svg id="icon-speaker-main" class="w-3.5 h-3.5 text-purple-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+          <span>사운드 설정</span>
+        </button>
+
+        <!-- 스피커 설정 팝업 패널 (헤더 아래로 전개) -->
+        <div
+          id="panel-speaker-settings"
+          class="hidden absolute right-0 top-full mt-2 w-72 sm:w-80 bg-white/95 backdrop-blur-md border border-zinc-200 rounded-3xl p-5 shadow-2xl z-50 animate-in fade-in text-left text-zinc-900"
+        >
+          <div class="flex items-center justify-between border-b border-zinc-100 pb-3 mb-4">
+            <div class="flex items-center gap-2">
+              <span class="text-lg">🔊</span>
+              <div>
+                <div class="text-sm font-bold text-zinc-900">BGM 및 볼륨 설정</div>
+                <div class="text-[11px] text-zinc-500 font-normal">명상 연주곡 악기 선택 & 사운드 제어</div>
+              </div>
+            </div>
+            <button type="button" id="btn-close-speaker-popover" class="text-zinc-400 hover:text-zinc-700 text-xs p-1.5 rounded-lg hover:bg-zinc-100 cursor-pointer">✕</button>
+          </div>
+
+          <!-- BGM 연주곡 악기 선택 -->
+          <div class="space-y-1.5 mb-4">
+            <label class="text-xs font-bold text-zinc-700 flex items-center justify-between">
+              <span>🎼 BGM 연주곡 악기</span>
+              <span class="text-[10px] text-purple-700 font-mono font-medium">저작권 프리 WebAudio</span>
+            </label>
+            <select id="select-bgm-instrument" class="w-full text-xs font-bold rounded-xl px-3 py-2.5 bg-zinc-50 border border-zinc-200 border-b-2 border-b-zinc-300 text-zinc-800 shadow-xs hover:border-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-500/20 cursor-pointer transition-all">
+              <option value="piano">🎹 피아노 연주곡</option>
+              <option value="violin">🎻 바이올린 연주곡</option>
+              <option value="cello" selected>🎻 첼로 연주곡 (추천)</option>
+              <option value="flute">🪈 플룻 연주곡</option>
+              <option value="oboe">🎶 오보에 연주곡</option>
+            </select>
+          </div>
+
+          <!-- BGM On/Off Toggle & Mute Buttons -->
+          <div class="grid grid-cols-2 gap-2 mb-4">
+            <button id="btn-toggle-bgm" type="button" class="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl text-xs font-bold bg-gradient-to-b from-purple-600 to-purple-800 border border-purple-500 border-b-3 border-b-purple-950 text-white shadow-sm active:border-b active:translate-y-[1px] transition-all cursor-pointer">
+              <span id="text-bgm">BGM 정지</span>
+            </button>
+            <button id="btn-toggle-mute" type="button" class="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl text-xs font-bold bg-gradient-to-b from-white via-zinc-50 to-zinc-100 border border-zinc-300 border-b-3 border-b-zinc-400 text-zinc-700 shadow-xs hover:text-zinc-900 active:border-b active:translate-y-[1px] transition-all cursor-pointer">
+              <svg id="icon-sound" class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+              <span id="text-mute-label">전체 음소거</span>
+            </button>
+          </div>
+
+          <!-- BGM Volume Slider -->
+          <div class="space-y-1.5 mb-3.5">
+            <div class="flex justify-between items-center text-xs">
+              <span class="text-zinc-700 font-semibold flex items-center gap-1">🎵 BGM 볼륨</span>
+              <span id="label-bgm-volume" class="text-purple-700 font-bold font-mono bg-purple-50 px-2 py-0.5 rounded text-[11px] border border-purple-200">40%</span>
+            </div>
+            <input id="slider-bgm-volume" type="range" min="0" max="100" value="40" class="w-full accent-purple-600 cursor-pointer h-2 bg-zinc-200 rounded-lg" />
+          </div>
+
+          <!-- SFX Volume Slider -->
+          <div class="space-y-1.5">
+            <div class="flex justify-between items-center text-xs">
+              <span class="text-zinc-700 font-semibold flex items-center gap-1">✨ 효과음(SFX) 볼륨</span>
+              <span id="label-sfx-volume" class="text-purple-700 font-bold font-mono bg-purple-50 px-2 py-0.5 rounded text-[11px] border border-purple-200">70%</span>
+            </div>
+            <input id="slider-sfx-volume" type="range" min="0" max="100" value="70" class="w-full accent-purple-600 cursor-pointer h-2 bg-zinc-200 rounded-lg" />
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. 덱 디자인 펼쳐보기(도감) 버튼 -->
+      <button id="btn-open-gallery" type="button" class="flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold bg-gradient-to-b from-purple-50 via-purple-100 to-purple-200 border border-purple-300 border-b-4 border-b-purple-400 text-purple-900 shadow-md shadow-purple-200/50 hover:from-purple-100 hover:to-purple-200 active:border-b-2 active:translate-y-[2px] transition-all cursor-pointer" title="유니버셜 덱 전체 카드 도감 펼쳐보기">
+        <svg class="w-3.5 h-3.5 text-purple-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
         <span>덱 펼쳐보기</span>
       </button>
     </div>
@@ -170,11 +245,11 @@
   <!-- MAIN CONTAINER -->
   <main class="flex-1 flex flex-col items-center justify-center relative">
 
-    <!-- VIEW 1: HOME SCREEN (BLACK BACKGROUND THEME) -->
-    <section id="view-home" class="min-h-screen pt-20 pb-16 flex flex-col items-center justify-center px-4 w-full relative overflow-hidden bg-[#09090b] text-white">
-      <!-- Dark Grid & Ambient Glow Texture -->
-      <div class="absolute inset-0 bg-[radial-gradient(#27272a_1px,transparent_1px)] [background-size:24px_24px] opacity-60 pointer-events-none"></div>
-      <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[480px] h-[480px] bg-purple-900/25 rounded-full blur-3xl pointer-events-none"></div>
+    <!-- VIEW 1: HOME SCREEN (CLEAN WHITE BACKGROUND THEME) -->
+    <section id="view-home" class="min-h-screen pt-20 pb-16 flex flex-col items-center justify-center px-4 w-full relative overflow-hidden bg-white text-zinc-900">
+      <!-- Clean Light Grid Texture -->
+      <div class="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:24px_24px] opacity-70 pointer-events-none"></div>
+      <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-purple-200/40 rounded-full blur-3xl pointer-events-none"></div>
 
       <div class="max-w-2xl w-full mx-auto relative z-10 flex flex-col items-center text-center">
 
@@ -184,7 +259,7 @@
           <button
             type="button"
             id="btn-main-today-fortune"
-            class="group relative p-6 sm:p-7 rounded-3xl bg-gradient-to-b from-white via-zinc-50 to-zinc-100 border-2 border-zinc-200 border-b-6 border-b-zinc-400 text-zinc-900 font-bold shadow-2xl shadow-black/80 hover:from-purple-50 hover:to-white hover:border-purple-300 hover:border-b-purple-400 active:border-b-2 active:translate-y-[4px] transition-all flex flex-col items-center justify-center gap-2.5 cursor-pointer text-center"
+            class="group relative p-6 sm:p-7 rounded-3xl bg-gradient-to-b from-white via-zinc-50 to-zinc-100 border-2 border-zinc-200 border-b-6 border-b-zinc-400 text-zinc-900 font-bold shadow-xl shadow-zinc-200/80 hover:from-purple-50 hover:to-white hover:border-purple-300 hover:border-b-purple-400 active:border-b-2 active:translate-y-[4px] transition-all flex flex-col items-center justify-center gap-2.5 cursor-pointer text-center"
           >
             <div class="w-14 h-14 rounded-2xl bg-purple-100 border border-purple-200 flex items-center justify-center text-3xl shadow-inner group-hover:scale-110 transition-transform">
               🔮
@@ -205,7 +280,7 @@
           <button
             type="button"
             id="btn-main-solve-concern"
-            class="group relative p-6 sm:p-7 rounded-3xl bg-gradient-to-b from-purple-600 via-purple-700 to-purple-900 border-2 border-purple-400 border-b-6 border-b-purple-950 text-white font-bold shadow-2xl shadow-purple-900/40 hover:brightness-110 active:border-b-2 active:translate-y-[4px] transition-all flex flex-col items-center justify-center gap-2.5 cursor-pointer text-center"
+            class="group relative p-6 sm:p-7 rounded-3xl bg-gradient-to-b from-purple-600 via-purple-700 to-purple-900 border-2 border-purple-400 border-b-6 border-b-purple-950 text-white font-bold shadow-xl shadow-purple-500/25 hover:brightness-110 active:border-b-2 active:translate-y-[4px] transition-all flex flex-col items-center justify-center gap-2.5 cursor-pointer text-center"
           >
             <div class="w-14 h-14 rounded-2xl bg-white/20 flex items-center justify-center text-3xl shadow-inner group-hover:scale-110 transition-transform">
               💬
@@ -224,17 +299,17 @@
         </div>
 
         <!-- 2. [그 아래] 제목 및 서비스 소개 -->
-        <div class="w-full flex flex-col items-center text-center mb-7">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-zinc-900/90 border border-zinc-700 text-purple-300 text-[11px] font-mono tracking-wide mb-3 shadow-xs">
+        <div class="w-full flex flex-col items-center text-center mb-8">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-purple-50 border border-purple-200 text-purple-700 text-[11px] font-mono tracking-wide mb-3 shadow-xs">
             <span>✦</span>
             <span>UNIVERSAL TAROT · INTEGRATED EDITION</span>
             <span>✦</span>
           </div>
 
           <div class="relative inline-block mb-3 px-6 py-1">
-            <span class="absolute -top-2 -left-2 text-xl animate-twinkle-1 pointer-events-none select-none text-purple-400">✨</span>
-            <span class="absolute -top-3 -right-2 text-xl animate-twinkle-2 pointer-events-none select-none text-purple-300">✦</span>
-            <h1 class="text-2xl sm:text-4xl font-serif font-bold tracking-tight text-white leading-tight">
+            <span class="absolute -top-2 -left-2 text-xl animate-twinkle-1 pointer-events-none select-none text-purple-600">✨</span>
+            <span class="absolute -top-3 -right-2 text-xl animate-twinkle-2 pointer-events-none select-none text-purple-400">✦</span>
+            <h1 class="text-2xl sm:text-4xl font-serif font-bold tracking-tight text-zinc-900 leading-tight">
               내면을 비추는 사유의 거울,<br />
               <span class="shimmer-text-purple inline-block">
                 삶의 주도권을 되찾는 리딩
@@ -242,116 +317,38 @@
             </h1>
           </div>
 
-          <p class="text-xs sm:text-sm text-zinc-300 max-w-lg font-normal leading-relaxed break-keep-all">
-            운명론적 예언 대신 <strong class="text-white font-semibold">객관적 관찰</strong>과 <strong class="text-white font-semibold">심리적 해석</strong>, 그리고 지금 당장 실천할 수 있는 <strong class="text-purple-300 font-semibold">현실적 행동 조언</strong>을 제시합니다.
+          <p class="text-xs sm:text-sm text-zinc-600 max-w-lg font-normal leading-relaxed break-keep-all">
+            운명론적 예언 대신 <strong class="text-zinc-900 font-semibold">객관적 관찰</strong>과 <strong class="text-zinc-900 font-semibold">심리적 해석</strong>, 그리고 지금 당장 실천할 수 있는 <strong class="text-purple-700 font-semibold">현실적 행동 조언</strong>을 제시합니다.
           </p>
         </div>
 
-        <!-- 3. [그 아래] 덱 설정하기 & 사운드 설정 버튼 (완전히 동일한 크기와 대칭 레이아웃) -->
-        <div class="flex items-center justify-center gap-3.5 w-full max-w-lg relative">
-          <!-- 덱 설정하기 버튼 -->
+        <!-- 3. [그 아래] 덱 설정하기 대형 메인 버튼 (확대된 크기와 돋보이는 3D 레이아웃) -->
+        <div class="w-full max-w-lg">
           <button
             type="button"
             id="btn-3d-deck-config"
-            class="flex-1 h-16 px-4 py-3 rounded-2xl bg-gradient-to-b from-zinc-900 via-zinc-900 to-zinc-950 border border-zinc-700 border-b-4 border-b-zinc-800 text-zinc-100 shadow-md shadow-black/60 hover:from-purple-950/40 hover:to-zinc-900 hover:border-purple-500 hover:border-b-purple-600 hover:text-white active:border-b-2 active:translate-y-[2px] transition-all cursor-pointer flex items-center justify-center gap-3"
+            class="group w-full h-20 px-6 py-4 rounded-3xl bg-gradient-to-b from-white via-zinc-50 to-zinc-100 border-2 border-zinc-200 border-b-6 border-b-zinc-300 text-zinc-800 shadow-lg shadow-zinc-200/60 hover:from-purple-50 hover:to-white hover:border-purple-300 hover:border-b-purple-400 hover:text-purple-950 active:border-b-2 active:translate-y-[3px] transition-all cursor-pointer flex items-center justify-between"
+            title="스프레드 종류, 덱 매수, 역방향 해석 조건 변경하기"
           >
-            <div class="w-8 h-8 rounded-xl bg-purple-950 border border-purple-700 flex items-center justify-center text-purple-300 shrink-0 shadow-inner">
-              <svg class="w-4 h-4 text-purple-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
+            <div class="flex items-center gap-4 text-left">
+              <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-purple-100 to-purple-200 border border-purple-300 flex items-center justify-center text-purple-700 shadow-inner group-hover:scale-105 transition-transform shrink-0">
+                <svg class="w-6 h-6 text-purple-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
+              </div>
+              <div class="overflow-hidden">
+                <div class="flex items-center gap-2">
+                  <span class="text-base sm:text-lg font-bold text-zinc-900 group-hover:text-purple-900 transition-colors">덱 및 리딩 조건 설정하기</span>
+                  <span class="text-[11px] px-2 py-0.5 rounded-full bg-purple-100 text-purple-700 font-semibold border border-purple-200">설정 ⚙️</span>
+                </div>
+                <div id="btn-config-status-label" class="text-xs sm:text-sm text-zinc-500 font-normal mt-0.5 truncate">
+                  3카드 스프레드 · 전체 78장 풀 덱 · 역방향 해석 ON
+                </div>
+              </div>
             </div>
-            <div class="flex flex-col text-left overflow-hidden">
-              <div class="flex items-center gap-1.5 font-bold text-white text-xs sm:text-sm truncate">
-                <span>덱 설정하기</span>
-                <span class="text-xs">⚙️</span>
-              </div>
-              <div id="btn-config-status-label" class="text-[11px] text-zinc-400 font-normal truncate">
-                3카드 · 전체 78장 · 역방향 ON
-              </div>
+
+            <div class="w-9 h-9 rounded-xl bg-white border border-zinc-200 flex items-center justify-center text-zinc-400 group-hover:text-purple-700 group-hover:border-purple-300 group-hover:bg-purple-50 transition-all shadow-xs shrink-0 ml-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
             </div>
           </button>
-
-          <!-- 사운드 설정 버튼 & 팝오버 래퍼 (동일한 flex-1 / h-16 규격) -->
-          <div class="flex-1 relative">
-            <button
-              type="button"
-              id="btn-speaker-popover"
-              class="w-full h-16 px-4 py-3 rounded-2xl bg-gradient-to-b from-zinc-900 via-zinc-900 to-zinc-950 border border-zinc-700 border-b-4 border-b-zinc-800 text-zinc-100 shadow-md shadow-black/60 hover:from-purple-950/40 hover:to-zinc-900 hover:border-purple-500 hover:border-b-purple-600 hover:text-white active:border-b-2 active:translate-y-[2px] transition-all cursor-pointer flex items-center justify-center gap-3"
-              title="BGM 연주곡 및 사운드 볼륨 설정"
-            >
-              <div class="w-8 h-8 rounded-xl bg-purple-950 border border-purple-700 flex items-center justify-center text-purple-300 shrink-0 shadow-inner">
-                <svg id="icon-speaker-main" class="w-4 h-4 text-purple-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
-              </div>
-              <div class="flex flex-col text-left overflow-hidden">
-                <div class="flex items-center gap-1.5 font-bold text-white text-xs sm:text-sm truncate">
-                  <span>사운드 설정</span>
-                  <span class="text-xs">🔊</span>
-                </div>
-                <div class="text-[11px] text-zinc-400 font-normal truncate">
-                  BGM 악기 · 음량 조절
-                </div>
-              </div>
-            </button>
-
-            <!-- 스피커 설정 팝업 패널 (위쪽으로 전개) -->
-            <div
-              id="panel-speaker-settings"
-              class="hidden absolute right-0 bottom-full mb-3 w-72 sm:w-80 bg-zinc-900/95 backdrop-blur-md border border-zinc-700 rounded-3xl p-5 shadow-2xl z-50 animate-in fade-in text-left text-zinc-100"
-            >
-              <div class="flex items-center justify-between border-b border-zinc-800 pb-3 mb-4">
-                <div class="flex items-center gap-2">
-                  <span class="text-lg">🔊</span>
-                  <div>
-                    <div class="text-sm font-bold text-white">BGM 및 볼륨 설정</div>
-                    <div class="text-[11px] text-zinc-400 font-normal">명상 연주곡 악기 선택 & 사운드 제어</div>
-                  </div>
-                </div>
-                <button type="button" id="btn-close-speaker-popover" class="text-zinc-400 hover:text-white text-xs p-1.5 rounded-lg hover:bg-zinc-800 cursor-pointer">✕</button>
-              </div>
-
-              <!-- BGM 연주곡 악기 선택 -->
-              <div class="space-y-1.5 mb-4">
-                <label class="text-xs font-bold text-zinc-300 flex items-center justify-between">
-                  <span>🎼 BGM 연주곡 악기</span>
-                  <span class="text-[10px] text-purple-400 font-mono font-medium">저작권 프리 WebAudio</span>
-                </label>
-                <select id="select-bgm-instrument" class="w-full text-xs font-bold rounded-xl px-3 py-2.5 bg-zinc-800 border border-zinc-700 border-b-2 border-b-zinc-600 text-white shadow-xs hover:border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-500/20 cursor-pointer transition-all">
-                  <option value="piano">🎹 피아노 연주곡</option>
-                  <option value="violin">🎻 바이올린 연주곡</option>
-                  <option value="cello" selected>🎻 첼로 연주곡 (추천)</option>
-                  <option value="flute">🪈 플룻 연주곡</option>
-                  <option value="oboe">🎶 오보에 연주곡</option>
-                </select>
-              </div>
-
-              <!-- BGM On/Off Toggle & Mute Buttons -->
-              <div class="grid grid-cols-2 gap-2 mb-4">
-                <button id="btn-toggle-bgm" type="button" class="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl text-xs font-bold bg-gradient-to-b from-purple-600 to-purple-800 border border-purple-500 border-b-3 border-b-purple-950 text-white shadow-sm active:border-b active:translate-y-[1px] transition-all cursor-pointer">
-                  <span id="text-bgm">BGM 정지</span>
-                </button>
-                <button id="btn-toggle-mute" type="button" class="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl text-xs font-bold bg-gradient-to-b from-zinc-800 to-zinc-900 border border-zinc-700 border-b-3 border-b-zinc-600 text-zinc-200 shadow-xs hover:text-white active:border-b active:translate-y-[1px] transition-all cursor-pointer">
-                  <svg id="icon-sound" class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
-                  <span id="text-mute-label">전체 음소거</span>
-                </button>
-              </div>
-
-              <!-- BGM Volume Slider -->
-              <div class="space-y-1.5 mb-3.5">
-                <div class="flex justify-between items-center text-xs">
-                  <span class="text-zinc-300 font-semibold flex items-center gap-1">🎵 BGM 볼륨</span>
-                  <span id="label-bgm-volume" class="text-purple-300 font-bold font-mono bg-purple-950 px-2 py-0.5 rounded text-[11px] border border-purple-800">40%</span>
-                </div>
-                <input id="slider-bgm-volume" type="range" min="0" max="100" value="40" class="w-full accent-purple-500 cursor-pointer h-2 bg-zinc-800 rounded-lg" />
-              </div>
-
-              <!-- SFX Volume Slider -->
-              <div class="space-y-1.5">
-                <div class="flex justify-between items-center text-xs">
-                  <span class="text-zinc-300 font-semibold flex items-center gap-1">✨ 효과음(SFX) 볼륨</span>
-                  <span id="label-sfx-volume" class="text-purple-300 font-bold font-mono bg-purple-950 px-2 py-0.5 rounded text-[11px] border border-purple-800">70%</span>
-                </div>
-                <input id="slider-sfx-volume" type="range" min="0" max="100" value="70" class="w-full accent-purple-500 cursor-pointer h-2 bg-zinc-800 rounded-lg" />
-              </div>
-            </div>
-          </div>
         </div>
 
       </div>
@@ -745,6 +742,48 @@
     </div>
 
   <!-- MODAL 1: CARD DETAIL & SLIDER CAROUSEL MODAL (리딩 결과 상세 및 도감 갤러리) -->
+  <!-- MODAL: DECK GALLERY MODAL (우측 상단 덱 펼쳐보기 클릭 시 전개) -->
+  <div id="modal-deck-gallery" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-6 bg-black/75 backdrop-blur-md animate-in fade-in">
+    <div class="bg-slate-50 border border-zinc-200 rounded-3xl w-full max-w-6xl max-h-[92vh] flex flex-col shadow-2xl relative overflow-hidden text-zinc-900">
+      <!-- Header -->
+      <div class="px-6 py-4 bg-white border-b border-zinc-200 flex items-center justify-between z-10 shadow-sm shrink-0">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-full bg-purple-100 border border-purple-300 flex items-center justify-center text-purple-700 shrink-0">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+          </div>
+          <div>
+            <h2 class="text-base sm:text-lg font-serif font-bold text-zinc-900 flex items-center gap-2">
+              유니버셜 타로 덱 갤러리 <span id="gallery-count-badge" class="text-xs px-2.5 py-0.5 rounded-full bg-purple-100 text-purple-700 font-sans font-medium">카드 표시 중</span>
+            </h2>
+            <p class="text-xs text-zinc-500">카드를 클릭하면 각 아르카나의 깊이 있는 상징과 정·역방향 해설을 열람할 수 있습니다.</p>
+          </div>
+        </div>
+
+        <button id="btn-close-gallery" class="p-2 rounded-xl bg-gradient-to-b from-white to-zinc-100 border border-zinc-300 border-b-2 border-b-zinc-400 text-zinc-600 hover:text-zinc-900 hover:bg-zinc-200 active:border-b active:translate-y-[1px] transition-all shrink-0 cursor-pointer shadow-xs">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Filter Navigation Tabs (소프트 3D 버튼 & 가로 스크롤) -->
+      <div class="px-4 py-2 bg-white border-b border-zinc-200 flex items-center gap-1.5 overflow-x-auto whitespace-nowrap z-10 shrink-0" id="gallery-tab-group" style="scrollbar-width: thin;">
+        <button class="gallery-tab shrink-0 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg text-xs font-bold bg-gradient-to-b from-purple-600 to-purple-800 border border-purple-500 border-b-2 border-b-purple-950 text-white shadow-xs active:border-b active:translate-y-[1px] transition-all cursor-pointer" data-cat="all">전체 (78장)</button>
+        <button class="gallery-tab shrink-0 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg text-xs font-semibold bg-gradient-to-b from-white to-zinc-50 border border-zinc-300 border-b-2 border-b-zinc-400 text-zinc-700 hover:bg-zinc-100 active:border-b active:translate-y-[1px] transition-all cursor-pointer" data-cat="major">메이저 (22장)</button>
+        <button class="gallery-tab shrink-0 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg text-xs font-semibold bg-gradient-to-b from-white to-zinc-50 border border-zinc-300 border-b-2 border-b-zinc-400 text-zinc-700 hover:bg-zinc-100 active:border-b active:translate-y-[1px] transition-all cursor-pointer" data-cat="minor">마이너 (56장)</button>
+        <button class="gallery-tab shrink-0 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg text-xs font-semibold bg-gradient-to-b from-white to-zinc-50 border border-zinc-300 border-b-2 border-b-zinc-400 text-zinc-700 hover:bg-zinc-100 active:border-b active:translate-y-[1px] transition-all cursor-pointer" data-cat="wands">완드 (불 14장)</button>
+        <button class="gallery-tab shrink-0 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg text-xs font-semibold bg-gradient-to-b from-white to-zinc-50 border border-zinc-300 border-b-2 border-b-zinc-400 text-zinc-700 hover:bg-zinc-100 active:border-b active:translate-y-[1px] transition-all cursor-pointer" data-cat="cups">컵 (물 14장)</button>
+        <button class="gallery-tab shrink-0 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg text-xs font-semibold bg-gradient-to-b from-white to-zinc-50 border border-zinc-300 border-b-2 border-b-zinc-400 text-zinc-700 hover:bg-zinc-100 active:border-b active:translate-y-[1px] transition-all cursor-pointer" data-cat="swords">소드 (공기 14장)</button>
+        <button class="gallery-tab shrink-0 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg text-xs font-semibold bg-gradient-to-b from-white to-zinc-50 border border-zinc-300 border-b-2 border-b-zinc-400 text-zinc-700 hover:bg-zinc-100 active:border-b active:translate-y-[1px] transition-all cursor-pointer" data-cat="pentacles">펜타클 (흙 14장)</button>
+      </div>
+
+      <!-- Cards Grid Area -->
+      <div class="flex-1 p-6 overflow-y-auto bg-slate-100">
+        <div id="gallery-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 sm:gap-8 justify-items-center">
+          <!-- Injected via JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div id="modal-card-detail" class="fixed inset-0 z-50 hidden items-center justify-center p-2 sm:p-6 bg-black/80 backdrop-blur-md animate-in fade-in">
     <div class="bg-white border border-zinc-200 rounded-3xl w-full max-w-5xl h-[90vh] min-h-[640px] max-h-[880px] overflow-hidden flex flex-col md:flex-row shadow-2xl relative text-zinc-900">
       <!-- Close Button -->
@@ -3626,8 +3665,9 @@
         "symbolSvg":  "\u003ccircle cx=\"12\" cy=\"12\" r=\"8\" stroke=\"currentColor\" stroke-width=\"1.2\" fill=\"none\"/\u003e\u003cpolygon points=\"12,6 13.8,10.2 18,10.2 14.6,12.8 15.8,17 12,14.4 8.2,17 9.4,12.8 6,10.2 10.2,10.2\" stroke=\"currentColor\" stroke-width=\"1\" fill=\"none\"/\u003e"
     },
     {
-        "id":  "pentacles-10",
-        "number":  10,
+"id":  "pentacles-10",
+          "imageUrl": "images/tarot_pentacles_10.jpg",
+          "number":  10,
         "nameEn":  "Ten of Pentacles",
         "nameKo":  "펜타클 10 (Ten of Pentacles)",
         "arcana":  "minor",

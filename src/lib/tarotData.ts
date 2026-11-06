@@ -1,4 +1,4 @@
-﻿export interface TarotCardData {
+export interface TarotCardData {
   id: string;
   imageUrl?: string;
   number: number;
@@ -1390,8 +1390,9 @@ export const TAROT_CARDS: TarotCardData[] = [  {
     svgDrawing: $svg
   },
   {
-    id: 'pentacles-10',
-    number: 10,
+id: 'pentacles-10',
+      imageUrl: 'images/tarot_pentacles_10.jpg',
+      number: 10,
     nameEn: 'Ten of Pentacles',
     nameKo: '펜타클 10 (Ten of Pentacles)',
     arcana: 'minor',

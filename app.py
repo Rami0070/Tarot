@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
 UNIVERSAL TAROT · INTEGRATED EDITION (로컬 단일 파일 실행 프로그램)
@@ -2228,8 +2228,9 @@ TAROT_CARDS = [
         "symbolSvg":  "\u003ccircle cx=\"12\" cy=\"12\" r=\"8\" stroke=\"currentColor\" stroke-width=\"1.2\" fill=\"none\"/\u003e\u003cpolygon points=\"12,6 13.8,10.2 18,10.2 14.6,12.8 15.8,17 12,14.4 8.2,17 9.4,12.8 6,10.2 10.2,10.2\" stroke=\"currentColor\" stroke-width=\"1\" fill=\"none\"/\u003e"
     },
     {
-        "id":  "pentacles-10",
-        "number":  10,
+"id":  "pentacles-10",
+          "imageUrl": "images/tarot_pentacles_10.jpg",
+          "number":  10,
         "nameEn":  "Ten of Pentacles",
         "nameKo":  "펜타클 10 (Ten of Pentacles)",
         "arcana":  "minor",
